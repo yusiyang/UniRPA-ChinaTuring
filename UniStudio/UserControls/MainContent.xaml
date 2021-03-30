@@ -35,31 +35,8 @@
                        BorderThickness="0"
                        >
 
-            <!--<ribbon:Ribbon.QuickAccessToolBarCommonItems>
-                <ribbon:Button Id="Save" Label="保存" Command="{Binding SaveCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save.png" />
-                <ribbon:Button Id="SaveAll" Label="全部保存" Command="{Binding SaveAllCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save-all.png" />
-                <ribbon:Button Id="RunWork" Label="运行" Command="{Binding RunWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/run.png" />
-                <ribbon:Button Id="StopWork" Label="停止" Command="{Binding StopWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/stop.png" />
-                <ribbon:Button Id="DebugOrContinueWorkflow" Label="{Binding DebugOrContinueWorkflowButtonHeader}" Command="{Binding DebugOrContinueWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/debug.png" />
-            </ribbon:Ribbon.QuickAccessToolBarCommonItems>-->
-            <!--<ribbon:Ribbon.QuickAccessToolBarItems>
-                <ribbon:Button Id="Save" Label="保存" Command="{Binding SaveCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save.png" />
-                <ribbon:Button Id="RunWork" Label="运行" Command="{Binding RunWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/run.png" />
-            </ribbon:Ribbon.QuickAccessToolBarItems>-->
-            
             <!-- 功能区菜单折叠按钮 -->
             <ribbon:Ribbon.TabPanelItems>
-                <!--<Button Content="登陆" Command="unilib:Commands.OpenChildCommand" CommandParameter="{x:Type uniWin:LoginWindow}"
-                        Width="42" Height="18" Background="Transparent" Foreground="White" BorderBrush="#D8D8D8"></Button>-->
-                <ribbon:Button ToolTip="帮助" Click="OnHelpClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/help.png" >
-                    <ribbon:Button.ContextMenu>
-                        <ribbon:ContextMenu x:Name="_helpContextMenu">
-                            <ribbon:Button Label="用户手册" Click="OnHelpContextMenuClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/product-doc.png" />
-                            <ribbon:Button Label="帮助中心" Click="OnHelpContextMenuClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/help-center.png" />
-                            <ribbon:Button Label="关于我们" Click="OnHelpContextMenuClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/home.png"/>
-                        </ribbon:ContextMenu>
-                    </ribbon:Button.ContextMenu>
-                </ribbon:Button>
                 <ribbon:ToggleMinimizationButton />
                 <ribbon:Button ToolTip="最小化" Click="WindowMinimizedClick" Width="46" Padding="0" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/window-minimized.png" />
                 <ribbon:Button ToolTip="{Binding MaximizedOrNormalToolTip}" Click="WindowMaximizedOrNormalClick" Width="46" ImageSourceLarge="{Binding MaximizedOrNormalImage}" />
@@ -102,9 +79,9 @@
                     </ribbon:BackstageTab>
 
                     <!-- 帮助 -->
-                    <ribbon:BackstageTab Header="帮助">
+                    <!--<ribbon:BackstageTab Header="帮助">
                         <uc:HelpContent/>
-                    </ribbon:BackstageTab>
+                    </ribbon:BackstageTab>-->
 
                 </ribbon:Backstage>
             </ribbon:Ribbon.ApplicationMenu>
@@ -142,20 +119,12 @@
                     <ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
                         <ribbon:Button Label="数据 抓取" ToolTip="将浏览器、应用程序或文档中的结构化数据提取至数据表中" Command="{Binding ExtractDataTableCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/extract-data-table.png"/>
                     </ribbon:Group>
-                    <!--<ribbon:Group>
-                        <ribbon:Button Label="文档 解析" ToolTip="依据流程描述文档，自动生成 Xaml 工作流" Command="{Binding DocParseCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/doc-parse.png"/>
-                    </ribbon:Group>-->
                     <ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
                         <ribbon:Button Label="UI 探测器" ToolTip="运行 UI 探测器" Command="{Binding LaunchUIExplorerCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/ui-explorer.png"/>
                     </ribbon:Group>
                     <ribbon:Group  IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
                         <ribbon:Button Label="发布 工作流" ToolTip="打包发布当前工作流项目" Command="{Binding PublishCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/publish.png"/>
-                        <ribbon:Button Label="发布 为类库" ToolTip="将当前工作流项目发布为类库" Command="{Binding PublishLibraryCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/publish.png"/>
                     </ribbon:Group>
-                    <!--<ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
-                        <ribbon:Button Label="发布 应用" ToolTip="发布应用" Command="unilib:Commands.OpenChildCommand" CommandParameter="{x:Type uniWin:PublishAppWindow}"
-                                       ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/publish.png"/>
-                    </ribbon:Group>-->
                 </ribbon:Tab>
                 <ribbon:Tab Label="执行">
                     <ribbon:Group >

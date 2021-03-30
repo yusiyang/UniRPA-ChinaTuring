@@ -53,34 +53,6 @@ namespace UniStudio.UserControls
             }
         }
 
-        private void OnHelpClick(object sender, RoutedEventArgs e)
-        {
-            _helpContextMenu.IsOpen = true;
-        }
-
-        /// <summary>
-        /// 右上角帮助按钮点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnHelpContextMenuClick(object sender, RoutedEventArgs e)
-        {
-            switch ((sender as ActiproSoftware.Windows.Controls.Ribbon.Controls.Button).Label.ToString())
-            {
-                case "用户手册":
-                    Process.Start("https://docs.unirpa.com/");
-                    break;
-
-                case "帮助中心":
-                    Process.Start("https://www.unirpa.com/#help-center");
-                    break;
-
-                case "关于我们":
-                    Process.Start("https://www.unirpa.com/#about-us");
-                    break;
-            }
-        }
-
         /// <summary>
         /// 最小化按钮点击事件
         /// </summary>

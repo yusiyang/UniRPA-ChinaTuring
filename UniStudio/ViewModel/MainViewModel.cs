@@ -2503,31 +2503,6 @@ namespace UniStudio.ViewModel
         }
 
 
-        private RelayCommand _docParseCommand;
-
-        /// <summary>
-        /// Gets the ExtractDataTableCommand.
-        /// </summary>
-        public RelayCommand DocParseCommand
-        {
-            get
-            {
-                return _docParseCommand
-                    ?? (_docParseCommand = new RelayCommand(
-                        () =>
-                        {
-                            // 开始文档解析
-                            SaveAllCommand.Execute(null);//先全部保存
-
-                            var window = new DocParseWindow();
-                            window.Owner = Application.Current.MainWindow;
-                            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                            window.ShowDialog();
-                        }));
-            }
-        }
-
-
         private RelayCommand _publishCommand;
 
         /// <summary>
@@ -2562,40 +2537,6 @@ namespace UniStudio.ViewModel
                         window.ShowDialog();
 
                     }));
-            }
-        }
-
-        private RelayCommand _publishLibraryCommand;
-
-        /// <summary>
-        /// Gets the PublishLibraryCommand.
-        /// </summary>
-        public RelayCommand PublishLibraryCommand
-        {
-            get
-            {
-                return _publishLibraryCommand
-                       ?? (_publishLibraryCommand = new RelayCommand(
-                           () =>
-                           {
-                               //打包发布
-                               //弹窗，让用户选择打包输出到的路径(记忆之前的路径列表)
-                               SaveAllCommand.Execute(null);//先全部保存
-
-                               var valid = WorkflowValidation.Validate(DocumentContext.Current.WorkflowDesigner);
-
-                               if (!valid)
-                               {
-                                   return;
-                               }
-
-                               var window = new PublishLibraryWindow();
-                               window.Owner = Application.Current.MainWindow;
-                               window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                               var vm = window.DataContext as PublishLibraryViewModel;
-                               window.ShowDialog();
-
-                           }));
             }
         }
 

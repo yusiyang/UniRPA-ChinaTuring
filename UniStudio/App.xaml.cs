@@ -12,7 +12,6 @@ using System.Windows;
 using System.Windows.Threading;
 using System.Xml;
 using UniExecutor.View;
-using Uni.Core;
 using ActiproSoftware.Text.Parsing;
 using ActiproSoftware.Text.Parsing.Implementation;
 using ActiproSoftware.Text.Languages.DotNet.Reflection;
@@ -48,7 +47,6 @@ namespace UniStudio
             DispatcherHelper.Initialize();
 
             Plugins.Shared.Library.Librarys.LanguageLocalization.ToChinese();
-            GenerateWorkflowManager generateWorkflowManager = GenerateWorkflowManager.Instance;
 
 #if DEBUG
             AllocConsole();

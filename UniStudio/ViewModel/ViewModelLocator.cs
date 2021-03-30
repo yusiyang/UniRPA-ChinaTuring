@@ -67,10 +67,8 @@ namespace UniStudio.ViewModel
             SimpleIoc.Default.Register<ManagePackagesViewModel>();
             SimpleIoc.Default.Register<PackageManagerViewModel>();
             SimpleIoc.Default.Register<ExtractDataTableViewModel>();
-            SimpleIoc.Default.Register<DocParseViewModel>();
             SimpleIoc.Default.Register<RegisterViewModel>();
             SimpleIoc.Default.Register<StartupViewModel>();
-            SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<SearchViewModel>();
             SimpleIoc.Default.Register<SearchResultViewModel>();
             SimpleIoc.Default.Register<MyAppsViewModel>();
@@ -297,22 +295,7 @@ namespace UniStudio.ViewModel
             }
         }
 
-        public DocParseViewModel DocParse
-        {
-            get
-            {
-                return SimpleIoc.Default.GetInstanceWithoutCaching<DocParseViewModel>();//ServiceLocator.Current.GetInstance<DocParseViewModel>(System.Guid.NewGuid().ToString());
-            }
-        }
 
-        public LoginViewModel Login
-        {
-            get
-            {
-                return SimpleIoc.Default.GetInstanceWithoutCaching<LoginViewModel>();//ServiceLocator.Current.GetInstance<LoginViewModel>(System.Guid.NewGuid().ToString());
-            }
-        }        
-        
         public SearchViewModel Search
         {
             get

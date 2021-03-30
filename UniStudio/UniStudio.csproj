@@ -454,9 +454,6 @@
     <Compile Include="UserControls\ActivitiesContent.xaml.cs">
       <DependentUpon>ActivitiesContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\AppContent.xaml.cs">
-      <DependentUpon>AppContent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\DockContent.xaml.cs">
       <DependentUpon>DockContent.xaml</DependentUpon>
     </Compile>
@@ -497,9 +494,6 @@
     <Compile Include="UserControls\VisualTreeContent.xaml.cs">
       <DependentUpon>VisualTreeContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\DocParseAttachmentItem.cs" />
-    <Compile Include="ViewModel\DocParseSelectorItem.cs" />
-    <Compile Include="ViewModel\DocParseViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.Commands.cs" />
     <Compile Include="ViewModel\MyAppsViewModel.cs" />
     <Compile Include="ViewModel\PublishLibraryViewModel.cs" />
@@ -511,7 +505,6 @@
     <Compile Include="ViewModel\PackageManagerViewModel.cs" />
     <Compile Include="ViewModel\PackageSourceSearchResultItem.cs" />
     <Compile Include="ViewModel\SettingItem.cs" />
-    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\TemplateItem.cs" />
     <Compile Include="ViewModel\DockViewModel.cs" />
     <Compile Include="ViewModel\DocumentViewModel.cs" />
@@ -546,12 +539,6 @@
     <Compile Include="ViewModel\StartViewModel.cs" />
     <Compile Include="ViewModel\ToolViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="Windows\DocParseWindow.xaml.cs">
-      <DependentUpon>DocParseWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\PublishAppWindow.xaml.cs">
-      <DependentUpon>PublishAppWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WorkflowOperation\DesignerViewCommands.cs" />
     <Compile Include="WorkflowOperation\DesignerViewWrapper.cs" />
     <Compile Include="Windows\EditWindow.xaml.cs">
@@ -559,9 +546,6 @@
     </Compile>
     <Compile Include="Windows\ExtractDataTableWindow.xaml.cs">
       <DependentUpon>ExtractDataTableWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MessageDetailsWindow.xaml.cs">
       <DependentUpon>MessageDetailsWindow.xaml</DependentUpon>
@@ -648,10 +632,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\AppContent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\DockContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -684,10 +664,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\DocParseWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\EditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -695,10 +671,6 @@
     <Page Include="Windows\ExtractDataTableWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\LoginWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -761,10 +733,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ProjectSettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\PublishAppWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -998,18 +966,6 @@
     <ProjectReference Include="..\UniExplorer\UniExplorer.csproj">
       <Project>{661c3e1b-23fe-4994-8a8e-df24178471b2}</Project>
       <Name>UniExplorer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UniGenerateWorkflow.Common\UniGenerateWorkflow.Common.csproj">
-      <Project>{43d95a3a-cec7-4e0d-83cf-dc5e3ba42078}</Project>
-      <Name>UniGenerateWorkflow.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UniGenerateWorkflow.Core\UniGenerateWorkflow.Core.csproj">
-      <Project>{d4861ad0-0037-4c40-a076-b1c7fbd91403}</Project>
-      <Name>UniGenerateWorkflow.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UniGenerateWorkflow.Entity\UniGenerateWorkflow.Entity.csproj">
-      <Project>{38dbfddc-1454-41d4-94df-213a8c0cb4c5}</Project>
-      <Name>UniGenerateWorkflow.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\UniNamedPipe\UniNamedPipe.csproj">
       <Project>{9be457f1-327b-4ea3-b1bf-d6d78cf2cf15}</Project>
