@@ -1,0 +1,41 @@
+﻿<sap:ActivityDesigner x:Class="FileActivity.PathExistsDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:assist="clr-namespace:Plugins.Shared.Library.Attached;assembly=Plugins.Shared.Library"
+    xmlns:local="clr-namespace:FileActivity"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:pslc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library"      
+    xmlns:sadc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation" 
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+                      xmlns:ss="clr-namespace:FileActivity"
+    >
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Plugins.Shared.Library;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </sap:ActivityDesigner.Resources>
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing ImageSource="{Binding Path=ModelItem.icoPath}">
+                    <ImageDrawing.Rect>
+                        <Rect Location="0,0" Size="16,16"></Rect>
+                    </ImageDrawing.Rect>
+                </ImageDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+    <pslc:CollapsableActivity >
+        <!--<sapv:ExpressionTextBox Width="260" Name="AppendLineTextBox" MaxLines="1" HintText="要检查的全路径。必须将文本放入引号中。"
+                            Expression="{Binding Path=ModelItem.Path, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }" 
+                            ExpressionType="sys:String"
+                            OwnerActivity="{Binding Path=ModelItem}"/>-->
+        <sapv:ExpressionTextBox 
+            assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo Path,Type={x:Type local:PathExistsActivity}}"
+            Width="260" Name="AppendLineTextBox" MaxLines="1">
+        </sapv:ExpressionTextBox>
+    </pslc:CollapsableActivity>
+</sap:ActivityDesigner>

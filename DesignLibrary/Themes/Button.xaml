@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:lib="clr-namespace:DesignLibrary">
+
+    <ControlTemplate x:Key="IconTextBtnTemplate" TargetType="Button">
+        <Border BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{TemplateBinding lib:Assist.CornerRadius}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Padding.Left}"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Padding.Right}"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Padding.Top}"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Padding.Bottom}"></RowDefinition>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Column="1" Grid.Row="1">
+                    <Path Fill="{TemplateBinding lib:Assist.IconBrush}" x:Name="iconPath"
+                                      Margin="5,0" Stretch="Fill"
+                                      DockPanel.Dock="{TemplateBinding lib:Assist.Position}"
+                                      Height="{TemplateBinding lib:Assist.IconHeight}"
+                                      Width="{TemplateBinding lib:Assist.IconWidth}"
+                                      lib:Assist.Icon="{TemplateBinding lib:Assist.Icon}">
+                        <Path.RenderTransform>
+                            <RotateTransform x:Name="trans" Angle="0"/>
+                        </Path.RenderTransform>
+                    </Path>
+                    <ContentPresenter SnapsToDevicePixels="True"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                    </ContentPresenter>
+                </DockPanel>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="TextButtonTemplate" TargetType="Button">
+        <Border CornerRadius="{TemplateBinding lib:Assist.CornerRadius}"
+            Background="{TemplateBinding Background}" 
+            Cursor="{TemplateBinding Cursor}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}">
+        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                        SnapsToDevicePixels="True"
+                                        ></ContentPresenter>
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="IconBtnTemplate" TargetType="Button">
+        <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding lib:Assist.CornerRadius}"
+                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+            <Path Fill="{TemplateBinding lib:Assist.IconBrush}"
+                                      Stretch="Fill"
+                                      Height="{TemplateBinding lib:Assist.IconHeight}"
+                                      Width="{TemplateBinding lib:Assist.IconWidth}"
+                                      lib:Assist.Icon="{TemplateBinding lib:Assist.Icon}"></Path>
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="Button">
+        <Setter Property="lib:Assist.IconHeight" Value="20"></Setter>
+        <Setter Property="lib:Assist.IconWidth" Value="20"></Setter>
+        <Setter Property="lib:Assist.IconBrush" Value="Black"></Setter>
+        <Setter Property="lib:Assist.CornerRadius" Value="0"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Template" Value="{StaticResource IconTextBtnTemplate}"></Setter>
+        <Style.Triggers>
+            <Trigger Property="lib:Assist.Icon" Value="NoIcon">
+                <Setter Property="Template" Value="{StaticResource TextButtonTemplate}"></Setter>
+            </Trigger>
+            <Trigger Property="Content" Value="{x:Null}">
+                <Setter Property="Template" Value="{StaticResource IconBtnTemplate}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

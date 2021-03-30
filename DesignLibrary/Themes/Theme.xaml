@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DesignLibrary.Themes">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/DesignLibrary;component/Themes/TextBox.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/DesignLibrary;component/Themes/Button.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/DesignLibrary;component/Themes/RadioButton.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/DesignLibrary;component/Themes/PasswordBox.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+    <SolidColorBrush x:Key="BorderBrush" Color="#C3CBD6"></SolidColorBrush>
+    <SolidColorBrush x:Key="PlaceHolderBrush" Color="#000000" Opacity="0.1"></SolidColorBrush>
+</ResourceDictionary>

@@ -1,0 +1,170 @@
+﻿<ribbon:RibbonWindow x:Class="UniStudio.Windows.NewTemplateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UniStudio.Windows"
+        xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+        xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+        mc:Ignorable="d"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        DataContext="{Binding NewTemplate, Source={StaticResource Locator}}"
+        Icon="/Resource/Ico/UniStudio.ico"
+        ResizeMode="NoResize"
+        ApplicationName="新建模板" Height="450" Width="550">
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding LoadedCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <ribbon:RibbonWindow.Resources>
+
+        <!-- Window 边框 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}" Color="#007a82" />
+
+        <!-- Ribbon 顶栏 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarBackgroundActiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarBackgroundInactiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarForegroundActiveBrushKey}" Color="White" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarForegroundInactiveBrushKey}" Color="#d5d5d5" />
+
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarInnerBorderActiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarInnerBorderInactiveBrushKey}" Color="#007a82" />
+
+        <!-- 最大最小化按钮 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarButtonForegroundActiveHoverBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarButtonBackgroundHoverBrushKey}" Color="#00a3ae" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarButtonBorderHoverBrushKey}" Color="#00a3ae" />
+
+        <!-- 窗口选中时标题栏背景 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.DockingWindowContainerTitleBarBackgroundActiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.TabbedMdiContainerTabItemBackgroundActiveFocusedBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.TabbedMdiContainerTabItemBorderActiveFocusedBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.TabbedMdiContainerTabItemBackgroundHoverBrushKey}" Color="#00a3ae" />
+
+        <!-- 工具窗口容器选中时前景色 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolWindowContainerTabItemForegroundSelectedBrushKey}" Color="#007a82" />
+
+        <!-- 自动隐藏标签项鼠标浮动颜色 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.AutoHideTabItemBorderHoverBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.AutoHideTabItemForegroundHoverBrushKey}" Color="#007a82" />
+
+    </ribbon:RibbonWindow.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="10">
+            <TextBlock Margin="5" Text="创建模板" FontWeight="Bold" FontSize="14"></TextBlock>
+            <TextBlock Margin="5" Text="根据当前项目定义创建模板。"></TextBlock>
+            <Border Margin="5" VerticalAlignment="Top" BorderThickness="0,1,0,0" BorderBrush="#b8b8b8"></Border>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Margin="5 5 0 5" Padding="3" Text="名称" />
+                    <Image Width="12" Margin="0 5 5 0" VerticalAlignment="Top" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/tooltip.png" ToolTip="对应于模板列表中的模板名称" />
+                </StackPanel>
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Border Margin="5" BorderBrush="#abadb3" BorderThickness="1" Visibility="{Binding IsTemplateNameCorrect, Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}" />
+                    <Border Margin="5" BorderBrush="#ff0000" BorderThickness="1" Visibility="{Binding IsTemplateNameEmpty, Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}">
+                        <Image ToolTip="文件名不能为空！" Width="16" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/error.png" HorizontalAlignment="Right" />
+                    </Border>
+                    <Border Margin="5" BorderBrush="#abadb3" BorderThickness="1" Visibility="{Binding IsTemplateNameRepeated, Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}">
+                        <Image ToolTip="已经存在相同名称的模板。保存当前模板将覆盖旧模板。" Width="16" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/warning.png" HorizontalAlignment="Right" />
+                    </Border>
+                    <Border Margin="5" BorderThickness="1">
+                        <TextBox Margin="0 0 16 0" Padding="3" VerticalContentAlignment="Center" BorderThickness="0" Text="{Binding TemplateName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <cmd:EventToCommand Command="{Binding TemplateNameChangedCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Border>
+                </Grid>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Margin="5 5 0 5" Padding="3" Text="说明" />
+                    <Image Width="12" Margin="0 5 5 0" VerticalAlignment="Top" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/tooltip.png" ToolTip="对应于模板列表中的模板说明" />
+                </StackPanel>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Border Margin="5" BorderBrush="#abadb3" BorderThickness="1">
+                        <TextBox Padding="3" VerticalContentAlignment="Center" BorderThickness="0" Text="{Binding TemplateDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </Border>
+                </Grid>
+
+                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Margin="5 5 0 5" Padding="3" Text="默认项目名称" />
+                    <Image Width="12" Margin="0 5 5 0" VerticalAlignment="Top" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/tooltip.png" ToolTip="对应于创建此类型的新项目时显示的默认项目名称" />
+                </StackPanel>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Border Margin="5" BorderBrush="#abadb3" BorderThickness="1" Visibility="{Binding IsDefaultProjectNameCorrect, Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}" />
+                    <Border Margin="5" BorderBrush="#ff0000" BorderThickness="1" Visibility="{Binding IsDefaultProjectNameEmpty, Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}">
+                        <Image ToolTip="文件名不能为空！" Width="16" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/error.png" HorizontalAlignment="Right" />
+                    </Border>
+                    <Border Margin="5" BorderThickness="1">
+                        <TextBox Margin="0 0 16 0" Padding="3" VerticalContentAlignment="Center" BorderThickness="0" Text="{Binding DefaultProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <cmd:EventToCommand Command="{Binding DefaultProjectNameChangedCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+                    </Border>
+                </Grid>
+
+                <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Margin="5 5 0 5" Padding="3" Text="默认项目说明" />
+                    <Image Width="12" Margin="0 5 5 0" VerticalAlignment="Top" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/tooltip.png" ToolTip="对应于创建此类型的新项目时显示的默认说明" />
+                </StackPanel>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <Border Margin="5" BorderBrush="#abadb3" BorderThickness="1">
+                        <TextBox Padding="3" VerticalContentAlignment="Center" BorderThickness="0" Text="{Binding DefaultProjectDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <TextBlock Margin="5 25 5 5" Text="预览" ></TextBlock>
+            <Border Margin="5" VerticalAlignment="Top" BorderThickness="0,1,0,0" BorderBrush="#b8b8b8"></Border>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image Width="35" Source="pack://application:,,,/Resource/Image/Windows/NewTemplate/template.png" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="{Binding TemplateName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="13" FontWeight="Bold" />
+                        <TextBlock Text="{Binding TemplateDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,0,0" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </StackPanel>
+
+        <Grid Grid.Row="1" Background="#f1f1f1">
+            <Border VerticalAlignment="Top" BorderThickness="0,1,0,0" BorderBrush="#b8b8b8"></Border>
+            <Button Style="{StaticResource ToolBarButtonStyle}" Command="{Binding CreateTemplateCommand}" IsEnabled="{Binding CanCreate}" Width="80" Height="25" HorizontalAlignment="Right" Content="创建" Margin="0,0,10,0" IsDefault="True"></Button>
+        </Grid>
+    </Grid>
+</ribbon:RibbonWindow>

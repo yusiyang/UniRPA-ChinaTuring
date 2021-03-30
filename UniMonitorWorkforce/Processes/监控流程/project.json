@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "studioVersion": "1.0.7.0",
+  "projectType": "Workflow",
+  "projectVersion": "1.0.0",
+  "name": "空白流程2",
+  "description": "空白流程",
+  "main": "Main.xaml",
+  "dependencies": {}
+}

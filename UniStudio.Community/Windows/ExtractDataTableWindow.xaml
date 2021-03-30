@@ -1,0 +1,128 @@
+﻿<Window x:Class="UniStudio.Community.Windows.ExtractDataTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	    xmlns:shared="http://schemas.actiprosoftware.com/winfx/xaml/shared"
+	    xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+        xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+		xmlns:datagrid="http://schemas.actiprosoftware.com/winfx/xaml/datagrid"
+		xmlns:datagrideditors="http://schemas.actiprosoftware.com/winfx/xaml/datagrideditors"
+        xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+        mc:Ignorable="d"
+        DataContext="{Binding ManagePackages, Source={StaticResource Locator}}"
+        Title="ExtractDataTableWindow" Height="400" Width="560">
+    <Window.Resources>
+        <Style TargetType="wizard:WizardButtonContainer">
+            <Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerMediumBackgroundNormalBrushKey}}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderNormalBrushKey}}" />
+            <Setter Property="BorderThickness" Value="0,1,0,0" />
+            <Setter Property="Padding" Value="7" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="wizard:WizardButtonContainer">
+                        <Border Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}"
+						Padding="{TemplateBinding Padding}"
+						SnapsToDevicePixels="True">
+                            <DockPanel>
+                                <Button x:Name="PART_HelpButton" DockPanel.Dock="Left" MinWidth="75" Command="wizard:WizardCommands.Help"
+							Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=HelpButtonText}" 
+							Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.HelpButtonVisibility)}" />
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="PART_CancelButton" Margin="0,0,7,0" MinWidth="75" Command="wizard:WizardCommands.Cancel" 
+								Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=CancelButtonText}" 
+								Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.CancelButtonVisibility)}" />
+                                    <Button x:Name="PART_BackButton" MinWidth="75" Click="BackButtonOnClick" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).BackButtonEnabled}"
+								Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=BackButtonText}" 
+								Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.BackButtonVisibility)}" />
+                                    <Button x:Name="PART_NextButton" MinWidth="75" Click="NextButtonOnClick" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).NextButtonEnabled}"
+								Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=NextButtonText}" 
+								Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.NextButtonVisibility)}" />
+                                    <Button x:Name="PART_FinishButton" Margin="7,0,0,0" MinWidth="75" Command="wizard:WizardCommands.Finish" 
+								Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=FinishButtonText}" 
+								Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.FinishButtonVisibility)}" />
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <wizard:Wizard x:Name="_wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="提取向导" PageSequenceType="Stack"
+                   HelpButtonVisible="False" CancelButtonText="取消" BackButtonText="&lt;返回" NextButtonText="下一步" FinishButtonText="完成"
+                   SelectedPageChanging="OnSelectedPageChanging" SelectedPageChanged="OnSelectedPageChanged" Finish="_wizard_OnFinish" Cancel="_wizard_OnCancel" CancelButtonClosesWindow="True" FinishButtonClosesWindow="True">
+
+        <wizard:WizardPage x:Name="_page0" PageType="Exterior" BackButtonEnabled="False"
+				Description="" Caption="选择元素">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="5" Text="1. 打开浏览器、应用程序或文档，并导航至您想要从中提取数据的位置。" />
+                <TextBlock TextWrapping="Wrap" Margin="5" Text="2. 在本对话框中按“下一步”，并将鼠标光标悬停在数据源字段上方。" />
+                <TextBlock TextWrapping="Wrap" Margin="5" Text="3. 单击该字段。" />
+            </StackPanel>
+        </wizard:WizardPage>
+
+        <wizard:WizardPage x:Name="_page1" PageType="Exterior"
+				Description="" Caption="选择第二个元素">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="5" Text="如需创建模式，请指出类似字段，最好是集合中的最后一个字段。" />
+            </StackPanel>
+        </wizard:WizardPage>
+
+        <wizard:WizardPage x:Name="_page2" PageType="Exterior"
+				Description="" Caption="配置列">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="5" Text="已确定字段将高亮显示。" />
+                
+                <ribbon:CheckBox x:Name="TextCheck" Label="提取文本" Margin="5" />
+                <DockPanel>
+                    <Label Content="文本列名称" Margin="5" />
+                    <ribbon:TextBox x:Name="TextName" Margin="5" />
+                </DockPanel>
+
+                <ribbon:CheckBox x:Name="UrlCheck" Label="提取 URL" Margin="5" />
+                <DockPanel>
+                    <Label Content="文本列名称" Margin="5" />
+                    <ribbon:TextBox x:Name="UrlName" Margin="5" />
+                </DockPanel>
+            </StackPanel>
+        </wizard:WizardPage>
+
+        <wizard:WizardPage x:Name="_page3" PageType="Blank" NextButtonEnabled="False">
+            <DockPanel Margin="5">
+                <StackPanel DockPanel.Dock="Bottom">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <ribbon:Button Label="编辑数据定义" x:Name="EditButton" Click="EditButton_OnClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Windows/ExtractDataTable/edit-data-define.png" />
+                        <Label Content="最大结果条数（0 代表全部）" />
+                        <ribbon:TextBox x:Name="MaxResultsTextBox" Text="100" Width="80" />
+                    </StackPanel>
+                    <ribbon:Button Label="提取相关数据" x:Name="ExtractRelatedDataButton" Visibility="Visible" Click="OnExtractRelatedDataButtonClick" HorizontalAlignment="Center" ImageSourceSmall="pack://application:,,,/Resource/Image/Windows/ExtractDataTable/extract-related-data.png" />
+                </StackPanel>
+                
+                <Grid DockPanel.Dock="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Text="预览数据" Margin="5" FontSize="15" FontWeight="Bold" />
+                    <datagrid:ThemedDataGrid Name="DataGrid" Grid.Row="1" Margin="5" AutoGenerateColumns="False" CanUserAddRows="False"
+					    CanUserResizeRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+					    ItemsSource="{Binding}" SelectionUnit="FullRow"
+					    GridLinesVisibility="All">
+                        <!--<datagrid:ThemedDataGrid.Columns>
+                            <datagrideditors:DataGridInt32Column Binding="{Binding Id}" Header="Id" />
+                            <datagrideditors:DataGridMaskedStringColumn Binding="{Binding SocialSecurity}"
+						        Header="SSN" Mask="\d\d\d-\d\d-\d\d\d\d" MinWidth="150" />
+                            <datagrideditors:DataGridMaskedStringColumn Binding="{Binding Phone}" Header="Phone"
+						        Mask="([(]\d\d\d[)] |(1-)?\d\d\d-)?\d\d\d-\d\d\d\d" MinWidth="150" />
+                        </datagrid:ThemedDataGrid.Columns>-->
+                    </datagrid:ThemedDataGrid>
+                </Grid>
+            </DockPanel>
+        </wizard:WizardPage>
+
+    </wizard:Wizard>
+</Window>

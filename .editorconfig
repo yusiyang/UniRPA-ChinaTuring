@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA2000: 丢失范围之前释放对象
+dotnet_diagnostic.CA2000.severity = none

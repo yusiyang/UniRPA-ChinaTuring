@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ContextMenu x:Key="VisualTreeContextMenu">
+        <MenuItem Header="设置为目标元素"  Command="{Binding SetTargetElementCommand}" CommandParameter="{Binding}"/>
+    </ContextMenu>
+
+</ResourceDictionary>

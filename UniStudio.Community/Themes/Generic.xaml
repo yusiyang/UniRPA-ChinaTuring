@@ -1,0 +1,14 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:UniStudio.Community">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Styles/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Styles/Main.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Styles/MessageBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Styles/Datagrid.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

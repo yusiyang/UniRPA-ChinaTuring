@@ -1,0 +1,177 @@
+﻿<Popup x:Class="UniStudio.Community.Search.View.SearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UniStudio.Community.Search.View"
+             xmlns:shem="clr-namespace:UniStudio.Community.Search.Enums"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+             StaysOpen="False"
+             DataContext="{Binding Search, Source={StaticResource Locator}}"
+             Opened="Popup_Opened"
+             KeyDown="Popup_KeyDown"
+             mc:Ignorable="d">
+
+    <Popup.InputBindings>
+        <KeyBinding Command="{Binding Path=Main.OpenSearchViewCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Source={x:Static shem:SearchType.Panel}}" Key="P" Modifiers="Ctrl+Shift" />
+        <KeyBinding Command="{Binding Path=Main.OpenSearchViewCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Source={x:Static shem:SearchType.Panel}}" Key="F3" />
+        <KeyBinding Command="{Binding Path=Main.OpenSearchViewCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Source={x:Static shem:SearchType.AddActivity}}" Key="T" Modifiers="Ctrl+Shift" />
+        <KeyBinding Command="{Binding Path=Main.OpenSearchViewCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Source={x:Static shem:SearchType.Common}}" Key="F" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding Path=Main.OpenSearchViewCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Source={x:Static shem:SearchType.GoToFile}}" Key="F" Modifiers="Alt" />
+        <KeyBinding Command="{Binding Path=Main.OpenSearchViewCommand, Source={StaticResource Locator}}" CommandParameter="{Binding Source={x:Static shem:SearchType.LocateActivity}}" Key="J" Modifiers="Alt" />
+    </Popup.InputBindings>
+    <StackPanel Name="searchPanel" Margin="1" Background="White" Orientation="Vertical">
+        <TextBox x:Name="searchBox" BorderThickness="1" Margin="0" Height="26" FontSize="13" Text="{Binding SearchText, Mode=TwoWay}" TextChanged="SearchBox_TextChanged" VerticalAlignment="Center">
+            <TextBox.Resources>
+                <VisualBrush x:Key="SearchBrush" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                    <VisualBrush.Visual>
+                        <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SearchType}" Value="{x:Static shem:SearchType.Panel}">
+                                            <Setter Property="Text" Value="搜索 (F3 或 Ctrl + Shift + P)"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SearchType}" Value="{x:Static shem:SearchType.AddActivity}">
+                                            <Setter Property="Text" Value="搜索活动 (Ctrl + Shift + T)"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SearchType}" Value="{x:Static shem:SearchType.Common}">
+                                            <Setter Property="Text" Value="通用搜索 (Ctrl + F)"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SearchType}" Value="{x:Static shem:SearchType.GoToFile}">
+                                            <Setter Property="Text" Value="搜索文件 (Alt + F)"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SearchType}" Value="{x:Static shem:SearchType.LocateActivity}">
+                                            <Setter Property="Text" Value="搜索当前活动 (Alt + J)"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </TextBox.Resources>
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource SearchBrush}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Background" Value="{StaticResource SearchBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ShowCountPanel,Mode=OneWay,Converter={StaticResource BoolCollapsedConverter}}">
+            <TextBlock Text="共" FontSize="12" Margin="5,0,0,0" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="{Binding TotalCount,Mode=OneWay}" Margin="5,0,5,0" FontSize="12" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="条" FontSize="12" FontWeight="Bold"></TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="Auto" Visibility="{Binding ShowCommonSearchTypes,Mode=OneWay,Converter={StaticResource BoolCollapsedConverter}}">
+            <ListBox Name="commonSearchPanel" BorderThickness="0" VerticalAlignment="Stretch" 
+                     SelectionChanged="commonSearchPanel_SelectionChanged"
+                     SelectedItem="{Binding SelectedCommonSearchInfo}"
+                     ItemsSource="{Binding CommonSearchInfos,Mode=TwoWay}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#d6d6d6"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFC2C2C2" />
+                        </Style.Resources>
+                        <Setter Property="Width" Value="100"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="100" VerticalAlignment="Stretch" Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5,5,5,0">
+                                <TextBlock Text="{Binding Display}" FontSize="13"></TextBlock>
+                                <TextBlock Text="{Binding Count}"  FontSize="13" Margin="5,0,0,0"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal" Margin="5,5,5,5">
+                                <TextBlock Text="Ctrl" FontSize="12" Foreground="Gray"></TextBlock>
+                                <TextBlock Text="+" Margin="5,0,0,0" FontSize="12" Foreground="Gray"></TextBlock>
+                                <TextBlock Text="{Binding Index}" Margin="5,0,0,0" FontSize="12" Foreground="Gray"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
+        <ListBox Name="searchPanelList" SelectionMode="Single" Margin="0"
+                 SelectionChanged="ListBox_SelectionChanged"
+                 Visibility="{Binding ShowPanel,Mode=OneWay,Converter={StaticResource BoolCollapsedConverter}}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#d6d6d6"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFC2C2C2" />
+                    </Style.Resources>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="FontSize" Value="13"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBoxItem Height="30">
+                <Grid Margin="0" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="添加活动" HorizontalAlignment="Left" Margin="5,0,0,0"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="Ctrl + Shift + T" HorizontalAlignment="Right" Margin="0,0,20,0" ></TextBlock>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Height="30">
+                <Grid Margin="0" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="通用搜索" HorizontalAlignment="Left" Margin="5,0,0,0"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="Ctrl + F" HorizontalAlignment="Right" Margin="0,0,20,0"></TextBlock>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Height="30">
+                <Grid Margin="0" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="转到文件" HorizontalAlignment="Left" Margin="5,0,0,0"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="Alt + F" HorizontalAlignment="Right" Margin="0,0,20,0"></TextBlock>
+                </Grid>
+            </ListBoxItem>
+            <ListBoxItem Height="30">
+                <Grid Margin="0" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="定位活动" HorizontalAlignment="Left" Margin="5,0,0,0"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="Alt + J" HorizontalAlignment="Right" Margin="0,0,20,0"></TextBlock>
+                </Grid>
+            </ListBoxItem>
+        </ListBox>
+        <local:SearchResult x:Name="searchResult" Visibility="Collapsed"></local:SearchResult>
+    </StackPanel>
+</Popup>

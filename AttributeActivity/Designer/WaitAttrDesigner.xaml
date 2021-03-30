@@ -1,0 +1,94 @@
+﻿<sap:ActivityDesigner x:Class="AttributeActivity.WaitAttrDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:assist="clr-namespace:Plugins.Shared.Library.Attached;assembly=Plugins.Shared.Library"
+    xmlns:local="clr-namespace:AttributeActivity"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+    xmlns:pslc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library">
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Plugins.Shared.Library;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </sap:ActivityDesigner.Resources>
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing ImageSource="{Binding Path=ModelItem.icoPath}">
+                    <ImageDrawing.Rect>
+                        <Rect Location="0,0" Size="16,16"></Rect>
+                    </ImageDrawing.Rect>
+                </ImageDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+
+    <pslc:CollapsableActivity >
+        <!--<Grid Height="80" Visibility="Collapsed">
+            <sapv:ExpressionTextBox
+                x:Name="expressTextBox"
+                Expression="{Binding Path=ModelItem.AttrName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:String"
+                HintText="要等待的属性名称。必须将文本放入引号中。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                Margin="0,10,25,40"
+                MaxLines="1" RenderTransformOrigin="0.5,0.5" Height="Auto" HorizontalAlignment="Right" Width="240" />
+            <ComboBox x:Name="comboBox"
+                      IsEditable="True"
+                      IsReadOnly="False"
+                      IsTextSearchEnabled="False"
+                      ItemsSource="{Binding Path=ModelItem.AttrEnums}"
+                      SelectionChanged="comboBox_SelectionChanged"
+                      HorizontalAlignment="Right" Margin="0,10,0,40"
+                      VerticalAlignment="Center" Width="20" RenderTransformOrigin="0.27,0" Height="30"/>
+            <sapv:ExpressionTextBox
+                Expression="{Binding Path=ModelItem.AttrValue, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:Object"
+                HintText="指定属性的预期值。必须将文本放入引号中。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                Margin="0,40,0,0"
+                Grid.Row="0"
+                MaxLines="1" RenderTransformOrigin="0.5,0.5" >
+            </sapv:ExpressionTextBox>
+        </Grid>-->
+
+        <StackPanel>
+            <WrapPanel Margin="0 0 0 5">
+                <!--<sapv:ExpressionTextBox
+                x:Name="expressTextBox"
+                Expression="{Binding Path=ModelItem.AttrName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:String"
+                HintText="要等待的属性名称。必须将文本放入引号中。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                MaxLines="1" RenderTransformOrigin="0.5,0.5" Height="Auto" HorizontalAlignment="Right" Width="235" />-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo AttrName,Type={x:Type local:WaitAttr}}"
+                    x:Name="expressTextBox" RenderTransformOrigin="0.5,0.5" Height="Auto" HorizontalAlignment="Right" Width="235">
+                </sapv:ExpressionTextBox>
+                <ComboBox x:Name="comboBox"
+                      IsEditable="True"
+                      IsReadOnly="False"
+                      IsTextSearchEnabled="False"
+                      ItemsSource="{Binding Path=ModelItem.AttrEnums}"
+                      SelectionChanged="comboBox_SelectionChanged"
+                      HorizontalAlignment="Right" Margin="5,0,0,0" Height="30"
+                      VerticalAlignment="Center" Width="20" RenderTransformOrigin="0.27,0"/>
+            </WrapPanel>
+            <!--<sapv:ExpressionTextBox
+                Expression="{Binding Path=ModelItem.AttrValue, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:Object"
+                HintText="指定属性的预期值。必须将文本放入引号中。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                Grid.Row="0"
+                MaxLines="1" RenderTransformOrigin="0.5,0.5" >
+            </sapv:ExpressionTextBox>-->
+            <sapv:ExpressionTextBox 
+                assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo AttrValue,Type={x:Type local:WaitAttr}}"
+                RenderTransformOrigin="0.5,0.5">
+            </sapv:ExpressionTextBox>
+        </StackPanel>
+    </pslc:CollapsableActivity>
+</sap:ActivityDesigner>

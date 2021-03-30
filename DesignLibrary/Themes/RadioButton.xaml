@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:lib="clr-namespace:DesignLibrary"
+                    xmlns:local="clr-namespace:DesignLibrary.Themes">
+    <ControlTemplate x:Key="SimpleRadioButtonTemplate" TargetType="RadioButton">
+        <Border CornerRadius="{TemplateBinding lib:Assist.CornerRadius}"
+                        Background="{TemplateBinding Background}" 
+                        Cursor="{TemplateBinding Cursor}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+            <ContentPresenter x:Name="contentPresenter" 
+                                                  Grid.Column="1" 
+                                                  Focusable="False" 
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                  Margin="{TemplateBinding Padding}" 
+                                                  RecognizesAccessKey="True" 
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Border>
+    </ControlTemplate>
+</ResourceDictionary>

@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="UniStudio.Community.UserControls.HelpContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UniStudio.Community.UserControls"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+             mc:Ignorable="d" 
+             DataContext="{Binding Help, Source={StaticResource Locator}}"
+             d:DesignHeight="800" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding LoadedCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <Style x:Key="StackPanelStyle" TargetType="{x:Type StackPanel}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{Binding ItemMouseOverBackground}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1"  >
+            <Grid>
+                <StackPanel>
+                    <TextBlock Text="帮助" Foreground="{Binding ItemDescriptionForeground}" FontSize="16" FontWeight="Bold" />
+                    <Rectangle Height="1" StrokeDashArray="3" Stroke="#c7c8c9" Margin="0,2,0,0"/>
+                </StackPanel>
+                <StackPanel Margin="0,25,0,0">
+                    <StackPanel Style="{StaticResource StackPanelStyle}" VerticalAlignment="Top" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <cmd:EventToCommand Command="{Binding ProductDocCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Image Width="40" Height="40" Source="pack://application:,,,/Resource/Image/Ribbon/product-doc.png" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock FontSize="13" Foreground="{Binding ItemTitleForeground}" FontWeight="Bold">用户手册</TextBlock>
+                                    <TextBlock Foreground="{Binding ItemDescriptionForeground}" Margin="0,5,0,0" TextTrimming="WordEllipsis">查看用户手册</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource StackPanelStyle}" VerticalAlignment="Top" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <cmd:EventToCommand Command="{Binding HelpCenterCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Image Width="40" Height="40" Source="pack://application:,,,/Resource/Image/Ribbon/help-center.png" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock FontSize="13" Foreground="{Binding ItemTitleForeground}" FontWeight="Bold">帮助中心</TextBlock>
+                                    <TextBlock Foreground="{Binding ItemDescriptionForeground}" Margin="0,5,0,0" TextTrimming="WordEllipsis">浏览在线资源门户或联系我们获取支持</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource StackPanelStyle}" VerticalAlignment="Top" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <cmd:EventToCommand Command="{Binding AboutUsCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Image Width="40" Height="40" Source="pack://application:,,,/Resource/Image/Ribbon/home.png" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock FontSize="13" Foreground="{Binding ItemTitleForeground}" FontWeight="Bold">关于我们</TextBlock>
+                                    <TextBlock Foreground="{Binding ItemDescriptionForeground}" Margin="0,5,0,0" TextTrimming="WordEllipsis">了解更多关于企业及产品信息</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2" Grid.RowSpan="3">
+            <Grid Width="2" Grid.Column="1" Background="#d7d7d7" Margin="0,60,0,15" />
+        </Grid>
+        <Grid Grid.Column="3" Grid.Row="1">
+            <StackPanel Margin="30 20 30 0">
+                <Viewbox Width="100" Height="100">
+                    <Image Source="pack://application:,,,/Resource/Ico/uni-studio.png" />
+                </Viewbox>
+                <StackPanel Margin="0 30 0 0" TextElement.Foreground="{Binding ItemDescriptionForeground}">
+                    <TextBlock Height="20" HorizontalAlignment="Center" Text="Uni Studio" />
+                    <TextBlock Height="20" HorizontalAlignment="Center" Text="{Binding StudioVersion}" />
+                    <!--<TextBlock Height="20" HorizontalAlignment="Center" Text="许可证提供程序：Internal" />
+                    <TextBlock Height="20" HorizontalAlignment="Center" Text="激活 ID：UIP-4fba072119" />
+                    <TextBlock Height="20" HorizontalAlignment="Center" Text="Microsoft Windows 10 Home 64 位" />
+                    <TextBlock Height="20" HorizontalAlignment="Center" Text="更多：Comming Soon..." />-->
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

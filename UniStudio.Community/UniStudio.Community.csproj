@@ -1,0 +1,1416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{23DF4F2F-0CF1-4992-BF70-385F173E7519}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UniStudio.Community</RootNamespace>
+    <AssemblyName>UniStudio.Community</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resource\Ico\UniStudio.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiproSoftware.DataGrid.Contrib.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.DataGrid.Contrib.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Docking.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Docking.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Editors.Interop.DataGrid.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Editors.Interop.DataGrid.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Editors.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL" />
+    <Reference Include="ActiproSoftware.Grids.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Grids.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Navigation.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Navigation.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Ribbon.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Ribbon.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Shared.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Shared.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.SyntaxEditor.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.SyntaxEditor.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Text.Addons.DotNet.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Text.Addons.DotNet.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Text.LLParser.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Text.LLParser.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Text.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Text.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Themes.Office.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Themes.Office.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Views.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL" />
+    <Reference Include="ActiproSoftware.Wizard.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Wizard.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="ChnCharInfo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=18f031bd02e5e291, processorArchitecture=MSIL">
+      <HintPath>..\packages\ChnCharInfo.1.0.0\lib\net\ChnCharInfo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fluent, Version=6.1.0.326, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fluent.Ribbon.6.1.0.326\lib\net45\Fluent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GongSolutions.WPF.DragDrop, Version=2.0.0.0, Culture=neutral, PublicKeyToken=91f1945125b7a587, processorArchitecture=MSIL">
+      <HintPath>..\packages\gong-wpf-dragdrop.2.0.3\lib\net45\GongSolutions.WPF.DragDrop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HighlightableTextBlock, Version=1.0.1.1, Culture=neutral, PublicKeyToken=b1ed94db70ba498d, processorArchitecture=MSIL">
+      <HintPath>..\packages\HighlightableTextBlock.1.0.1.1\lib\net452\HighlightableTextBlock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJSON, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LitJson.0.13.0\lib\net45\LitJSON.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.3.5.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.3.5.0\lib\netstandard2.0\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\WorkflowGenerator\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetCoreEx.BinaryExtensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetCoreEx.BinaryExtensions.2.0.0\lib\portable46-net451+win81\NetCoreEx.BinaryExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="NetCoreEx.Geometry, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetCoreEx.Geometry.2.1.0\lib\portable46-net451+win81\NetCoreEx.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPinyinPro, Version=0.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPinyinPro.0.3.3\lib\net20\NPinyinPro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.5.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.5.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Common, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Common.4.5.3\lib\net45\NuGet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Configuration, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Configuration.4.5.3\lib\net45\NuGet.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Frameworks, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Frameworks.4.5.3\lib\net45\NuGet.Frameworks.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.4.5.3\lib\net45\NuGet.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.Core.4.5.3\lib\net45\NuGet.Packaging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Protocol, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Protocol.4.5.3\lib\net45\NuGet.Protocol.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Versioning, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Versioning.4.5.3\lib\net45\NuGet.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="ReflectionMagic, Version=4.1.0.0, Culture=neutral, PublicKeyToken=c4c75393d7e08e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReflectionMagic.4.1.0\lib\net45\ReflectionMagic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Core.Presentation" />
+    <Reference Include="System.Activities.DurableInstancing" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Linq, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.1.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.6.0\lib\netstandard2.0\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.1.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WinApi, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinApi.3.1.0\lib\portable46-net451+win81\WinApi.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.18\lib\net\WpfAnimatedGif.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Context.cs" />
+    <Compile Include="DocumentContext.cs" />
+    <Compile Include="Librarys\Commands.cs" />
+    <Compile Include="Librarys\DataGridAssist.cs" />
+    <Compile Include="Models\VersionCommand.cs" />
+    <Compile Include="Search\Data\SearchDataManager.cs" />
+    <Compile Include="Search\Data\UnOpenedDocumentManager.cs" />
+    <Compile Include="Search\Enums\CommonDataType.cs" />
+    <Compile Include="Search\Enums\CommonSearchType.cs" />
+    <Compile Include="Search\Enums\SearchType.cs" />
+    <Compile Include="Search\Models\CommonSearchInfo.cs" />
+    <Compile Include="Search\Models\SearchDataUnit.cs" />
+    <Compile Include="Search\Models\SearchLocations\ActivitySearchLocation.cs" />
+    <Compile Include="Search\Models\SearchLocations\ArgumentSearchLocation.cs" />
+    <Compile Include="Search\Models\SearchLocations\DesignerActivitySearchLocation.cs" />
+    <Compile Include="Search\Models\SearchLocations\FilePathSearchLocation.cs" />
+    <Compile Include="Search\Models\SearchLocations\ImportSearchLocation.cs" />
+    <Compile Include="Search\Models\SearchLocations\PropertySearchLocation.cs" />
+    <Compile Include="Search\Models\SearchLocations\SearchLocation.cs" />
+    <Compile Include="Search\Models\SearchLocations\VariableSearchLocation.cs" />
+    <Compile Include="Search\Models\SearchParams.cs" />
+    <Compile Include="Search\Operations\ActivityLocateOperation.cs" />
+    <Compile Include="Search\Operations\ArgumentLocateOperation.cs" />
+    <Compile Include="Search\Operations\BaseLocationOperation.cs" />
+    <Compile Include="Search\Operations\DependencyLocateOperation.cs" />
+    <Compile Include="Search\Operations\DesignerActivityLocateOperation.cs" />
+    <Compile Include="Search\Operations\ILocateOperation.cs" />
+    <Compile Include="Search\Operations\ImportLocateOperation.cs" />
+    <Compile Include="Search\Operations\LocateOperationFactory.cs" />
+    <Compile Include="Search\Operations\ProjectFileLocateOperation.cs" />
+    <Compile Include="Search\Operations\PropertyLocateOperation.cs" />
+    <Compile Include="Search\Operations\SnippetLocateOperation.cs" />
+    <Compile Include="Search\Operations\VariableLocateOperation.cs" />
+    <Compile Include="Search\SearchViewManager.cs" />
+    <Compile Include="Search\Services\CommonSearchService.cs" />
+    <Compile Include="Search\Services\LocateOperationService.cs" />
+    <Compile Include="Search\Services\SearchService.cs" />
+    <Compile Include="Search\Utils\CommonSearchTypeHelper.cs" />
+    <Compile Include="Search\View\SearchResult.xaml.cs">
+      <DependentUpon>SearchResult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Search\View\SearchView.xaml.cs">
+      <DependentUpon>SearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Selectors\DocumentStyleSelector.cs" />
+    <Compile Include="Selectors\DocumentTemplateSelector.cs" />
+    <Compile Include="Upgrader\IUpgradeService.cs" />
+    <Compile Include="Upgrader\UpgradeProxy.cs" />
+    <Compile Include="Upgrader\UpgradeService.cs" />
+    <Compile Include="UserControls\ActivitiesContent.xaml.cs">
+      <DependentUpon>ActivitiesContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AppContent.xaml.cs">
+      <DependentUpon>AppContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DockContent.xaml.cs">
+      <DependentUpon>DockContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HelpContent.xaml.cs">
+      <DependentUpon>HelpContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LocalsContent.xaml.cs">
+      <DependentUpon>LocalsContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MainContent.xaml.cs">
+      <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OutputContent.xaml.cs">
+      <DependentUpon>OutputContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ProjectContent.xaml.cs">
+      <DependentUpon>ProjectContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PropertyExplorerContent.xaml.cs">
+      <DependentUpon>PropertyExplorerContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchTextBoxControl.xaml.cs">
+      <DependentUpon>SearchTextBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SettingContent.xaml.cs">
+      <DependentUpon>SettingContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SnippetsContent.xaml.cs">
+      <DependentUpon>SnippetsContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StartContent.xaml.cs">
+      <DependentUpon>StartContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ToolContent.xaml.cs">
+      <DependentUpon>ToolContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VisualTreeContent.xaml.cs">
+      <DependentUpon>VisualTreeContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ActivitiesViewModel.cs" />
+    <Compile Include="ViewModel\ActivityTreeItem.cs" />
+    <Compile Include="ViewModel\CommonPackageSourceItem.cs" />
+    <Compile Include="ViewModel\DockViewModel.cs" />
+    <Compile Include="ViewModel\DocParseAttachmentItem.cs" />
+    <Compile Include="ViewModel\DocParseSelectorItem.cs" />
+    <Compile Include="ViewModel\DocParseViewModel.cs" />
+    <Compile Include="ViewModel\DocumentViewModel.cs" />
+    <Compile Include="ViewModel\ExtractDataTableViewModel.cs" />
+    <Compile Include="ViewModel\HelpViewModel.cs" />
+    <Compile Include="ViewModel\LocalsItem.cs" />
+    <Compile Include="ViewModel\LocalsViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.Commands.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ManagePackagesViewModel.cs" />
+    <Compile Include="ViewModel\MessageDetailsViewModel.cs" />
+    <Compile Include="ViewModel\MyAppsViewModel.cs" />
+    <Compile Include="ViewModel\NewFolderViewModel.cs" />
+    <Compile Include="ViewModel\NewProjectViewModel.cs" />
+    <Compile Include="ViewModel\NewTemplateViewModel.cs" />
+    <Compile Include="ViewModel\NewXamlFileViewModel.cs" />
+    <Compile Include="ViewModel\OutputListItem.cs" />
+    <Compile Include="ViewModel\OutputViewModel.cs" />
+    <Compile Include="ViewModel\PackageManagerViewModel.cs" />
+    <Compile Include="ViewModel\PackageSourceSearchResultItem.cs" />
+    <Compile Include="ViewModel\ProjectSettingsViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTreeItem.cs" />
+    <Compile Include="ViewModel\ProjectViewModel.cs" />
+    <Compile Include="ViewModel\PublishLibraryViewModel.cs" />
+    <Compile Include="ViewModel\PublishProjectViewModel.cs" />
+    <Compile Include="ViewModel\RecentProjectItem.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\RenameViewModel.cs" />
+    <Compile Include="ViewModel\SampleData.cs" />
+    <Compile Include="ViewModel\SearchResultViewModel.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModel\SettingItem.cs" />
+    <Compile Include="ViewModel\SettingViewModel.cs" />
+    <Compile Include="ViewModel\SnippetsViewModel.cs" />
+    <Compile Include="ViewModel\SnippetTreeItem.cs" />
+    <Compile Include="ViewModel\SplashScreenViewModel.cs" />
+    <Compile Include="ViewModel\StartupViewModel.cs" />
+    <Compile Include="ViewModel\StartViewModel.cs" />
+    <Compile Include="ViewModel\TemplateItem.cs" />
+    <Compile Include="ViewModel\ToolViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Windows\DocParseWindow.xaml.cs">
+      <DependentUpon>DocParseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditWindow.xaml.cs">
+      <DependentUpon>EditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ExtractDataTableWindow.xaml.cs">
+      <DependentUpon>ExtractDataTableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MessageDetailsWindow.xaml.cs">
+      <DependentUpon>MessageDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewFolderWindow.xaml.cs">
+      <DependentUpon>NewFolderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewProjectWindow.xaml.cs">
+      <DependentUpon>NewProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewTemplateWindow.xaml.cs">
+      <DependentUpon>NewTemplateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewXamlFileWindow.xaml.cs">
+      <DependentUpon>NewXamlFileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PackageManagerWindow.xaml.cs">
+      <DependentUpon>PackageManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ProjectSettingsWindow.xaml.cs">
+      <DependentUpon>ProjectSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PublishAppWindow.xaml.cs">
+      <DependentUpon>PublishAppWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PublishLibraryWindow.xaml.cs">
+      <DependentUpon>PublishLibraryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PublishProjectWindow.xaml.cs">
+      <DependentUpon>PublishProjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RegisterWindow.xaml.cs">
+      <DependentUpon>RegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RenameWindow.xaml.cs">
+      <DependentUpon>RenameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SplashScreenWindow.xaml.cs">
+      <DependentUpon>SplashScreenWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowOperation\DesignerViewCommands.cs" />
+    <Compile Include="WorkflowOperation\DesignerViewWrapper.cs" />
+    <Compile Include="WorkflowOperation\SimpleWorkflow.cs" />
+    <Compile Include="WorkflowOperation\WorkflowDesignerWrapper.cs" />
+    <None Include="UniStudio.Community.Log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AvailableActivities\ActivityInfo.cs" />
+    <Compile Include="AvailableActivities\ActivityInfoManager.cs" />
+    <Compile Include="DataManager\ProjectBreakpointsDataManager.cs" />
+    <Compile Include="DataManager\ProjectDataSettings.cs" />
+    <Compile Include="DataManager\ProjectSettingsDataManager.cs" />
+    <Compile Include="DragDropHandler\ProjectDragHandler.cs" />
+    <Compile Include="DragDropHandler\ProjectDropHandler.cs" />
+    <Compile Include="Executor\BreakpointsManager.cs" />
+    <Compile Include="Executor\DebuggerManager.cs" />
+    <Compile Include="Executor\Enums\DebugSpeed.cs" />
+    <Compile Include="Executor\Services\DebuggerService.cs" />
+    <Compile Include="Executor\Services\ExecutorService.cs" />
+    <Compile Include="Executor\Validation\WorkflowValidation.cs" />
+    <Compile Include="Executor\ViewOperate.cs" />
+    <Compile Include="ExpressionEditor\RoslynExpressionEditorInstance.cs" />
+    <Compile Include="ExpressionEditor\RoslynExpressionEditorService.cs" />
+    <Compile Include="ExpressionEditor\VariablePopup.cs" />
+    <Compile Include="ExpressionEditor\VariablePopupManager.cs" />
+    <Compile Include="Librarys\ActiveDocumentConverter.cs" />
+    <Compile Include="Librarys\BASE64.cs" />
+    <Compile Include="Librarys\ButtonExt.cs" />
+    <Compile Include="Librarys\Common.cs" />
+    <Compile Include="Librarys\Extensions.cs" />
+    <Compile Include="Librarys\HttpDownloadFile.cs" />
+    <Compile Include="Librarys\HttpRequest.cs" />
+    <Compile Include="Librarys\ImageExt.cs" />
+    <Compile Include="Librarys\ListBoxBehavior.cs" />
+    <Compile Include="Librarys\Logger.cs" />
+    <Compile Include="Librarys\MessengerObjects.cs" />
+    <Compile Include="Librarys\ObservableExtension.cs" />
+    <Compile Include="Librarys\RegUtil.cs" />
+    <Compile Include="Librarys\TreeViewHelper.cs" />
+    <Compile Include="Librarys\UIExtend.cs" />
+    <Compile Include="Librarys\WindowEx.cs" />
+    <None Include="packages.config" />
+    <None Include="Resource\FileTemplate\Flowchart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Resource\FileTemplate\GlobalHandler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Resource\FileTemplate\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Resource\FileTemplate\Sequence.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Resource\FileTemplate\StateMachine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <Page Include="Search\View\SearchResult.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Search\View\SearchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Datagrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\MessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ActivitiesContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\AppContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DockContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\HelpContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LocalsContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MainContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\OutputContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ProjectContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PropertyExplorerContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SearchTextBoxControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SettingContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SnippetsContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\StartContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ToolContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\VisualTreeContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\DocParseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ExtractDataTableWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MessageDetailsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewFolderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewProjectWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewTemplateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewXamlFileWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\PackageManagerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ProjectSettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\PublishAppWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\PublishLibraryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\PublishProjectWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Form</SubType>
+    </Page>
+    <Page Include="Windows\RegisterWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\RenameWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\SplashScreenWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Form</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ProcessOperation\IProcessService.cs" />
+    <Compile Include="ProcessOperation\ProcessProxy.cs" />
+    <Compile Include="ProcessOperation\ProcessService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Config\UniStudio.Community.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\ActivitiesEnglishMap.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\AvailableActivities.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\CodeSnippets.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\CustomTemplate.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\DefaultTemplate.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\FavoriteActivities.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\FileTypeConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\GlobalSettings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\ProjectConfig.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\ProjectUserConfig.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\RecentActivities.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\RecentProjects.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\RPAUpgradeServerConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Ico\uni-studio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Ico\UniStudio.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\activities-collapse-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\activities-expand-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\activities-menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\activities.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\add-dir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\dir-collapsed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\dir-expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\file-explorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\menu-open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\menu-remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\output.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\property.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\search-clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\search-magnifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\snippet-file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\snippets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\view-variable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Output\clear-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Output\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Output\Information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Output\timestamp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Output\trace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Output\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\add-dir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\dependencies.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\dependency.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\open-dir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\open-file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\remove-unused-screenshots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\show-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\workflow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Project\xaml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\breakpoints.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\chrome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\debug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\directory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\extract-data-table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\firefox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\flowchart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\global-handler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\help-center.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\IE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\java.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\manage-packages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\open-logs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\product-doc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\publish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\remove-all-breakpoints.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\save-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\save-as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\selector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\sequence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\slow-step-1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\slow-step-2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\slow-step-3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\slow-step-4x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\slow-step-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\state-machine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\step-into.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\step-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\ui-explorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\validate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\window-close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\window-maximized.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\window-minimized.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\window-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Search\argument.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Search\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Search\property.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Search\variable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ExtractDataTable\edit-data-define.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ExtractDataTable\extract-related-data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\all-packages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\dependency.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\nuget.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\null.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\status-has-been-installed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\status-to-be-installed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\NewProject\correct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\NewProject\process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\NewProject\wrong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\NewTemplate\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\NewTemplate\template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\NewTemplate\tooltip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\NewTemplate\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\PublishProject\publish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ChnCharInfo.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.VisualStudio.Activities.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AIActivity\AIActivity.csproj">
+      <Project>{9c550ff0-a18a-4882-8ffc-13aa9e6d6a25}</Project>
+      <Name>AIActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApplicationActivity\ApplicationActivity.csproj">
+      <Project>{a5788df9-2fa5-42a5-b6f0-23fc4d48924b}</Project>
+      <Name>ApplicationActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AttributeActivity\AttributeActivity.csproj">
+      <Project>{2d418cc0-d5c5-4456-b30e-d81a7269a5fb}</Project>
+      <Name>AttributeActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrowserActivity\BrowserActivity.csproj">
+      <Project>{ed764ac4-f155-4b24-9d59-9d62cffa96c0}</Project>
+      <Name>BrowserActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClipboardActivity\ClipboardActivity.csproj">
+      <Project>{c9ed96e1-5c5f-4cf1-a4e6-32cd7bd0624a}</Project>
+      <Name>ClipboardActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlActivity\ControlActivity.csproj">
+      <Project>{d591d790-1907-4172-8efa-176c35d7d5a5}</Project>
+      <Name>ControlActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseActivity\DatabaseActivity.csproj">
+      <Project>{d4b53554-8b6a-4cf9-b8c1-39c9f5508ae0}</Project>
+      <Name>DatabaseActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTableActivity\DataTableActivity.csproj">
+      <Project>{fa30644e-e172-4f78-9c36-0b7632015d9e}</Project>
+      <Name>DataTableActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DateTimeActivity\DateTimeActivity.csproj">
+      <Project>{aeefed42-a5b5-43bd-8f72-41d91b122ed9}</Project>
+      <Name>DateTimeActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DesignLibrary\DesignLibrary.csproj">
+      <Project>{a6346ab7-1f27-4fde-a3c5-bc1d9dfc5a9e}</Project>
+      <Name>DesignLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DialogActivity\DialogActivity.csproj">
+      <Project>{22c0ddd5-a661-414f-8aac-703d1bcd33c1}</Project>
+      <Name>DialogActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnvironmentActivity\EnvironmentActivity.csproj">
+      <Project>{35ac4d25-e390-4ef8-88e9-5f0f86a8912b}</Project>
+      <Name>EnvironmentActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventActivity\EventActivity.csproj">
+      <Project>{ef5b14db-62c0-4fb3-841b-bd51be079ca6}</Project>
+      <Name>EventActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcelPlugins\ExcelPlugins.csproj">
+      <Project>{9274f86f-419a-4196-ba65-6b3221f13796}</Project>
+      <Name>ExcelPlugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileActivity\FileActivity.csproj">
+      <Project>{2aec885d-3a7a-447d-b2a2-8ea44527d451}</Project>
+      <Name>FileActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindActivity\FindActivity.csproj">
+      <Project>{34e6e02b-74c3-4e48-926a-0f491216304e}</Project>
+      <Name>FindActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FTPActivity\FTPActivity.csproj">
+      <Project>{dedb7d39-f824-4eb9-8a65-4c3a2971565b}</Project>
+      <Name>FTPActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpServerActivity\HttpServerActivity.csproj">
+      <Project>{f893ef56-86ad-4fa0-9442-f951158bef72}</Project>
+      <Name>HttpServerActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageOperaActivity\ImageOperaActivity.csproj">
+      <Project>{8ae20e43-bb2f-4fd6-a708-46a467845e59}</Project>
+      <Name>ImageOperaActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeyboardActivity\KeyboardActivity.csproj">
+      <Project>{80a1d3c1-4030-4638-8ebc-33f78c70c906}</Project>
+      <Name>KeyboardActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailActivity\MailActivity.csproj">
+      <Project>{9d48af76-189f-4e3f-a3ee-df59d922037b}</Project>
+      <Name>MailActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MouseActivity\MouseActivity.csproj">
+      <Project>{4d0c8911-fd98-4439-af5e-275cabf29590}</Project>
+      <Name>MouseActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NetWorkActivity\NetWorkActivity.csproj">
+      <Project>{3031a09f-585c-4b85-876b-049ea5272414}</Project>
+      <Name>NetWorkActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrchestratorActivity\OrchestratorActivity.csproj">
+      <Project>{d236cbfe-f605-4eb0-9b8d-98b125f080a4}</Project>
+      <Name>OrchestratorActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Shared.Library\Plugins.Shared.Library.csproj">
+      <Project>{6879C801-1124-477A-97D8-0961E6D710B2}</Project>
+      <Name>Plugins.Shared.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PowerShellActivity\PowerShellActivity.csproj">
+      <Project>{333de130-9e57-4b9e-b327-56dd30609ddb}</Project>
+      <Name>PowerShellActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextActivity\TextActivity.csproj">
+      <Project>{75205f2d-1ad9-4700-9eaf-4113262c79ee}</Project>
+      <Name>TextActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniCompiler\UniCompiler.csproj">
+      <Project>{37357CF8-0EF9-44F3-B663-3659DD6ABD96}</Project>
+      <Name>UniCompiler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor.Core\UniExecutor.Core.csproj">
+      <Project>{0304c62c-2598-4ff9-b674-4f5e21543ba4}</Project>
+      <Name>UniExecutor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor.Proxy\UniExecutor.Proxy.csproj">
+      <Project>{bde75c50-d83e-431b-a0ae-ad02b5579221}</Project>
+      <Name>UniExecutor.Proxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor.Service.Interface\UniExecutor.Service.Interface.csproj">
+      <Project>{c260a511-cf99-4819-8e0e-e3236866c9bf}</Project>
+      <Name>UniExecutor.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor\UniExecutor.csproj">
+      <Project>{9a550133-a01e-466e-84d7-e7de5bef8d4f}</Project>
+      <Name>UniExecutor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExplorer\UniExplorer.csproj">
+      <Project>{661c3e1b-23fe-4994-8a8e-df24178471b2}</Project>
+      <Name>UniExplorer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniGenerateWorkflow.Common\UniGenerateWorkflow.Common.csproj">
+      <Project>{43d95a3a-cec7-4e0d-83cf-dc5e3ba42078}</Project>
+      <Name>UniGenerateWorkflow.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniGenerateWorkflow.Core\UniGenerateWorkflow.Core.csproj">
+      <Project>{d4861ad0-0037-4c40-a076-b1c7fbd91403}</Project>
+      <Name>UniGenerateWorkflow.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniGenerateWorkflow.Entity\UniGenerateWorkflow.Entity.csproj">
+      <Project>{38dbfddc-1454-41d4-94df-213a8c0cb4c5}</Project>
+      <Name>UniGenerateWorkflow.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniNamedPipe\UniNamedPipe.csproj">
+      <Project>{9be457f1-327b-4ea3-b1bf-d6d78cf2cf15}</Project>
+      <Name>UniNamedPipe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniUpdater.Core\UniUpdater.Core.csproj">
+      <Project>{62530609-453b-4789-8628-de84d57c22a9}</Project>
+      <Name>UniUpdater.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniUpdater\UniUpdater.csproj">
+      <Project>{180b25ee-96a7-436a-8fa1-3e99dddd5b26}</Project>
+      <Name>UniUpdater</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniWorkforce.Process\UniWorkforce.Process.Core.csproj">
+      <Project>{c6428f6e-0d14-4243-8abb-316674c40041}</Project>
+      <Name>UniWorkforce.Process.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniWorkforce\UniWorkforce.csproj">
+      <Project>{e615e52f-f422-4f2f-9a7a-8c62de908106}</Project>
+      <Name>UniWorkforce</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserEventActivity\UserEventActivity.csproj">
+      <Project>{f8c1e345-4973-447d-b5be-4a2d7c25a742}</Project>
+      <Name>UserEventActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowActivity\WindowActivity.csproj">
+      <Project>{7c388101-d26d-44c6-8243-064ad75e706c}</Project>
+      <Name>WindowActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WordPlugins\WordPlugins.csproj">
+      <Project>{9fa9e0ad-d67e-4114-9890-5292987e2273}</Project>
+      <Name>WordPlugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowUtils\WorkflowUtils.csproj">
+      <Project>{7cf00a6e-e072-42b5-85b2-ad2421934da6}</Project>
+      <Name>WorkflowUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\doc-parse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\DocParse\complete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\DocParse\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Windows\ManagePackages\package-version-loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Dock\var-track.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\backstage-background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Ribbon\backstage-background-dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Designer\VerityVariableWrong.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /s /y "$(SolutionDir)"UniBrowserHost\$(OutDir)*.* "$(TargetDir)"BrowserExtensions\NativeHost\
+XCopy /E /Y "$(ProjectDir)"Snippets\*.* "$(TargetDir)"Snippets\
+XCopy /E /Y "$(ProjectDir)"Templates\*.* "$(TargetDir)"Templates\
+xcopy /s /y "$(TargetDir)"BrowserExtensions\NativeHost\ChromeExtension\*.* "$(TargetDir)"BrowserExtensions\ChromeExtension\
+xcopy /s /y "$(TargetDir)"BrowserExtensions\NativeHost\FirefoxExtension\*.* "$(TargetDir)"BrowserExtensions\FirefoxExtension\
+xcopy /s /y "$(SolutionDir)"Plugins.Shared.Library\WorkflowGenerator\*.* "$(TargetDir)"
+
+</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.3.0.0\build\Microsoft.CodeAnalysis.Analyzers.targets')" />
+</Project>

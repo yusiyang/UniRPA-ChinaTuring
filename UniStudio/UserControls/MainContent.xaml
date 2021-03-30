@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="UniStudio.UserControls.MainContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UniStudio"
+             xmlns:uc="clr-namespace:UniStudio.UserControls"
+             xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+	         xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:unilib ="clr-namespace:UniStudio.Librarys"
+             xmlns:uniWin="clr-namespace:UniStudio.Windows"
+             xmlns:lib="clr-namespace:DesignLibrary;assembly=DesignLibrary"
+             DataContext="{Binding Main, Source={StaticResource Locator}}"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--TextBox用于保存后强制获取焦点的控件，expressionTextbox不失去焦点，是不会更新代码表达式的。-->
+        <TextBox Width="0" Height="0" lib:Assist.Focus="{Binding GotFocus,Mode=OneWay}"></TextBox>
+        <!-- Ribbon Control -->
+        <ribbon:Ribbon Grid.Row="0" DockPanel.Dock="Top" ApplicationButtonLabel="开始"
+                       IsApplicationMenuOpen="{Binding IsOpenStartScreen, Mode=TwoWay}"
+                       IsApplicationMenuOpenChanged="OnIsApplicationMenuOpenChanged"
+                       IsCollapsible="True" 
+                       IsQuickAccessToolBarCustomizationEnabled="False"
+					   IsTitleBarAreaVisible="True"
+                       IsCustomizeQuickAccessToolBarMenuItemVisible="False"
+                       QuickAccessToolBarLocation="None"
+                       IsQuickAccessToolBarCustomizeButtonVisible="False"
+                       BorderThickness="0"
+                       >
+
+            <!--<ribbon:Ribbon.QuickAccessToolBarCommonItems>
+                <ribbon:Button Id="Save" Label="保存" Command="{Binding SaveCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save.png" />
+                <ribbon:Button Id="SaveAll" Label="全部保存" Command="{Binding SaveAllCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save-all.png" />
+                <ribbon:Button Id="RunWork" Label="运行" Command="{Binding RunWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/run.png" />
+                <ribbon:Button Id="StopWork" Label="停止" Command="{Binding StopWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/stop.png" />
+                <ribbon:Button Id="DebugOrContinueWorkflow" Label="{Binding DebugOrContinueWorkflowButtonHeader}" Command="{Binding DebugOrContinueWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/debug.png" />
+            </ribbon:Ribbon.QuickAccessToolBarCommonItems>-->
+            <!--<ribbon:Ribbon.QuickAccessToolBarItems>
+                <ribbon:Button Id="Save" Label="保存" Command="{Binding SaveCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save.png" />
+                <ribbon:Button Id="RunWork" Label="运行" Command="{Binding RunWorkflowCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/run.png" />
+            </ribbon:Ribbon.QuickAccessToolBarItems>-->
+            
+            <!-- 功能区菜单折叠按钮 -->
+            <ribbon:Ribbon.TabPanelItems>
+                <!--<Button Content="登陆" Command="unilib:Commands.OpenChildCommand" CommandParameter="{x:Type uniWin:LoginWindow}"
+                        Width="42" Height="18" Background="Transparent" Foreground="White" BorderBrush="#D8D8D8"></Button>-->
+                <ribbon:Button ToolTip="帮助" Click="OnHelpClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/help.png" >
+                    <ribbon:Button.ContextMenu>
+                        <ribbon:ContextMenu x:Name="_helpContextMenu">
+                            <ribbon:Button Label="用户手册" Click="OnHelpContextMenuClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/product-doc.png" />
+                            <ribbon:Button Label="帮助中心" Click="OnHelpContextMenuClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/help-center.png" />
+                            <ribbon:Button Label="关于我们" Click="OnHelpContextMenuClick" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/home.png"/>
+                        </ribbon:ContextMenu>
+                    </ribbon:Button.ContextMenu>
+                </ribbon:Button>
+                <ribbon:ToggleMinimizationButton />
+                <ribbon:Button ToolTip="最小化" Click="WindowMinimizedClick" Width="46" Padding="0" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/window-minimized.png" />
+                <ribbon:Button ToolTip="{Binding MaximizedOrNormalToolTip}" Click="WindowMaximizedOrNormalClick" Width="46" ImageSourceLarge="{Binding MaximizedOrNormalImage}" />
+                <ribbon:Button ToolTip="关闭" Click="WindowCloseClick" Width="46" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/window-close.png" >
+                    <ribbon:Button.Resources>
+                        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarButtonBackgroundHoverBrushKey}" Color="#e81123" />
+                        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarButtonBorderHoverBrushKey}" Color="#e81123" />
+                    </ribbon:Button.Resources>
+                </ribbon:Button>
+            </ribbon:Ribbon.TabPanelItems>
+
+            <ribbon:Ribbon.ApplicationMenu>
+                <!-- Backstage -->
+                <ribbon:Backstage CanClose="{Binding IsBackButtonVisible}">
+                    <ribbon:Backstage.Background>
+                        <ImageBrush ImageSource="{Binding BackstageBackgroundImageSource}" Stretch="UniformToFill" TileMode="None" AlignmentX="Right" AlignmentY="Bottom" />
+                    </ribbon:Backstage.Background>
+
+                    <!-- 打开 -->
+                    <ribbon:Button Label="打开" Command="{Binding SelectProjectCommand}" StaysOpenOnClick="True"/>
+
+                    <!-- 关闭 -->
+                    <ribbon:Button Label="关闭" Command="{Binding CloseProjectCommand}" StaysOpenOnClick="True"/>
+
+                    <ribbon:Separator />
+
+                    <!-- 开始 -->
+                    <ribbon:BackstageTab Header="开始">
+                        <uc:StartContent/>
+                    </ribbon:BackstageTab>
+
+                    <!-- 工具 -->
+                    <ribbon:BackstageTab Header="工具">
+                        <uc:ToolContent/>
+                    </ribbon:BackstageTab>
+
+                    <!-- 设置 -->
+                    <ribbon:BackstageTab Header="设置">
+                        <uc:SettingContent/>
+                    </ribbon:BackstageTab>
+
+                    <!-- 帮助 -->
+                    <ribbon:BackstageTab Header="帮助">
+                        <uc:HelpContent/>
+                    </ribbon:BackstageTab>
+
+                </ribbon:Backstage>
+            </ribbon:Ribbon.ApplicationMenu>
+
+            <ribbon:Ribbon.Tabs>
+                <ribbon:Tab Label="设计">
+                    <ribbon:Group  IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
+                        <ribbon:PopupButton Label="新建" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/new.png">
+                            <ribbon:Menu>
+                                <ribbon:Button Label="序列图" ToolTip="序列图（Ctrl+N）" Command="{Binding NewSequenceDocumentCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/sequence.png"/>
+                                <ribbon:Button Label="流程图" ToolTip="流程图" Command="{Binding NewFlowchartDocumentCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/flowchart.png"/>
+                                <ribbon:Button Label="状态机" ToolTip="状态机" Command="{Binding NewStateMachineDocumentCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/state-machine.png"/>
+                                <ribbon:Button Label="全局处理器" ToolTip="全局处理器" Command="{Binding NewGlobalHandlerDocumentCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/global-handler.png"/>
+                            </ribbon:Menu>
+                        </ribbon:PopupButton>
+                        <ribbon:SplitButton Label="保存" ToolTip="保存（Ctrl+S）" Command="{Binding SaveCommand}" IsEnabled="{Binding IsDocumentExist}" FocusManager.IsFocusScope="True" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/save.png">
+                            <ribbon:Menu>
+                                <ribbon:Button Label="另存为" ToolTip="另存为" Command="{Binding SaveAsCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save.png"/>
+                                <ribbon:Button Label="全部保存" ToolTip="全部保存（Ctrl+Shift+S）" Command="{Binding SaveAllCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/save-all.png"/>
+                            </ribbon:Menu>
+                        </ribbon:SplitButton>
+                        <ribbon:Button Label="另存为 模板" ToolTip="另存为模板" Command="{Binding SaveAsTemplateCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/save-as.png"/>
+                        <ribbon:Button Label="运行" ToolTip="运行（F5）" Command="{Binding RunWorkflowCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/run.png"/>
+                    </ribbon:Group>
+                    <ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
+                        <ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+                            <ribbon:Button Label="剪切" Command="{Binding CutCommand}" CommandTarget="{Binding CurrentDesignerView}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/cut.png" FocusManager.IsFocusScope="True" />
+                            <ribbon:Button Label="复制" Command="{Binding CopyCommand}" CommandTarget="{Binding CurrentDesignerView}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/copy.png" FocusManager.IsFocusScope="True" />
+                            <ribbon:Button Label="粘贴" Command="{Binding PasteCommand}" CommandTarget="{Binding CurrentDesignerView}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/paste.png" FocusManager.IsFocusScope="True" />
+                        </ribbon:StackPanel>
+                    </ribbon:Group>
+                    <ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
+                        <ribbon:Button Label="软件包 管理器" ToolTip="管理软件包" Command="{Binding ManagePackagesCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/manage-packages.png"/>
+                    </ribbon:Group>
+                    <ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
+                        <ribbon:Button Label="数据 抓取" ToolTip="将浏览器、应用程序或文档中的结构化数据提取至数据表中" Command="{Binding ExtractDataTableCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/extract-data-table.png"/>
+                    </ribbon:Group>
+                    <!--<ribbon:Group>
+                        <ribbon:Button Label="文档 解析" ToolTip="依据流程描述文档，自动生成 Xaml 工作流" Command="{Binding DocParseCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/doc-parse.png"/>
+                    </ribbon:Group>-->
+                    <ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
+                        <ribbon:Button Label="UI 探测器" ToolTip="运行 UI 探测器" Command="{Binding LaunchUIExplorerCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/ui-explorer.png"/>
+                    </ribbon:Group>
+                    <ribbon:Group  IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
+                        <ribbon:Button Label="发布 工作流" ToolTip="打包发布当前工作流项目" Command="{Binding PublishCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/publish.png"/>
+                        <ribbon:Button Label="发布 为类库" ToolTip="将当前工作流项目发布为类库" Command="{Binding PublishLibraryCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/publish.png"/>
+                    </ribbon:Group>
+                    <!--<ribbon:Group IsEnabled="{Binding IsWorkflowRunningOrDebugging,Mode=OneWay, Converter={StaticResource BoolNotConverter}}">
+                        <ribbon:Button Label="发布 应用" ToolTip="发布应用" Command="unilib:Commands.OpenChildCommand" CommandParameter="{x:Type uniWin:PublishAppWindow}"
+                                       ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/publish.png"/>
+                    </ribbon:Group>-->
+                </ribbon:Tab>
+                <ribbon:Tab Label="执行">
+                    <ribbon:Group >
+                        <ribbon:Button Label="运行" ToolTip="运行（F5）" Command="{Binding RunWorkflowCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/run.png"/>
+                        <ribbon:Button Label="停止" ToolTip="停止（F12）" Command="{Binding StopWorkflowCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/stop.png"/>
+                        <ribbon:Button Label="{Binding DebugOrContinueWorkflowButtonHeader}" ToolTip="{Binding DebugOrContinueWorkflowButtonToolTip}" Command="{Binding DebugOrContinueWorkflowCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/debug.png"/>
+                    </ribbon:Group>
+                    <ribbon:Group >
+                        <ribbon:StackPanel ItemVariantBehavior="AlwaysMedium">
+                            <ribbon:Button Label="中断" ToolTip="中断执行（暂停）" Command="{Binding BreakCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/break.png" FocusManager.IsFocusScope="True" />
+                            <ribbon:Button Label="逐语句" ToolTip="逐语句（F11）" Command="{Binding StepIntoCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/step-into.png" FocusManager.IsFocusScope="True" />
+                            <ribbon:Button Label="逐过程" ToolTip="逐过程（Shift+F11）" Command="{Binding StepOverCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/step-over.png" FocusManager.IsFocusScope="True" />
+                        </ribbon:StackPanel>
+                        <ribbon:Button Label="校验" ToolTip="检查错误（F8）" Command="{Binding ValidateWorkflowCommand}" IsEnabled="{Binding IsDocumentExist}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/validate.png"/>
+                        <ribbon:SplitButton Label="断点" ToolTip="切换断点（F9）" Command="{Binding ToggleBreakpointCommand}" IsEnabled="{Binding IsDocumentExist}" FocusManager.IsFocusScope="True" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/breakpoints.png">
+                            <ribbon:Menu>
+                                <ribbon:Button Label="切换断点" ToolTip="切换断点（F9）" Command="{Binding ToggleBreakpointCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/breakpoints.png"/>
+                                <ribbon:Button Label="清除所有断点" ToolTip="清除所有断点（Shift+F9）" Command="{Binding RemoveAllBreakpointsCommand}" ImageSourceSmall="pack://application:,,,/Resource/Image/Ribbon/remove-all-breakpoints.png"/>
+                            </ribbon:Menu>
+                        </ribbon:SplitButton>
+                        <ribbon:Button Label="慢速 调试" ToolTip="以最慢的1x到最快4x进行不同速度的调试运行" Command="{Binding SlowStepCommand}" Background="{Binding SlowStepBackground}" IsEnabled="{Binding IsDocumentExist}" ImageSourceLarge="{Binding SlowStepIcon}"/>
+                        <ribbon:PopupButton Label="选项" ToolTip="选项" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/options.png">
+                            <ribbon:Menu>
+                                <ribbon:Button Label="高亮元素" Command="{Binding CheckHighlightCommand}" IsChecked="{Binding IsHighlightElements}" />
+                                <ribbon:Button Label="记录活动" Command="{Binding CheckLogActivitiesCommand}" IsChecked="{Binding IsLogActivities}" />
+                                <ribbon:Button Label="异常时中断" Command="{Binding CheckBreakOnExceptionsCommand}" IsChecked="{Binding IsBreakOnExceptions}" />
+                            </ribbon:Menu>
+                        </ribbon:PopupButton>
+                    </ribbon:Group>
+                    <ribbon:Group  >
+                        <ribbon:Button Label="打开日志" ToolTip="打开日志（Ctrl+L）" Command="{Binding OpenLogsCommand}" ImageSourceLarge="pack://application:,,,/Resource/Image/Ribbon/open-logs.png"/>
+                    </ribbon:Group>
+                </ribbon:Tab>
+            </ribbon:Ribbon.Tabs>
+        </ribbon:Ribbon>
+
+
+        <Grid Grid.Row="1" Visibility="{Binding IsOpenStartScreen,Mode=OneWay, Converter={StaticResource BoolNotVisibilityConverter}}">
+            <uc:DockContent/>
+        </Grid>
+        
+    </Grid>
+</UserControl>

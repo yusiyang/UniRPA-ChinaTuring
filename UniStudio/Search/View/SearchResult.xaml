@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="UniStudio.Search.View.SearchResult"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library"
+             DataContext="{Binding SearchResult, Source={StaticResource Locator}}"   
+             mc:Ignorable="d">
+    <StackPanel Orientation="Vertical">
+        <ListView Name="listBox" ItemsSource="{Binding SearchData}" MaxHeight="400" 
+                 Visibility="{Binding HasResult,Mode=OneWay,Converter={StaticResource BoolCollapsedConverter}}">
+            <ListView.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding LocateCommand}"/>
+                <KeyBinding Command="{Binding LocateCommand}" Key="Enter" />
+            </ListView.InputBindings>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#d6d6d6"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFC2C2C2"/>
+                        </Trigger>
+                    </Style.Triggers>
+                        <Style.Resources>
+                        <!-- Foreground for Selected ListViewItem -->
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" 
+                                 Color="Black"/>
+                        <!-- Background for Selected ListViewItem -->
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                                 Color="Transparent"/>
+                    </Style.Resources>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="30">
+                                    <StackPanel.InputBindings>
+                                        <MouseBinding MouseAction="LeftDoubleClick"
+                                            Command="{Binding DataContext.LocateCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                                            CommandParameter="{Binding SearchLocation}" />
+                                        <KeyBinding Command="{Binding DataContext.LocateCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                                            CommandParameter="{Binding SearchLocation}" Key="Enter" />
+                                    </StackPanel.InputBindings>
+                                    <Image Source="{Binding Icon,Mode=OneWay}" VerticalAlignment="Center" Width="16" Height="16"></Image>
+                                    <sc:HighlightingTextBlock
+                                         VerticalAlignment="Center"
+                                         Margin="10,0,0,0"
+                                         x:Name="highlightingTextBlock"
+                                         Text="{Binding DisplayText,Mode=OneWay}"
+                                         Foreground="Black"
+                                         HighlightText="{Binding DataContext.SearchText,Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
+                                         FontSize="14" 
+                                         HighlightBackground="Transparent"
+                                         HighlightForeground="Red" />
+                                    <TextBlock Text="{Binding Path,Mode=OneWay}" Margin="35,0,0,0" VerticalAlignment="Center" Foreground="Gray" FontStyle="Italic" FontSize="12"></TextBlock>   
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Margin="0,10,0,10" FontSize="13" Foreground="Gray" HorizontalAlignment="Center" Text="没有查询结果" Visibility="{Binding HasResult,Mode=OneWay,Converter={StaticResource BoolNotCollapsedConverter}}"></TextBlock>
+    </StackPanel>
+</UserControl>

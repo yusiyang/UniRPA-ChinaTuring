@@ -1,0 +1,14 @@
+﻿<Window x:Class="UniExecutor.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UniExecutor.View"
+        mc:Ignorable="d"
+        Title="UniExecutor" Height="0" Width="0"
+        Icon="../Resource/Ico/UniWorkforce.ico" AllowsTransparency="True" WindowStyle="None" WindowState="Minimized" Opacity="0"
+        WindowStartupLocation="CenterScreen" Topmost="True">
+    <Grid>
+        
+    </Grid>
+</Window>

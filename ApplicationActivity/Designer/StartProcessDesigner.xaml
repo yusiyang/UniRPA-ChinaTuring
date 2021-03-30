@@ -1,0 +1,66 @@
+﻿<sap:ActivityDesigner x:Class="ApplicationActivity.StartProcessDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:assist="clr-namespace:Plugins.Shared.Library.Attached;assembly=Plugins.Shared.Library"
+    xmlns:local="clr-namespace:ApplicationActivity"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" 
+    xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation"
+    xmlns:pslc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library"
+   >
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Plugins.Shared.Library;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </sap:ActivityDesigner.Resources>
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing ImageSource="{Binding Path=ModelItem.icoPath}">
+                    <ImageDrawing.Rect>
+                        <Rect Location="0,0" Size="16,16"></Rect>
+                    </ImageDrawing.Rect>
+                </ImageDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+    <pslc:CollapsableActivity >
+        <!--<Grid  Height="80">
+            <sapv:ExpressionTextBox Name="FileNameTextBox" MaxLines="1" HintText="待打开应用程序的可执行文件的文件名。必须将文本放入引号中。"
+                                    Expression="{Binding Path=ModelItem.FileName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }" 
+                                        ExpressionType="sys:String" 
+                                    OwnerActivity="{Binding Path=ModelItem}" Margin="0,10,25,40" RenderTransformOrigin="0.5,0.5" Width="240"  >
+            </sapv:ExpressionTextBox>
+            <Button x:Name="button" Content="..." VerticalAlignment="Center" Width="20" Height="30" HorizontalAlignment="Right" Margin="0,10,0,40" Click="button_Click"/>
+            <sapv:ExpressionTextBox Name="Arguments" MaxLines="1" HintText="应用程序启动参数。必须将文本放入引号中。"
+                                        Expression="{Binding Path=ModelItem.Arguments, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }" 
+                                        ExpressionType="sys:String"
+                                    OwnerActivity="{Binding Path=ModelItem}" Margin="0,50,0,0"  />
+        </Grid>-->
+        <StackPanel>
+            <WrapPanel Margin="0 0 0 5">
+                <!--<sapv:ExpressionTextBox Name="FileNameTextBox" MaxLines="1" HintText="待打开应用程序的可执行文件的文件名。必须将文本放入引号中。"
+                                    Expression="{Binding Path=ModelItem.FileName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }" 
+                                    ExpressionType="sys:String" 
+                                    OwnerActivity="{Binding Path=ModelItem}"  Width="235" Margin="0 0 5 0"  >
+                </sapv:ExpressionTextBox>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo FileName,Type={x:Type local:StartProcessActivity}}"
+                    Name="FileNameTextBox" MaxLines="1" Width="235" Margin="0 0 5 0">
+                </sapv:ExpressionTextBox>
+                <Button x:Name="button" Content="..." VerticalAlignment="Center" Width="20" Height="30" HorizontalAlignment="Right" Click="button_Click"/>
+            </WrapPanel>
+            <!--<sapv:ExpressionTextBox Name="Arguments" MaxLines="1" HintText="应用程序启动参数。必须将文本放入引号中。"
+                                        Expression="{Binding Path=ModelItem.Arguments, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }" 
+                                        ExpressionType="sys:String"
+                                        OwnerActivity="{Binding Path=ModelItem}" />-->
+            <sapv:ExpressionTextBox 
+                assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo Arguments,Type={x:Type local:StartProcessActivity}}"
+                Name="Arguments" MaxLines="1">
+            </sapv:ExpressionTextBox>
+        </StackPanel>
+    </pslc:CollapsableActivity>
+</sap:ActivityDesigner>

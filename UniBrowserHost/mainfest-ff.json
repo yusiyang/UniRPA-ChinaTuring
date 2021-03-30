@@ -1,0 +1,7 @@
+{
+"name": "com.uni.native_message_host",
+"description": "Native messaging for UiPath product",
+"type": "stdio",
+"allowed_extensions": ["{d3b29fd9-c7f8-4e86-ae8c-ff7ab54bd818}"],
+"path": "C:\\WorkSpace\\GitCode\\Branches\\UniRPA-Develop\\UniStudio\\bin\\Debug\\BrowserExtensions\\NativeHost\\UniBrowserHost.exe"
+}

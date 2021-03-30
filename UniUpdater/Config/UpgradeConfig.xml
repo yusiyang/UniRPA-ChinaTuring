@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--该配置文件放在客户端-->
+<RPAUpgradeClientConfig>
+  <RPAUpgradeServerConfig Url="https://download.unirpa.com/update/config/RPAUpgradeServerConfig.xml" />
+  <!--更新日志-->
+  <UpdateLog>
+  </UpdateLog>
+</RPAUpgradeClientConfig>

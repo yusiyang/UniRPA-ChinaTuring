@@ -1,0 +1,158 @@
+﻿<Window x:Class="UniStudio.Windows.PublishAppWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UniStudio.Windows"
+        xmlns:lib="clr-namespace:DesignLibrary;assembly=DesignLibrary" 
+        xmlns:unilib ="clr-namespace:UniStudio.Librarys"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        BorderThickness="1" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" WindowStyle="None" ResizeMode="NoResize" BorderBrush="#C3CBD6"
+        Title="发布应用" Height="754" Width="1100" x:Name="win">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/DesignLibrary;component/Themes/Theme.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label">
+                <Setter Property="VerticalAlignment" Value="Top"></Setter>
+                <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
+                <Setter Property="Foreground" Value="#34363F"></Setter>
+                <Setter Property="Padding" Value="0 6 5 0"></Setter>
+            </Style>
+            <Style TargetType="RadioButton">
+                <Setter Property="Foreground" Value="#464C5B"></Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="BtnUpload" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="lib:Assist.Icon" Value="Plus"></Setter>
+                <Setter Property="lib:Assist.IconBrush" Value="White"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Width" Value="134"></Setter>
+                <Setter Property="Height" Value="38"></Setter>
+                <Setter Property="Padding" Value="8 0"></Setter>
+                <Setter Property="Background" Value="#3BB8C0"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <StackPanel>
+        <Border BorderThickness="0 0 0 1" Background="Transparent"
+                BorderBrush="{DynamicResource BorderBrush}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <i:InvokeCommandAction  Command="unilib:Commands.DragMoveCommand" CommandParameter="{Binding ElementName=win}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Canvas Height="64">
+                <WrapPanel ItemHeight="65" Canvas.Left="20">
+                    <Image Source="pack://application:,,,/UniStudio;Component/Resource/Ico/Uni-studio.png" Width="31"></Image>
+                    <Label Style="{x:Null}" Padding="10 0 0 0" Content="发布应用" VerticalContentAlignment="Center" FontSize="12" Foreground="#34363F" FontWeight="Black"></Label>
+                </WrapPanel>
+                <Button Canvas.Right="35" Canvas.Top="17" Width="31" lib:Assist.IconWidth="20"
+                        lib:Assist.IconHeight="20" lib:Assist.IconBrush="#C3CBD6" 
+                        BorderThickness="0" Command="unilib:Commands.ClosedCommand" CommandParameter="{Binding ElementName=win}"
+                        Background="Transparent"
+                        Height="31" lib:Assist.Icon="Close"></Button>
+            </Canvas>
+        </Border>
+        <WrapPanel >
+            <StackPanel Height="630" Width="120" Background="#F1F1F1">
+                <Image Margin="0 20 0 0" Source="pack://application:,,,/UniStudio;Component/Resource/Ico/Uni-studio.png" Width="51"></Image>
+                <Label Content="预览图标" HorizontalContentAlignment="Center" FontSize="12" Foreground="#34363F"></Label>
+            </StackPanel>
+            <StackPanel>
+                <Grid Margin="0 20 0 0" Width="940">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="220"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="52"/>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="61"/>
+                        <RowDefinition Height="112"/>
+                        <RowDefinition Height="112"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="应用名称"></Label>
+                    <TextBox lib:TextBoxAssist.PlaceHolder="请输入应用名称" 
+                             VerticalAlignment="Top" 
+                             Grid.Column="1"></TextBox>
+
+                    <Label Content="应用分类" Grid.Column="2"></Label>
+                    <TextBox lib:TextBoxAssist.PlaceHolder="请输入应用分类"  Grid.Column="3" 
+                             VerticalAlignment="Top"></TextBox>
+
+                    <Label Content="业务领域" Grid.Column="4"></Label>
+                    <TextBox lib:TextBoxAssist.PlaceHolder="请输入业务领域" Grid.Column="5"  
+                             VerticalAlignment="Top"></TextBox>
+
+                    <Label Content="应用简介" Grid.Row="1"></Label>
+                    <TextBox TextWrapping="Wrap" VerticalContentAlignment="Top" 
+                             VerticalAlignment="Top" 
+                             lib:TextBoxAssist.PlaceHolder="初次发行请填写初次发行，版本升级请写名称升级内容" 
+                             Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Height="70"></TextBox>
+
+                    <Label Content="版本号" Grid.Row="2"></Label>
+                    <TextBox lib:TextBoxAssist.PlaceHolder="请输入版本号" 
+                             Grid.Column="1" Grid.Row="2"
+                             VerticalAlignment="Top"></TextBox>
+
+                    <Label Content="版本说明" Grid.Row="2" Grid.Column="2" ></Label>
+                    <TextBox lib:TextBoxAssist.PlaceHolder="初次发行请填写初次发行，版本升级请写名称升级内容" 
+                             Grid.Column="3" Grid.ColumnSpan="3" Height="120" 
+                             TextWrapping="Wrap" VerticalContentAlignment="Top"
+                             Grid.Row="2" Grid.RowSpan="2"  VerticalAlignment="Top"></TextBox>
+
+                    <Label Content="团队类型" Grid.Row="3"></Label>
+                    <StackPanel Grid.Row="3" Grid.Column="1">
+                        <WrapPanel Height="22" Margin="0 5 0 1">
+                            <RadioButton Content="个人" Margin="0 0 15 0"></RadioButton>
+                            <RadioButton Content="企业"></RadioButton>
+                        </WrapPanel>
+                        <TextBox lib:TextBoxAssist.PlaceHolder="请输入企业名称" Width="220"></TextBox>
+                    </StackPanel>
+
+                    <Label Content="上传图片" Height="60" Grid.Row="4"></Label>
+                    <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+                        <WrapPanel Margin="0 0 0 5">
+                            <Button Content="上传应用图片" Style="{StaticResource BtnUpload}" ></Button>
+                            <Label Foreground="#C3CBD6" Padding="5 0 0 0" Content="用于应用商店详情页宣传，&#13;最多上传3张,单张图片不小于2M"></Label>
+                        </WrapPanel>
+                        <Label Foreground="#657180" Content="已上传（0）张图片" HorizontalAlignment="Left"></Label>
+                    </StackPanel>
+                    
+                    <Label Content="上传视频"  Height="60" Grid.Row="4" 
+                           Grid.Column="3"></Label>
+                    <StackPanel Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2">
+                        <WrapPanel Margin="0 0 0 5">
+                            <Button Content="上传应用视频" Style="{StaticResource BtnUpload}"></Button>
+                            <Label Foreground="#C3CBD6" Padding="5 0 0 0" Content="用于应用商店详情页宣传，&#13;最多上传1个,尺寸不大于200M"></Label>
+                        </WrapPanel>
+                        <Label Foreground="#657180" Content="已上传（0）张图片" HorizontalAlignment="Left"></Label>
+                    </StackPanel>
+
+                    <Label Content="使用说明" Grid.Row="5"></Label>
+                    <TextBox TextWrapping="Wrap" VerticalContentAlignment="Top"
+                        lib:TextBoxAssist.PlaceHolder="初次发行请填写初次发行，版本升级请写名称升级内容" 
+                             Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="5" Height="164"></TextBox>
+                </Grid>
+            </StackPanel>
+        </WrapPanel>
+        <Border BorderThickness="0 1 0 0" BorderBrush="#C3CBD6">
+            <Canvas Height="60" Background="#F1F1F1">
+                <WrapPanel Canvas.Right="40"  ItemHeight="60">
+                    <Button Width="78" Height="24" Content="发布" Margin="0 0 12 0" VerticalAlignment="Center"></Button>
+                    <Button Width="78" Height="24" Content="取消" VerticalAlignment="Center"
+                            Command="unilib:Commands.ClosedCommand" CommandParameter="{Binding ElementName=win}"></Button>
+                </WrapPanel>
+            </Canvas>
+        </Border>
+    </StackPanel>
+</Window>

@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D4861AD0-0037-4C40-A076-B1C7FBD91403}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Uni.Core</RootNamespace>
+    <AssemblyName>Uni.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SqlSugar, Version=5.0.0.12, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sqlSugar.5.0.0.12\lib\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.0\lib\net451\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.112.0\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activity\ActivityBase.cs" />
+    <Compile Include="Activity\ActivityContext.cs" />
+    <Compile Include="Activity\ActivityVariableContext.cs" />
+    <Compile Include="Activity\ActivityFactory.cs" />
+    <Compile Include="Activity\ArgumentTypeEnum.cs" />
+    <Compile Include="Activity\ExcelPlugins\ExcelReadCellActivity.cs" />
+    <Compile Include="Activity\ExcelPlugins\ExcelReadRangeActivity.cs" />
+    <Compile Include="Activity\ExcelPlugins\ExcelWriteCellActivity.cs" />
+    <Compile Include="Activity\ExcelPlugins\ExcelWriteRangeActivity.cs" />
+    <Compile Include="Activity\KeyboardActivity\VirtualKeyEnum.cs" />
+    <Compile Include="Activity\MouseActivity\DoubleClickActivity.cs" />
+    <Compile Include="Process\ActivityXamlManager.cs" />
+    <Compile Include="Process\GenerateWorkflowManager.cs" />
+    <Compile Include="Data\DbContext.cs" />
+    <Compile Include="Data\DbDataInitializer.cs" />
+    <Compile Include="Record\RecordXamlManager.cs" />
+    <Compile Include="Record\XamlActivityDescription.cs" />
+    <Compile Include="TextAnalysis\AnalysisText\ControlFlowAnalysisManager.cs" />
+    <Compile Include="TextAnalysis\AnalysisText\ErrorMessage.cs" />
+    <Compile Include="TextAnalysis\ActivityDescription.cs" />
+    <Compile Include="TextAnalysis\AnalysisText\CharacterTree.cs" />
+    <Compile Include="TextAnalysis\AnalysisText\ContentCheckManager.cs" />
+    <Compile Include="TextAnalysis\BehaviorManager.cs" />
+    <Compile Include="TextAnalysis\Unit\ControlFlow\ForeachRow.cs" />
+    <Compile Include="TextAnalysis\Unit\ControlFlow\Foreach.cs" />
+    <Compile Include="TextAnalysis\Unit\ControlFlow\IfElse.cs" />
+    <Compile Include="TextAnalysis\Unit\ControlFlow\While.cs" />
+    <Compile Include="TextAnalysis\ActivityPropertyKeyValue.cs" />
+    <Compile Include="TextAnalysis\Unit\Unit.cs" />
+    <Compile Include="TextAnalysis\Unit\UnitType.cs" />
+    <Compile Include="TextAnalysis\Unit\ControlFlow\ControlFlow.cs" />
+    <Compile Include="TextAnalysis\Unit\ActionKey.cs" />
+    <Compile Include="TextAnalysis\Unit\IUnit.cs" />
+    <Compile Include="TextAnalysis\Unit\ObjectKey.cs" />
+    <Compile Include="TextAnalysis\AnalysisText\KeywordsLibrary.cs" />
+    <Compile Include="TextAnalysis\Unit\Command.cs" />
+    <Compile Include="TextAnalysis\Convertor.cs" />
+    <Compile Include="TextAnalysis\AnalysisText\TextInterpreter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextAnalysis\Unit\Parameter.cs" />
+    <Compile Include="Activity\Primitives\AssignActivity.cs" />
+    <Compile Include="Activity\MouseActivity\ClickActivity.cs" />
+    <Compile Include="Activity\ApplicationActivity\CloseApplicationActivity.cs" />
+    <Compile Include="Activity\FileActivity\CopyFileActivity.cs" />
+    <Compile Include="Activity\Primitives\DelayActivity.cs" />
+    <Compile Include="Activity\FindActivity\EleExistsActivity.cs" />
+    <Compile Include="Activity\TextActivity\ExtractDataActivity.cs" />
+    <Compile Include="Activity\FileActivity\PathExistsActivity.cs" />
+    <Compile Include="Activity\DataTableActivity\FilterDataTableActivity.cs" />
+    <Compile Include="Activity\ControlFlow\ForEachActivity.cs" />
+    <Compile Include="Activity\DataTableActivity\ForEachRowActivity.cs" />
+    <Compile Include="Activity\DateTimeActivity\GetDateTimeActivity.cs" />
+    <Compile Include="Activity\ControlActivity\GetTextActivity.cs" />
+    <Compile Include="Activity\KeyboardActivity\HotKeyActivity.cs" />
+    <Compile Include="Activity\IActivity.cs" />
+    <Compile Include="Activity\ControlFlow\IfActivity.cs" />
+    <Compile Include="Activity\ApplicationActivity\KillProcessActivity.cs" />
+    <Compile Include="Activity\Primitives\WriteLineActivity.cs" />
+    <Compile Include="Activity\FileActivity\MoveFileActivity.cs" />
+    <Compile Include="Activity\ApplicationActivity\OpenApplicationActivity.cs" />
+    <Compile Include="Activity\BrowserActivity\OpenBrowserActivity.cs" />
+    <Compile Include="Activity\FileActivity\ReadTextFileActivity.cs" />
+    <Compile Include="Activity\MailActivity\SendOutlookMailActivity.cs" />
+    <Compile Include="Activity\ApplicationActivity\StartProcessActivity.cs" />
+    <Compile Include="Activity\KeyboardActivity\TypeIntoActivity.cs" />
+    <Compile Include="Activity\ControlFlow\WhileActivity.cs" />
+    <Compile Include="Activity\FileActivity\WriteTextFileActivity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Template.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="wf.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationActivity\ApplicationActivity.csproj">
+      <Project>{a5788df9-2fa5-42a5-b6f0-23fc4d48924b}</Project>
+      <Name>ApplicationActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrowserActivity\BrowserActivity.csproj">
+      <Project>{ed764ac4-f155-4b24-9d59-9d62cffa96c0}</Project>
+      <Name>BrowserActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlActivity\ControlActivity.csproj">
+      <Project>{d591d790-1907-4172-8efa-176c35d7d5a5}</Project>
+      <Name>ControlActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTableActivity\DataTableActivity.csproj">
+      <Project>{fa30644e-e172-4f78-9c36-0b7632015d9e}</Project>
+      <Name>DataTableActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DateTimeActivity\DateTimeActivity.csproj">
+      <Project>{aeefed42-a5b5-43bd-8f72-41d91b122ed9}</Project>
+      <Name>DateTimeActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcelPlugins\ExcelPlugins.csproj">
+      <Project>{9274f86f-419a-4196-ba65-6b3221f13796}</Project>
+      <Name>ExcelPlugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileActivity\FileActivity.csproj">
+      <Project>{2aec885d-3a7a-447d-b2a2-8ea44527d451}</Project>
+      <Name>FileActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindActivity\FindActivity.csproj">
+      <Project>{34e6e02b-74c3-4e48-926a-0f491216304e}</Project>
+      <Name>FindActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeyboardActivity\KeyboardActivity.csproj">
+      <Project>{80a1d3c1-4030-4638-8ebc-33f78c70c906}</Project>
+      <Name>KeyboardActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailActivity\MailActivity.csproj">
+      <Project>{9d48af76-189f-4e3f-a3ee-df59d922037b}</Project>
+      <Name>MailActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MouseActivity\MouseActivity.csproj">
+      <Project>{4d0c8911-fd98-4439-af5e-275cabf29590}</Project>
+      <Name>MouseActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Shared.Library\Plugins.Shared.Library.csproj">
+      <Project>{6879c801-1124-477a-97d8-0961e6d710b2}</Project>
+      <Name>Plugins.Shared.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextActivity\TextActivity.csproj">
+      <Project>{75205f2d-1ad9-4700-9eaf-4113262c79ee}</Project>
+      <Name>TextActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniGenerateWorkflow.Common\UniGenerateWorkflow.Common.csproj">
+      <Project>{43d95a3a-cec7-4e0d-83cf-dc5e3ba42078}</Project>
+      <Name>UniGenerateWorkflow.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniGenerateWorkflow.Entity\UniGenerateWorkflow.Entity.csproj">
+      <Project>{38dbfddc-1454-41d4-94df-213a8c0cb4c5}</Project>
+      <Name>UniGenerateWorkflow.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.112.0\build\net451\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net451\System.Data.SQLite.Core.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>

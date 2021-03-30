@@ -1,0 +1,146 @@
+﻿<sap:ActivityDesigner 
+    x:Class="ExcelPlugins.ExcelReadRangeDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:assist="clr-namespace:Plugins.Shared.Library.Attached;assembly=Plugins.Shared.Library"
+    xmlns:local="clr-namespace:ExcelPlugins"
+    xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" 
+    Loaded="IcoPath_Loaded"
+    xmlns:pslc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library"
+    >
+
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Plugins.Shared.Library;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </sap:ActivityDesigner.Resources>
+
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing x:Name="icoPath">
+                    <ImageDrawing.Rect>
+                        <Rect Location="0,0" Size="16,16"></Rect>
+                    </ImageDrawing.Rect>
+                </ImageDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+
+    <pslc:CollapsableActivity >
+        <!--<Grid x:Name="grid1" Width="340" Margin="-7,-7,-7,-46" >
+            <sapv:ExpressionTextBox
+                    HintText="要打开的Excel文件的全路径。必须将文本放入引号中。"
+                    x:Name="expressTextBox1"
+                    Expression="{Binding ModelItem.PathUrl, ConverterParameter=In, Converter={StaticResource ArgumentToExpressionConverter}, Mode=TwoWay}"
+                    ExpressionType="{x:Type sys:String}"
+                    OwnerActivity="{Binding ModelItem}"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    MaxLines="1"  Height="25" Margin="7,10,33,43" />
+            <Button x:Name="getUrlButton" Click="PathSelect"    VerticalAlignment="Top" Width="25" Content="···" Margin="310,10,5,0"/>
+            --><!--<TextBox Text="工作表次序" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True" VerticalContentAlignment="Center"  Margin="7,42,267,18" Height="18" RenderTransformOrigin="1.25,0.625"></TextBox>--><!--
+            <sapv:ExpressionTextBox
+                x:Name="SheetIndexTextBox"
+                Expression="{Binding Path=ModelItem.SheetIndex, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:Int32"
+                HintText="要操作的单元格所在工作表的索引号。从1开始计算。请输入一个整数。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                Margin="7,38,229,5"
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                MaxLines="1" RenderTransformOrigin="0.5,0.5" Height="35" />
+            --><!--<TextBox Text="工作表名称" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True" VerticalContentAlignment="Center"  Margin="120,42,156,18" Height="18" RenderTransformOrigin="1.25,0.625"/>--><!--
+            <sapv:ExpressionTextBox
+                x:Name="SheetNameTextBox"
+                Expression="{Binding Path=ModelItem.SheetName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:String"
+                HintText="要操作的单元格所在工作表的名称。为空代表当前活动的工作表。必须将文本放入引号中。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                Margin="120,38,0,5"
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                MaxLines="1" RenderTransformOrigin="0.5,0.5" Height="35" HorizontalAlignment="Left" Width="103" />
+            --><!--<TextBox Text="单元格区域" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True" VerticalContentAlignment="Center"  Margin="231,42,46,18" Height="18" RenderTransformOrigin="1.25,0.625"></TextBox>--><!--
+            <sapv:ExpressionTextBox
+                x:Name="expressTextBox"
+                Expression="{Binding Path=ModelItem.CellRange, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:String"
+                HintText="例：&quot;A1:D5&quot;。此处有三种填写方式。若填写&quot;&quot;，则读取表格中有数据的部分所围成的最大范围的数据；若填写确定区域，如&quot;A1:D5&quot;，则读取该指定范围的数据；若填写起始单元格+冒号，如&quot;B2:&quot;，则读取该单元格开始到右下角最后一个有数据的单元格所围成的范围的数据。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                Margin="232,38,5,5"
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                MaxLines="1" RenderTransformOrigin="0.5,0.5" Height="35" Width="103"/>
+        </Grid>-->
+        <StackPanel Style="{StaticResource FormStackPanel}">
+            <WrapPanel>
+                <!--<sapv:ExpressionTextBox
+                    HintText="要打开的Excel文件的全路径。必须将文本放入引号中。"
+                    x:Name="expressTextBox1"
+                    Expression="{Binding ModelItem.PathUrl, ConverterParameter=In, Converter={StaticResource ArgumentToExpressionConverter}, Mode=TwoWay}"
+                    ExpressionType="{x:Type sys:String}"
+                    OwnerActivity="{Binding ModelItem}"
+                    VerticalAlignment="Center" Width="235"/>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo PathUrl,Type={x:Type local:ExcelReadRange}}"
+                    x:Name="expressTextBox1" Width="235" >
+                </sapv:ExpressionTextBox>
+                <Button x:Name="getUrlButton" Click="PathSelect" Margin="5 0 0 0"  
+                        VerticalAlignment="Center" Width="20" Content="···" />
+                <!--<TextBox Text="工作表次序" VerticalAlignment="Center" BorderThickness="0" IsReadOnly="True" VerticalContentAlignment="Center"  Margin="7,42,267,18" Height="18" RenderTransformOrigin="1.25,0.625"></TextBox>-->
+            </WrapPanel>
+            <WrapPanel Margin="0 5 0 0">
+                <Label Content="单元格区域"></Label>
+                <!--<sapv:ExpressionTextBox
+                x:Name="SheetIndexTextBox"
+                Expression="{Binding Path=ModelItem.CellRange, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:String"
+                HintText="例：&quot;A1:D5&quot;。此处有三种填写方式。若填写&quot;&quot;，则读取表格中有数据的部分所围成的最大范围的数据；若填写确定区域，如&quot;A1:D5&quot;，则读取该指定范围的数据；若填写起始单元格+冒号，如&quot;B2:&quot;，则读取该单元格开始到右下角最后一个有数据的单元格所围成的范围的数据。必须将文本放入引号中。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                VerticalAlignment="Center"/>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo CellRange,Type={x:Type local:ExcelReadRange}}"
+                    x:Name="SheetIndexTextBox" >
+                </sapv:ExpressionTextBox>
+            </WrapPanel>
+            <WrapPanel Margin="0 5">
+                <Label Content="工作表次序"></Label>
+                <!--<sapv:ExpressionTextBox
+                x:Name="SheetNameTextBox"
+                Expression="{Binding Path=ModelItem.SheetIndex, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:String"
+                HintText="要操作的单元格所在工作表的索引号。从1开始计算。请输入一个整数。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                VerticalAlignment="Center"/>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo SheetIndex,Type={x:Type local:ExcelReadRange}}"
+                    x:Name="SheetNameTextBox" >
+                </sapv:ExpressionTextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="工作表名称"></Label>
+                <!--<sapv:ExpressionTextBox
+                x:Name="expressTextBox"
+                Expression="{Binding Path=ModelItem.SheetName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                ExpressionType="sys:String"
+                HintText="要操作的单元格所在工作表的名称。为空代表当前活动的工作表。必须将文本放入引号中。"
+                OwnerActivity="{Binding Path=ModelItem}"
+                VerticalAlignment="Center"/>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo SheetName,Type={x:Type local:ExcelReadRange}}"
+                    x:Name="expressTextBox" >
+                </sapv:ExpressionTextBox>
+            </WrapPanel>
+        </StackPanel>
+    </pslc:CollapsableActivity>
+</sap:ActivityDesigner>

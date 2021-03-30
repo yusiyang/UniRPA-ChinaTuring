@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" />
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.2.0.20191223\build\net\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.2.0.20191223\build\net\OpenCvSharp4.runtime.win.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6879C801-1124-477A-97D8-0961E6D710B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Plugins.Shared.Library</RootNamespace>
+    <AssemblyName>Plugins.Shared.Library</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="ActiproSoftware.Docking.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Docking.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Ribbon.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Ribbon.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Shared.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9" />
+    <Reference Include="ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.SyntaxEditor.Addons.DotNet.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.SyntaxEditor.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.SyntaxEditor.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Text.Addons.DotNet.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Text.Addons.DotNet.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Text.LLParser.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Text.LLParser.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Text.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Text.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharp-easy-RSA-PEM">
+      <HintPath>.\CSharp-easy-RSA-PEM.dll</HintPath>
+    </Reference>
+    <Reference Include="FlaUI.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlaUI.Core.3.0.0\lib\net45\FlaUI.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FlaUI.UIA2, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlaUI.UIA2.3.0.0\lib\net45\FlaUI.UIA2.dll</HintPath>
+    </Reference>
+    <Reference Include="FlaUI.UIA3, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlaUI.UIA3.3.0.0\lib\net45\FlaUI.UIA3.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.UserActivityMonitor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Gma.UserActivityMonitor.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.UIAutomationClient, Version=10.0.18362.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Interop.UIAutomationClient.10.18362.0\lib\net45\Interop.UIAutomationClient.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.3.2\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.3.2\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.3.2\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.1.3.2\lib\net45\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.3.2\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.3.2\lib\net45\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces.Desktop, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.3.2\lib\net45\Microsoft.CodeAnalysis.Workspaces.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MSHTML">
+      <HintPath>.\MSHTML.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="NetCoreEx.BinaryExtensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetCoreEx.BinaryExtensions.2.0.0\lib\portable46-net451+win81\NetCoreEx.BinaryExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="NetCoreEx.Geometry, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetCoreEx.Geometry.2.1.0\lib\portable46-net451+win81\NetCoreEx.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Common, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Common.4.5.3\lib\net45\NuGet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Configuration, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Configuration.4.5.3\lib\net45\NuGet.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Frameworks, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Frameworks.4.5.3\lib\net45\NuGet.Frameworks.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.4.5.3\lib\net45\NuGet.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.Core.4.5.3\lib\net45\NuGet.Packaging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Protocol, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Protocol.4.5.3\lib\net45\NuGet.Protocol.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Resolver, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Resolver.4.5.3\lib\net45\NuGet.Resolver.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Versioning, Version=4.5.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Versioning.4.5.3\lib\net45\NuGet.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.2.0.20191223\lib\net40\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.2.0.20191223\lib\net40\OpenCvSharp.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.2.0.20191223\lib\net40\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.2.0.20191223\lib\net40\OpenCvSharp.UserInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReflectionMagic, Version=4.1.0.0, Culture=neutral, PublicKeyToken=c4c75393d7e08e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReflectionMagic.4.1.0\lib\net45\ReflectionMagic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Core.Presentation" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.1.37\lib\dotnet\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Composition.AttributedModel, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Convention, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Convention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Hosting, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.Runtime, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Reflection.Metadata, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.2.0\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WinApi, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinApi.3.1.0\lib\portable46-net451+win81\WinApi.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsAccessBridgeInterop, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\WindowsAccessBridgeInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityLog\ActivityLog.cs" />
+    <Compile Include="ActivityLog\ActivityLogFormat.cs" />
+    <Compile Include="Attached\ActivityDesignerAttached.cs" />
+    <Compile Include="Attached\ExpressionTextBoxAssist.cs" />
+    <Compile Include="BaseActivities\AsyncTaskCodeActivity.cs" />
+    <Compile Include="BaseActivities\AsyncTaskNativeActivity.cs" />
+    <Compile Include="BaseActivities\AsyncTaskNativeImplementation.cs" />
+    <Compile Include="BaseActivities\ContinuableAsyncCodeActivity.cs" />
+    <Compile Include="BaseActivities\ContinuableAsyncNativeActivity.cs" />
+    <Compile Include="BookmarkResumptionHelper.cs" />
+    <Compile Include="CodeCompletion\ExpressionNodeComparer.cs" />
+    <Compile Include="CodeCompletion\VBCompilation.cs" />
+    <Compile Include="CodeCompletion\VBCompilationManager.cs" />
+    <Compile Include="Controls\CollapsableActivity.cs" />
+    <Compile Include="Converters\BooleanNotConverter.cs" />
+    <Compile Include="Converters\DataTableColumnToPropertiesConverter.cs" />
+    <Compile Include="Converters\DataTableColumnToTypeConverter.cs" />
+    <Compile Include="Converters\EnumOperationConverter.cs" />
+    <Compile Include="Converters\EnumsToDisplayNameConverter.cs" />
+    <Compile Include="Converters\GenericValueJsonConverter.cs" />
+    <Compile Include="Converters\GenericValueTypeConverter.cs" />
+    <Compile Include="Converters\IntCollectionToStringConverter.cs" />
+    <Compile Include="Converters\LogicalOperatorToBooleanConverter.cs" />
+    <Compile Include="Converters\ProjectPathConverter.cs" />
+    <Compile Include="Converters\SeparatorsToFriendlyStringConverter.cs" />
+    <Compile Include="Editors\SyntaxEditorConfig.cs" />
+    <Compile Include="Exceptions\ActivityRuntimeException.cs" />
+    <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Extensions\ActivityExtensions.cs" />
+    <Compile Include="Extensions\ModelServiceExtensions.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="Extensions\UniMessageBox.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Images\ImageSearchEngine.cs" />
+    <Compile Include="Librarys\ActionHelper.cs" />
+    <Compile Include="Librarys\ConvertHelper.cs" />
+    <Compile Include="Librarys\DirectoryOperation.cs" />
+    <Compile Include="Librarys\DisplayHelper.cs" />
+    <Compile Include="Librarys\EnumHelper.cs" />
+    <Compile Include="Librarys\HttpClientHelper.cs" />
+    <Compile Include="Librarys\ImageHelper.cs" />
+    <Compile Include="Librarys\InExplorerOpen.cs" />
+    <Compile Include="Librarys\AssemblyHelper.cs" />
+    <Compile Include="Librarys\LanguageLocalization.cs" />
+    <Compile Include="Librarys\LockExtensions.cs" />
+    <Compile Include="Extensions\ModelItemExtensions.cs" />
+    <Compile Include="Librarys\MessageBoxHelper.cs" />
+    <Compile Include="Librarys\RuntimeWatcher.cs" />
+    <Compile Include="Librarys\RuntimeWatcherManager.cs" />
+    <Compile Include="Librarys\SerializeObj.cs" />
+    <Compile Include="Librarys\StringHelper.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Librarys\TimeoutHelper.cs" />
+    <Compile Include="Librarys\ZipHelper.cs" />
+    <Compile Include="UiAutomation\Browser\ChromeBrowser.cs" />
+    <Compile Include="UiAutomation\Browser\FirefoxBrowser.cs" />
+    <Compile Include="UiAutomation\Browser\IeBrowser.cs" />
+    <Compile Include="UiAutomation\Browser\IJavaScriptExecutor.cs" />
+    <Compile Include="UiAutomation\Browser\MessageClient.cs" />
+    <Compile Include="UiAutomation\Browser\NamedPipe\INamedPipeEndpoint.cs" />
+    <Compile Include="UiAutomation\Browser\NamedPipe\MessageReceivedEventArgs.cs" />
+    <Compile Include="UiAutomation\Browser\NamedPipe\NamedPipeClient.cs" />
+    <Compile Include="UiAutomation\Browser\NamedPipe\NamedPipeEndpointBase.cs" />
+    <Compile Include="UiAutomation\Browser\NamedPipe\NamedPipeServer.cs" />
+    <Compile Include="ProcessOperation\ProcessModel.cs" />
+    <Compile Include="ProcessOperation\SingleProcess.cs" />
+    <Compile Include="UiAutomation\CaptureEvents\CaptureCanceledEventArgs.cs" />
+    <Compile Include="UiAutomation\CaptureEvents\CapturedEventArgs.cs" />
+    <Compile Include="UiAutomation\CaptureEvents\CaptureCanceledEventHandler.cs" />
+    <Compile Include="UiAutomation\CaptureEvents\CapturedEventHandler.cs" />
+    <Compile Include="UiAutomation\CaptureEvents\RectangleRange.cs" />
+    <Compile Include="UiAutomation\DataExtract\ChromeExtract.cs" />
+    <Compile Include="UiAutomation\DataExtract\ExtractData.cs" />
+    <Compile Include="UiAutomation\DataExtract\IeExtract.cs" />
+    <Compile Include="UiAutomation\HtmlUiNode.cs" />
+    <Compile Include="UiAutomation\DataExtract\IDataExtract.cs" />
+    <Compile Include="UiAutomation\Browser\IBrowser.cs" />
+    <Compile Include="UiAutomation\IEBrowser\IeExtensions.cs" />
+    <Compile Include="UiAutomation\IEBrowser\SelectorGenerator.cs" />
+    <Compile Include="UiAutomation\IeNode.cs" />
+    <Compile Include="UiAutomation\JavaUtils.cs" />
+    <Compile Include="UiAutomation\NativeMessage.cs" />
+    <Compile Include="UiAutomation\NativeMessageManager.cs" />
+    <Compile Include="UiAutomation\SAPUiNode.cs" />
+    <Compile Include="UiAutomation\CountDown.xaml.cs">
+      <DependentUpon>CountDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UiAutomation\ScreenCapture.xaml.cs">
+      <DependentUpon>ScreenCapture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Librarys\WhenDo.cs" />
+    <Compile Include="Controls\HighlightingTextBlock.cs" />
+    <Compile Include="UserControls\LoadingWait.xaml.cs">
+      <DependentUpon>LoadingWait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VerifyVariableDialog.xaml.cs">
+      <DependentUpon>VerifyVariableDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsAPI\IMEHelper.cs" />
+    <Compile Include="WindowsAPI\IMEScope.cs" />
+    <Compile Include="WindowsAPI\WindowsHelper.cs" />
+    <Compile Include="Editors\PythonScriptEditor.cs" />
+    <Compile Include="Editors\VBNetCodeEditor.cs" />
+    <Compile Include="Editors\EditorTemplates.xaml.cs">
+      <DependentUpon>EditorTemplates.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\PythonScriptEditorDialog.xaml.cs">
+      <DependentUpon>PythonScriptEditorDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\VBNetCodeEditorDialog.xaml.cs">
+      <DependentUpon>VBNetCodeEditorDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\ArgumentCollectionEditor.cs" />
+    <Compile Include="Editors\CollectionArgumentEditor.cs" />
+    <Compile Include="Editors\DictionaryArgumentEditor.cs" />
+    <Compile Include="CodeCompletion\EditorUtil.cs" />
+    <Compile Include="CodeCompletion\ExpressionNode.cs" />
+    <Compile Include="CodeCompletion\QueryCompletionData.cs" />
+    <Compile Include="Editors\TextEditor.cs" />
+    <Compile Include="Editors\TextEditorDialog.xaml.cs">
+      <DependentUpon>TextEditorDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\SystemCollectionsGenericExtensions.cs" />
+    <Compile Include="Extensions\LogToOutputWindowTextWriter.cs" />
+    <Compile Include="Extensions\SystemExtensions.cs" />
+    <Compile Include="Extensions\WorkflowRuntime.cs" />
+    <Compile Include="Librarys\Base64.cs" />
+    <Compile Include="Librarys\Common.cs" />
+    <Compile Include="Librarys\DataTableFormatter.cs" />
+    <Compile Include="Librarys\FormatOptions.cs" />
+    <Compile Include="Librarys\GenericValue.cs" />
+    <Compile Include="Librarys\JsonParser.cs" />
+    <Compile Include="Librarys\MyComputerInfo.cs" />
+    <Compile Include="Librarys\RSACommon.cs" />
+    <Compile Include="Librarys\TableFormatter.cs" />
+    <Compile Include="Librarys\TableOptions.cs" />
+    <Compile Include="Nuget\NuGetPackageController.cs" />
+    <Compile Include="Nuget\NuGetPackageControllerLogger.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SharedObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UiAutomation\JavaUiNode.cs" />
+    <Compile Include="UiAutomation\OverlayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UiAutomation\OverlayForm.designer.cs">
+      <DependentUpon>OverlayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UiAutomation\UIAUiNode.cs" />
+    <Compile Include="UiAutomation\UiCommon.cs" />
+    <Compile Include="UiAutomation\UiElement.cs" />
+    <Compile Include="UiAutomation\UiElementParams.cs" />
+    <Compile Include="UiAutomation\UiKeyboard.cs" />
+    <Compile Include="UiAutomation\UiNode.cs" />
+    <Compile Include="Win32Api.cs" />
+    <Compile Include="WindowsAPI\MouseMessageSender.cs" />
+    <Compile Include="WindowsAPI\WindowMessageParameters\MouseWParams.cs" />
+    <Compile Include="WindowsAPI\WindowsMessages.cs" />
+    <Compile Include="Window\ShowImageWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Window\ShowImageWindow.Designer.cs">
+      <DependentUpon>ShowImageWindow.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\file\appline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\hotkey\hotkey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\mouse\hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\mouse\mouseclick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\word\backspace.png" />
+    <Resource Include="Resource\Image\Activities\word\copy.png" />
+    <Resource Include="Resource\Image\Activities\word\create.png" />
+    <Resource Include="Resource\Image\Activities\word\mark.png" />
+    <Resource Include="Resource\Image\Activities\word\move1.png" />
+    <Resource Include="Resource\Image\Activities\word\move2.png" />
+    <Resource Include="Resource\Image\Activities\word\newline.png" />
+    <Resource Include="Resource\Image\Activities\word\property.png" />
+    <Resource Include="Resource\Image\Activities\word\save.png" />
+    <Resource Include="Resource\Image\Activities\word\text.png" />
+    <Resource Include="Resource\Image\Activities\word\writefile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\hotkey\text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\file\createdir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\file\newfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\file\movefile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\file\fileexist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\file\read.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\create.png" />
+    <Resource Include="Resource\Image\Activities\excel\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\getcell.png" />
+    <Resource Include="Resource\Image\Activities\excel\newsheet.png" />
+    <Resource Include="Resource\Image\Activities\excel\opensheet.png" />
+    <Resource Include="Resource\Image\Activities\excel\renamesheet.png" />
+    <Resource Include="Resource\Image\Activities\excel\setcell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Application\get-process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Application\kill-process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\cellmerge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\rowcol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\rangeread.png" />
+    <Resource Include="Resource\Image\Activities\excel\rangewrite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\rangedelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Editors\EditorTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editors\PythonScriptEditorDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editors\VBNetCodeEditorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editors\TextEditorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Converter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UiAutomation\CountDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UiAutomation\ScreenCapture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LoadingWait.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\VerifyVariableDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Dialog\callout.png" />
+    <Resource Include="Resource\Image\Activities\Dialog\inputdialog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Dialog\messagebox.png" />
+    <Resource Include="Resource\Image\Activities\Dialog\selectfile.png" />
+    <Resource Include="Resource\Image\Activities\Dialog\selectfolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Icon\UniStudio.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\PowerShell\powershell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Environment\beep.png" />
+    <Resource Include="Resource\Image\Activities\Environment\envfolder.png" />
+    <Resource Include="Resource\Image\Activities\Environment\envvariable.png" />
+    <Resource Include="Resource\Image\Activities\Environment\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Control\SetText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Window\WindowClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Window\WindowActive.png" />
+    <Resource Include="Resource\Image\Activities\Window\WindowAttach.png" />
+    <Resource Include="Resource\Image\Activities\Window\WindowHide.png" />
+    <Resource Include="Resource\Image\Activities\Window\WindowMaxi.png" />
+    <Resource Include="Resource\Image\Activities\Window\WindowMin.png" />
+    <Resource Include="Resource\Image\Activities\Window\WindowMove.png" />
+    <Resource Include="Resource\Image\Activities\Window\WindowRestore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Control\Activate.png" />
+    <Resource Include="Resource\Image\Activities\Control\Check.png" />
+    <Resource Include="Resource\Image\Activities\Control\Highlight.png" />
+    <Resource Include="Resource\Image\Activities\Control\SelectItem.png" />
+    <Resource Include="Resource\Image\Activities\Control\SelectMultiItems.png" />
+    <Resource Include="Resource\Image\Activities\Control\SetFocus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Find\AnchorBase.png" />
+    <Resource Include="Resource\Image\Activities\Find\EleExists.png" />
+    <Resource Include="Resource\Image\Activities\Find\EleScope.png" />
+    <Resource Include="Resource\Image\Activities\Find\EleVanish.png" />
+    <Resource Include="Resource\Image\Activities\Find\FindChildren.png" />
+    <Resource Include="Resource\Image\Activities\Find\FindEle.png" />
+    <Resource Include="Resource\Image\Activities\Find\FindReEle.png" />
+    <Resource Include="Resource\Image\Activities\Find\GetAncestor.png" />
+    <Resource Include="Resource\Image\Activities\Find\IndicateScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Attribute\GetPos.png" />
+    <Resource Include="Resource\Image\Activities\Attribute\GetAttr.png" />
+    <Resource Include="Resource\Image\Activities\Attribute\SetClipRegion.png" />
+    <Resource Include="Resource\Image\Activities\Attribute\WaitAttr.png" />
+    <Resource Include="Resource\Image\Activities\Attribute\TakeScreenShot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Browser\GoBack.png" />
+    <Resource Include="Resource\Image\Activities\Browser\GoForward.png" />
+    <Resource Include="Resource\Image\Activities\Browser\GoHome.png" />
+    <Resource Include="Resource\Image\Activities\Browser\InsertJS.png" />
+    <Resource Include="Resource\Image\Activities\Browser\NavigateTo.png" />
+    <Resource Include="Resource\Image\Activities\Browser\RefreshBrowser.png" />
+    <Resource Include="Resource\Image\Activities\Browser\SetWebAttr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\ClickText\hower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\ClickText\extract.png" />
+    <Resource Include="Resource\Image\Activities\ClickText\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\ClickText\exist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Text\DeserializeJSON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Window\findwindow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="app.config" />
+    <None Include="Editors\Highlighting\Python-Mode.xshd" />
+    <None Include="JAB\accessibility.properties">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nuget\NuGet.Default.Config" />
+    <None Include="Nuget\NuGet.User.Config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WorkflowGenerator\System.Data.SQLite.dll.config" />
+    <None Include="WorkflowGenerator\wf.sqlite" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeCompletion\ClassBrowserIcons\Icons.16x16.Event.png" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UiAutomation\OverlayForm.resx">
+      <DependentUpon>OverlayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Window\ShowImageWindow.resx">
+      <DependentUpon>ShowImageWindow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeCompletion\ClassBrowserIcons\Icons.16x16.Field.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeCompletion\ClassBrowserIcons\Icons.16x16.Local.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeCompletion\ClassBrowserIcons\Icons.16x16.Method.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeCompletion\ClassBrowserIcons\Icons.16x16.NamedType.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeCompletion\ClassBrowserIcons\Icons.16x16.Namespace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CodeCompletion\ClassBrowserIcons\Icons.16x16.Property.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.VersionCheckAnalyzer.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\analyzers\dotnet\Microsoft.CodeAnalysis.VersionCheckAnalyzer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Humanizer.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Image\base64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\UserEvent\monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Mail\GetMail.png" />
+    <Resource Include="Resource\Image\Activities\Mail\SaveMail.png" />
+    <Resource Include="Resource\Image\Activities\Mail\SendMail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\word\wholestory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\word\getcontent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\WorkflowUtils\log-message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Database\connect.png" />
+    <Resource Include="Resource\Image\Activities\Database\disconnect.png" />
+    <Resource Include="Resource\Image\Activities\Database\insert.png" />
+    <Resource Include="Resource\Image\Activities\Database\noquery.png" />
+    <Resource Include="Resource\Image\Activities\Database\query.png" />
+    <Resource Include="Resource\Image\Activities\Database\transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\WorkflowUtils\comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CSharp-easy-RSA-PEM.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\DateTime\date.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\DateTime\convert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UiAutomation\cursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Gma.UserActivityMonitor.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="WindowsAccessBridge-32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="WindowsAccessBridge-64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="WindowsAccessBridge.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="WindowsAccessBridgeInterop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Mail\outlook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Mail\archive-mail.png" />
+    <Resource Include="Resource\Image\Activities\Mail\clear-mail-cache.png" />
+    <Resource Include="Resource\Image\Activities\Mail\delete-mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\excel\vba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\Browser\CloseTab.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\add-data-column.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\add-data-row.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\build-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\clear-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\filter-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\for-each-row.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\generate-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\get-row-item.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\join-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\lookup-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\merge-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\output-data-table.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\remove-data-column.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\remove-data-row.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\remove-duplicate-rows.png" />
+    <Resource Include="Resource\Image\Activities\DataTable\sort-data-table.png" />
+    <Resource Include="Resource\Image\Activities\Application\start-process.png" />
+    <Resource Include="Resource\Image\Activities\Application\close-application.png" />
+    <Resource Include="Resource\Image\Activities\Dialog\custom-input.png" />
+    <Resource Include="Resource\Image\Activities\Event\ele-appear.png" />
+    <Resource Include="Resource\Image\Activities\Event\ele-vanish.png" />
+    <Resource Include="Resource\Image\Activities\ClickText\get-text.png" />
+    <Resource Include="Resource\Image\Activities\file\copyfile.png" />
+    <Resource Include="Resource\Image\Activities\file\file-change-trigger.png" />
+    <Resource Include="Resource\Image\Activities\file\write-text-file.png" />
+    <Resource Include="Resource\Image\Activities\Find\EleAppear.png" />
+    <Resource Include="Resource\Image\Activities\FTP\delete.png" />
+    <Resource Include="Resource\Image\Activities\FTP\enum-object.png" />
+    <Resource Include="Resource\Image\Activities\FTP\exist-directory.png" />
+    <Resource Include="Resource\Image\Activities\FTP\exist-file.png" />
+    <Resource Include="Resource\Image\Activities\FTP\file-download.png" />
+    <Resource Include="Resource\Image\Activities\FTP\file-upload.png" />
+    <Resource Include="Resource\Image\Activities\FTP\ftp-session.png" />
+    <Resource Include="Resource\Image\Activities\Find\ContextAnchorBase.png" />
+    <Resource Include="Resource\Image\Activities\file\delete.png" />
+    <Resource Include="Resource\Image\Activities\Mail\GetImgs.png" />
+    <Resource Include="Resource\Image\Activities\Mail\MoveMail.png" />
+    <Resource Include="Resource\Image\Activities\Mail\SaveMailAttachments.png" />
+    <Resource Include="Resource\Image\Activities\Mail\move-outlook-mail.png" />
+    <Resource Include="Resource\Image\Activities\Mail\reply-outlook-mail.png" />
+    <Resource Include="Resource\Image\Activities\Mail\save-outlook-mail.png" />
+    <Resource Include="Resource\Image\Activities\Mail\send-outlook-mail.png" />
+    <Resource Include="Resource\Image\Activities\Window\WindowShow.png" />
+    <Resource Include="Resource\Image\Activities\NetWork\get-request.png" />
+    <Resource Include="Resource\Image\Activities\NetWork\post-request.png" />
+    <Resource Include="Resource\Image\Activities\Orchestrator\get-credential.png" />
+    <Resource Include="Resource\Image\Activities\Orchestrator\set-credential.png" />
+    <Resource Include="Resource\Image\Activities\mouse\menu.png" />
+    <Resource Include="Resource\Image\Activities\WorkflowUtils\invoke-code.png" />
+    <Resource Include="Resource\Image\Activities\WorkflowUtils\invoke-python-code.png" />
+    <Resource Include="Resource\Image\Activities\WorkflowUtils\invoke-python-file.png" />
+    <Resource Include="Resource\Image\Activities\WorkflowUtils\invoke-xaml-file.png" />
+    <Resource Include="Resource\Image\Activities\HttpServer\HttpServer.png" />
+    <Resource Include="Resource\Image\Activities\Application\open-application.png" />
+    <Resource Include="Resource\Image\Activities\Browser\OpenBrowser.png" />
+    <Resource Include="Resource\Image\Activities\ClickText\click.png" />
+    <Resource Include="Resource\Image\Activities\Clipboard\copy-select-text.png" />
+    <Resource Include="Resource\Image\Activities\Clipboard\get-text.png" />
+    <Resource Include="Resource\Image\Activities\Clipboard\set-clip-board.png" />
+    <Resource Include="Resource\Image\Activities\Control\GetText.png" />
+    <Resource Include="Resource\Image\Activities\CSV\csv-append.png" />
+    <Resource Include="Resource\Image\Activities\CSV\csv-read.png" />
+    <Resource Include="Resource\Image\Activities\CSV\csv-write.png" />
+    <Resource Include="Resource\Image\Activities\mouse\ui-explorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SAPFEWSELib">
+      <Guid>{5EA428A0-F2B8-45E7-99FA-0E994E82B5BC}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="SapROTWr">
+      <Guid>{E2779C61-F87E-4038-98A0-1D9E71334706}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniExecutor.Service.Interface\UniExecutor.Service.Interface.csproj">
+      <Project>{c260a511-cf99-4819-8e0e-e3236866c9bf}</Project>
+      <Name>UniExecutor.Service.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\AI\baidu-ocr.png" />
+    <Resource Include="Resource\Image\Activities\AI\ocr-ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\AddToCollection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Assign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\CancellationScope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\ClearCollection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\CompensableActivity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Confirm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Delay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\DoWhile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\ExistsInCollection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\FinalState.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Flowchart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\FlowDecision.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\FlowDecisionNode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\FlowSwitch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\FlowSwitchNode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\ForEach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\If.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\InvokeDelegate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\InvokeMethod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\NoPersistScope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Parallel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\ParallelForEach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Persist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Pick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\PickBranch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\RemoveFromCollection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Rethrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Sequence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\StartNode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\State.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\StateMachine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Switch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\TerminateWorkflow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\Throw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\TransactionScope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\TryCatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\While.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Activities\System\WriteLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\Image\Activities\System\_README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UiAutomation\Browser\InjectJs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Designer\ImageNotAvailable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JAB\access-bridge-32.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\access-bridge-64.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\access-bridge.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\jaccess.jar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\JavaAccessBridge-32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\JavaAccessBridge-64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\JavaAccessBridge.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\JAWTAccessBridge-32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\JAWTAccessBridge-64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\JAWTAccessBridge.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\WindowsAccessBridge-32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\WindowsAccessBridge-64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JAB\WindowsAccessBridge.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resource\Image\Activities\System\Break.png" />
+    <Resource Include="Resource\Image\Activities\System\Continue.png" />
+    <Content Include="Resource\Image\Activities\Text\DeserializeJSON.png" />
+    <Content Include="WorkflowGenerator\Microsoft.VisualStudio.OLE.Interop.dll" />
+    <Content Include="WorkflowGenerator\SqlSugar.dll" />
+    <Content Include="WorkflowGenerator\System.Data.SQLite.dll" />
+    <Content Include="WorkflowGenerator\System.Data.SQLite.Linq.dll" />
+    <Content Include="WorkflowGenerator\Template.txt" />
+    <Content Include="WorkflowGenerator\Uni.Common.dll" />
+    <Content Include="WorkflowGenerator\Uni.Core.dll" />
+    <Content Include="WorkflowGenerator\Uni.Entity.dll" />
+    <Content Include="WorkflowGenerator\x64\SQLite.Interop.dll" />
+    <Content Include="WorkflowGenerator\x86\SQLite.Interop.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Interop.UIAutomationClient.10.18362.0\build\Interop.UIAutomationClient.targets" Condition="Exists('..\packages\Interop.UIAutomationClient.10.18362.0\build\Interop.UIAutomationClient.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Interop.UIAutomationClient.10.18362.0\build\Interop.UIAutomationClient.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Interop.UIAutomationClient.10.18362.0\build\Interop.UIAutomationClient.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.2.0.20191223\build\net\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.2.0.20191223\build\net\OpenCvSharp4.runtime.win.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.8\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.2.9.8\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.2.9.8\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.2.9.8\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.8\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

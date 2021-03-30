@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Map>
+  <Item Name="收藏" EnglishName="Favourite"/>
+  <Item Name="最近" EnglishName="Recent"/>
+  <Item Name="可用" EnglishName="Available"/>
+  <Item Name="AI" EnglishName="AI"/>
+  <Item Name="百度通用OCR" EnglishName="Baidu OCR"/>
+  <Item Name="OCR发票识别" EnglishName="OCR Invoice"/>
+
+  <Item Name="UI 自动化" EnglishName="UI Automation"/>
+  <Item Name="UI元素" EnglishName="UI Element"/>
+  <Item Name="鼠标" EnglishName="Mouse"/>
+  <Item Name="单击" EnglishName="Click"/>
+  <Item Name="双击" EnglishName="Double Click"/>
+  <Item Name="悬浮" EnglishName="Hover"/>
+  <Item Name="单击图片" EnglishName="ClickImage"/>
+  <Item Name="键盘" EnglishName="Keyboard"/>
+  <Item Name="发送热键" EnglishName="Send HotKey"/>
+  <Item Name="输入文本" EnglishName="Type Into"/>
+  <Item Name="输入安全文本" EnglishName="Type Secure Text"/>
+  <Item Name="控件" EnglishName="Control"/>
+  <Item Name="激活" EnglishName="Activate"/>
+  <Item Name="勾选" EnglishName="Check"/>
+  <Item Name="获取文本" EnglishName="Get Text"/>
+  <Item Name="设置文本" EnglishName="Set Text"/>
+  <Item Name="高亮显示" EnglishName="Highlight"/>
+  <Item Name="选择项目" EnglishName="SelectItem"/>
+  <Item Name="选择多个项目" EnglishName="Select Mutiple Items" />
+  <Item Name="设置焦点" EnglishName="Set Focus"/>
+  <Item Name="查找" EnglishName="Find"/>
+  <Item Name="锚点" EnglishName="Anchor Base"/>
+  <Item Name="上下文锚点" EnglishName="Context Aware Anchor"/>
+  <Item Name= "UI元素存在性" EnglishName="Element Exists"/>
+  <Item Name= "UI元素范围" EnglishName="Element Scope"/>
+  <Item Name= "查找UI子元素" EnglishName="Find Children"/>
+  <Item Name= "查找UI元素" EnglishName="Find Element"/>
+  <Item Name= "查找相对元素" EnglishName="Find Relative Element"/>
+  <Item Name= "获取根元素" EnglishName="Get Ancestor"/>
+  <Item Name= "屏幕选择UI" EnglishName="Indicate Screen"/>
+  <Item Name= "等待元素消失" EnglishName="Wait Element Vanish"/>
+  <Item Name= "等待元素出现" EnglishName="Wait Element Appear"/>
+  <Item Name= "属性" EnglishName="Attribute"/>
+  <Item Name= "获取属性" EnglishName="Get Attribute"/>
+  <Item Name= "等待属性" EnglishName="Wait Attribute"/>
+  <Item Name= "获取坐标" EnglishName="Get Position"/>
+  <Item Name= "设置剪裁区域" EnglishName="Set Clipping Region"/>
+  <Item Name= "截图" EnglishName="Take Screenshot"/>
+  <Item Name= "事件" EnglishName="Event"/>
+  <Item Name= "捕捉元素显示" EnglishName="On Element Appear"/>
+  <Item Name= "捕捉元素消失" EnglishName="On Element Vanish"/>
+  <Item Name= "文本" EnglishName="Text"/>
+  <Item Name= "点击文本" EnglishName="Click Text"/>
+  <Item Name= "双击文本" EnglishName="Double Click Text"/>
+  <Item Name= "悬浮文本" EnglishName="Hover Text"/>
+  <Item Name= "屏幕抓取" EnglishName="Screen Scraping"/>
+  <Item Name= "提取结构化数据" EnglishName="Extract Structed Data"/>
+  <Item Name= "查找字符串位置" EnglishName="Get Text Position"/>
+  <Item Name= "获取全文本" EnglishName="Get Full Text"/>
+  <Item Name= "获取可视化文本" EnglishName="Get Visible Text"/>
+  <Item Name= "解析" EnglishName="analysis"/>
+  <Item Name= "反序列化Json字符串" EnglishName="DeserializeJSON"/>
+
+  <Item Name= "查找" EnglishName="Find"/>
+  <Item Name= "查找文本" EnglishName="Search Text"/>
+  <Item Name= "窗口" EnglishName="Window"/>
+  <Item Name= "关闭窗口" EnglishName="Close Window"/>
+  <Item Name= "获取活动窗口" EnglishName="Get Active Window"/>
+  <Item Name= "最大化窗口" EnglishName="Maximize Window"/>
+  <Item Name= "最小化窗口" EnglishName="Minimize Window"/>
+  <Item Name= "隐藏窗口" EnglishName="Hide Window"/>
+  <Item Name= "显示窗口" EnglishName="Show Window"/>
+  <Item Name= "窗口恢复" EnglishName="Restore Window"/>
+  <Item Name= "窗口移动" EnglishName="Move Window"/>
+  <Item Name= "窗口附加" EnglishName="Attach Window"/>
+  <Item Name= "查找窗口" EnglishName="Find Window"/>
+  <Item Name= "浏览器" EnglishName="Browser"/>
+  <Item Name= "打开浏览器" EnglishName="Open Browser"/>
+  <Item Name= "附加浏览器" EnglishName="Attach Browser"/>
+  <Item Name= "获取新页面" EnglishName="Get Tab"/>
+  <Item Name= "回退" EnglishName="Go Back"/>
+  <Item Name= "前进" EnglishName="Go Forward"/>
+  <Item Name= "导航" EnglishName="Navigate To"/>
+  <Item Name= "刷新" EnglishName="Refresh Browser"/>
+  <Item Name= "主页" EnglishName="Go Home"/>
+  <Item Name= "关闭页面" EnglishName="Close Tab"/>
+  <Item Name= "注入JS脚本" EnglishName="Inject JS Script"/>
+  <Item Name= "设置Web属性" EnglishName="Set Web Attribute"/>
+  <Item Name= "图像操作" EnglishName="Image"/>
+  <Item Name= "图片转换" EnglishName="Convert To Base64"/>
+  <Item Name= "网络操作" EnglishName="Web"/>
+  <Item Name= "Http请求" EnglishName="HTTP Request"/>
+  <Item Name= "Get请求" EnglishName="Get"/>
+  <Item Name= "Post请求" EnglishName="Post"/>
+  <Item Name= "服务" EnglishName="Server"/>
+  <Item Name= "Http服务" EnglishName="HTTP Server"/>
+  <Item Name= "应用程序集成" EnglishName="Application Integration"/>
+  <Item Name= "Word" EnglishName="Word"/>
+  <Item Name= "过程" EnglishName="Process"/>
+  <Item Name= "打开/创建文档" EnglishName="Open/Create Word File"/>
+  <Item Name= "文档保存/另存为" EnglishName="Save/Save As Word File"/>
+  <Item Name= "写入" EnglishName="Write"/>
+  <Item Name= "写入文本" EnglishName="Write Text"/>
+  <Item Name= "换行/分页" EnglishName="New Line/New Page"/>
+  <Item Name= "写入文件" EnglishName="Insert File"/>
+  <Item Name= "书签/超链接/图片" EnglishName="Mark/Hyper Link/Image"/>
+  <Item Name= "退格删除" EnglishName="BackSpace"/>
+  <Item Name= "复制/粘贴" EnglishName="Copy Paste"/>
+  <Item Name= "全选" EnglishName="Select All"/>
+  <Item Name= "获取文档内容" EnglishName="Get Content"/>
+  <Item Name= "光标" EnglishName="Cursor"/>
+  <Item Name= "上下左右移动" EnglishName="Move Cursor"/>
+  <Item Name= "移动列项" EnglishName="Move Cursor Menu"/>
+  <Item Name= "设置" EnglishName="Settings"/>
+  <Item Name= "字体与页面属性" EnglishName="Property"/>
+  <Item Name= "Excel" EnglishName="Excel"/>
+  <Item Name= "过程" EnglishName="Process"/>
+  <Item Name= "打开/保存" EnglishName="Create/Save"/>
+  <Item Name= "工作表" EnglishName="Worksheet"/>
+  <Item Name= "打开/删除工作表" EnglishName="Open Sheet/Delete Sheet"/>
+  <Item Name= "新建工作表" EnglishName="Create Sheet"/>
+  <Item Name= "工作表重命名" EnglishName="Rename Sheet"/>
+  <Item Name= "单元格" EnglishName="Cell"/>
+  <Item Name= "合并单元格" EnglishName="Merge Cell"/>
+  <Item Name= "获取单元格内容" EnglishName="Read Cell"/>
+  <Item Name= "设置单元格内容" EnglishName="Write Cell"/>
+  <Item Name= "行/列" EnglishName="Row/Column"/>
+  <Item Name= "行/列操作" EnglishName="Row/Column Operations"/>
+  <Item Name= "区域" EnglishName="Range"/>
+  <Item Name= "删除区域" EnglishName="Delete Range"/>
+  <Item Name= "粘贴/复制" EnglishName="Paste/Copy"/>
+  <Item Name= "读取区域内容" EnglishName="Read Range"/>
+  <Item Name= "写入区域内容" EnglishName="Write Range"/>
+  <Item Name= "VBA" EnglishName="VBA"/>
+  <Item Name= "执行VBA" EnglishName="Execute VBA"/>
+  <Item Name= "设置" EnglishName="Settings"/>
+  <Item Name= "区域设置" EnglishName="Range Settings"/>
+  <Item Name= "后台操作" EnglishName="Background Operation"/>
+  <Item Name= "Excel后台读取区域内容" EnglishName="ExcelReadRange"/>
+  <Item Name= "Excel后台写入区域内容" EnglishName="ExcelWriteRange"/>
+  <Item Name= "Excel后台获取单元格内容" EnglishName="ExcelReadCell"/>
+  <Item Name= "Excel后台设置单元格内容" EnglishName="ExcelWriteCell"/>
+  <Item Name= "Excel后台追加区域内容" EnglishName="ExcelAppendRange"/>
+  <Item Name= "CSV" EnglishName="CSV"/>
+  <Item Name= "CSV读取" EnglishName="Read CSV"/>
+  <Item Name= "CSV写入" EnglishName="Write CSV"/>
+  <Item Name= "CSV追加" EnglishName="Append CSV"/>
+  <Item Name= "Mail" EnglishName="Mail"/>
+  <Item Name= "SMTP" EnglishName="SMTP"/>
+  <Item Name= "发送SMTP邮件" EnglishName="Send SMTP Mail"/>
+  <Item Name= "POP3" EnglishName="POP3"/>
+  <Item Name= "获取POP3邮件消息" EnglishName="Get POP3 Mail"/>
+  <Item Name= "IMAP" EnglishName="IMAP"/>
+  <Item Name= "获取IMAP邮件" EnglishName="Get IMAP Mail"/>
+  <Item Name= "移动IMAP邮件" EnglishName="Move IMAP Mail"/>
+  <Item Name= "保存邮件" EnglishName="Save Mail"/>
+  <Item Name= "保存附件" EnglishName="Save Attachments"/>
+  <Item Name= "保存图片" EnglishName="Save Image"/>
+  <Item Name= "OutLook" EnglishName="OutLook"/>
+  <Item Name= "获取Outlook邮件" EnglishName="Get Outlook Mail"/>
+  <Item Name= "移动Outlook邮件" EnglishName="Move Outlook Mail"/>
+  <Item Name= "回复Outlook邮件" EnglishName="Reply Outlook Mail"/>
+  <Item Name= "发送Outlook邮件" EnglishName="Send Outlook Mail"/>
+  <Item Name= "保存Outlook附件" EnglishName="Save Outlook Mail"/>
+  <Item Name= "删除Outlook邮件" EnglishName="Delete Outlook Mail"/>
+  <Item Name= "归档Outlook邮件" EnglishName="Archive Outlook Mail"/>
+  <Item Name= "清空Outlook缓存" EnglishName="Clear Outlook Mail"/>
+  <Item Name= "数据库" EnglishName="Database"/>
+  <Item Name= "连接" EnglishName="Connect"/>
+  <Item Name= "关闭连接" EnglishName="Disconnect"/>
+  <Item Name= "执行非查询" EnglishName="Execute Non Qurery"/>
+  <Item Name= "执行查询" EnglishName="Execute Query"/>
+  <Item Name= "插入语句" EnglishName="Insert"/>
+  <Item Name= "执行交易" EnglishName="Transaction"/>
+  <Item Name= "FTP" EnglishName="FTP"/>
+  <Item Name= "FTP会话" EnglishName="FTP Session"/>
+  <Item Name= "目录是否存在" EnglishName="Directory Exists"/>
+  <Item Name= "文件是否存在" EnglishName="File Exists"/>
+  <Item Name= "删除" EnglishName="Delete"/>
+  <Item Name= "文件下载" EnglishName="Download File"/>
+  <Item Name= "上传文件" EnglishName="Upload File"/>
+  <Item Name= "枚举对象" EnglishName="Enumerate Objects"/>
+  <Item Name= "Python" EnglishName="Python"/>
+  <Item Name= "执行脚本代码" EnglishName="Invoke Python Script"/>
+  <Item Name= "执行脚本文件" EnglishName="Invoke Python Code"/>
+  <Item Name= "工作流" EnglishName="Workflow"/>
+  <Item Name= "流程图" EnglishName="Flow"/>
+  <Item Name= "流程决策" EnglishName="Flow Decision"/>
+  <Item Name= "流切换" EnglishName="Flow Switch"/>
+  <Item Name= "流程图" EnglishName="Flowchart"/>
+  <Item Name= "状态机" EnglishName="State Machine"/>
+  <Item Name= "最终状态" EnglishName="Final State"/>
+  <Item Name= "状态" EnglishName="State"/>
+  <Item Name= "状态机" EnglishName="StateMachine"/>
+  <Item Name= "异常处理" EnglishName="Error Handling"/>
+  <Item Name= "再次抛出" EnglishName="Rethrow"/>
+  <Item Name= "终止工作流" EnglishName="Terminate Workflow"/>
+  <Item Name= "抛出" EnglishName="Throw"/>
+  <Item Name= "Try Catch异常处理" EnglishName="Try Catch"/>
+  <Item Name= "控制" EnglishName="Control"/>
+  <Item Name= "赋值" EnglishName="Assign"/>
+  <Item Name= "取消作用域" EnglishName="Cancellation Scope"/>
+  <Item Name= "延迟" EnglishName="Delay"/>
+  <Item Name= "Do While循环" EnglishName="Do While"/>
+  <Item Name= "遍历循环" EnglishName="For Each"/>
+  <Item Name= "遍历循环(非泛型集合)" EnglishName="NonGeneric For Each"/>
+  <Item Name= "IF条件" EnglishName="If"/>
+  <Item Name= "并行" EnglishName="Parallel"/>
+  <Item Name= "并行的遍历循环" EnglishName="Parallel For Each"/>
+  <Item Name= "选取" EnglishName="Pick"/>
+  <Item Name= "选取分支" EnglishName="Pick Branch"/>
+  <Item Name= "序列" EnglishName="Sequence"/>
+  <Item Name= "跳出" EnglishName="Break"/>
+  <Item Name= "继续" EnglishName="Continue"/>
+  <Item Name= "切换" EnglishName="Switch"/>
+  <Item Name= "While循环" EnglishName="While"/>
+  <Item Name= "执行" EnglishName="Execute"/>
+  <Item Name= "执行代码" EnglishName="Invoke Code"/>
+  <Item Name= "执行工作流文件" EnglishName="Invoke Workflow File"/>
+  <Item Name= "程序设计" EnglishName="Programming"/>
+  <Item Name= "数据采集" EnglishName="Data Collection"/>
+  <Item Name= "添加" EnglishName="Add To Collection"/>
+  <Item Name= "清除" EnglishName="Clear Collection"/>
+  <Item Name= "存在" EnglishName="Exists In Collection"/>
+  <Item Name= "移除" EnglishName="Remove From Collection"/>
+  <Item Name= "调试" EnglishName="Debug"/>
+  <Item Name= "注释" EnglishName="Comment"/>
+  <Item Name= "注释活动" EnglishName="Comment Activity"/>
+  <Item Name= "输出日志" EnglishName="Log"/>
+  <Item Name= "输出活动日志" EnglishName="ActivityLog"/>
+  <Item Name= "写入行" EnglishName="Write Line"/>
+  <Item Name= "数据表" EnglishName="DataTable"/>
+  <Item Name= "添加数据列" EnglishName="Add Data Column"/>
+  <Item Name= "添加数据行" EnglishName="Add Data Row"/>
+  <Item Name= "构建数据表" EnglishName="Build Datatable"/>
+  <Item Name= "清除数据表" EnglishName="Clear Datatable"/>
+  <Item Name= "过滤数据表" EnglishName="Filter Datatable"/>
+  <Item Name= "单行操作" EnglishName="For Each Row"/>
+  <Item Name= "生成数据表" EnglishName="Generate Datatable"/>
+  <Item Name= "获取行数据" EnglishName="Get Row Item"/>
+  <Item Name= "附加数据表" EnglishName="Join Datatable"/>
+  <Item Name= "查找数据表" EnglishName="Lookup Datatable"/>
+  <Item Name= "合并数据表" EnglishName="Merge Datatable"/>
+  <Item Name= "输出数据表" EnglishName="Output Datatable"/>
+  <Item Name= "删除数据列" EnglishName="Remove Data Column"/>
+  <Item Name= "删除数据行" EnglishName="Remove Data Row"/>
+  <Item Name= "删除重复行" EnglishName="Remove Dulicate Rows"/>
+  <Item Name= "排序数据表" EnglishName="Sort Datatable"/>
+  <Item Name= "系统" EnglishName="System"/>
+  <Item Name= "文件" EnglishName="File"/>
+  <Item Name= "增加行" EnglishName="Append Line"/>
+  <Item Name= "复制文件" EnglishName="Copy File"/>
+  <Item Name= "创建文件夹" EnglishName="Create Directory"/>
+  <Item Name= "创建文件" EnglishName="Create File"/>
+  <Item Name= "删除" EnglishName="Delete"/>
+  <Item Name= "移动文件" EnglishName="Move File"/>
+  <Item Name= "路径存在" EnglishName="Path Exists"/>
+  <Item Name= "读取文本文件" EnglishName="Read Text File"/>
+  <Item Name= "写入文本文件" EnglishName="Write Text File"/>
+  <Item Name= "文件改变事件" EnglishName="File Change Trigger"/>
+  <Item Name= "剪贴板" EnglishName="Clipboard"/>
+  <Item Name= "拷贝选择的文本" EnglishName="Copy Selected Text"/>
+  <Item Name= "从剪贴板获取文本" EnglishName="Get Text From Clipboard"/>
+  <Item Name= "设置剪贴板" EnglishName="Set To Clipboard"/>
+  <Item Name= "应用程序" EnglishName="Application"/>
+  <Item Name= "关闭应用程序" EnglishName="Close Application"/>
+  <Item Name= "获取进程" EnglishName="Get Process"/>
+  <Item Name= "杀死进程" EnglishName="Kill Process"/>
+  <Item Name= "打开应用程序" EnglishName="Open Application"/>
+  <Item Name= "启动进程" EnglishName="Start Process"/>
+  <Item Name= "对话框" EnglishName="Dialog"/>
+  <Item Name= "标注" EnglishName="Call Out"/>
+  <Item Name= "自定义输入" EnglishName="Custom Input"/>
+  <Item Name= "输入对话框" EnglishName="Input Dialog"/>
+  <Item Name= "消息框" EnglishName="Message Box"/>
+  <Item Name= "选择文件" EnglishName="Select File"/>
+  <Item Name= "选择文件夹" EnglishName="Select Folder"/>
+  <Item Name= "环境" EnglishName="Environment"/>
+  <Item Name= "系统提示音" EnglishName="Beep"/>
+  <Item Name= "获取系统路径" EnglishName="Get Environment Path"/>
+  <Item Name= "获取系统变量" EnglishName="Get Environment Variable"/>
+  <Item Name= "获取密码" EnglishName="Get Password"/>
+  <Item Name= "命令行" EnglishName="Command Line"/>
+  <Item Name= "PowerShell" EnglishName="PowerShell"/>
+  <Item Name= "日期时间" EnglishName="DateTime"/>
+  <Item Name= "获取当前日期/时间" EnglishName="Get Date/Get Time"/>
+  <Item Name= "日期时间转换" EnglishName="Convert Date/Convert Time"/>
+  <Item Name= "协调器" EnglishName="Orchestrator"/>
+  <Item Name= "凭证" EnglishName="Credential"/>
+  <Item Name= "获取凭证" EnglishName="Get Credential"/>
+  <Item Name= "设置凭证" EnglishName="Set Credential"/>
+  <Item Name= "用户事件" EnglishName="User Event"/>
+  <Item Name= "监控事件" EnglishName="Monitor"/>
+</Map>

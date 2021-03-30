@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AvailableActivities Name="可用" IsExpanded="true">
+  <Group Name="AI" >
+    <Activity Name="百度通用OCR" Icon="AI/baidu-ocr.png" TypeOf="AIActivity.BaiduOCRActivity,AIActivity" ToolTip="百度通用OCR" />
+    <Activity Name="OCR发票识别" Icon="AI/ocr-ticket.png" TypeOf="AIActivity.OCRInvoiceActivity,AIActivity" ToolTip="票小秘OCR通用发票识别" />
+  </Group>
+  <Group Name="UI 自动化" ToolTip="一些UI自动化的模拟组件">
+    <Group Name="UI元素">
+      <Group Name="鼠标">
+        <Activity Name="单击" Icon="mouse/mouseclick.png" TypeOf="MouseActivity.ClickActivity,MouseActivity" ToolTip="模拟鼠标单击"/>
+        <Activity Name="双击" Icon="mouse/mouseclick.png" TypeOf="MouseActivity.DoubleClickActivity,MouseActivity" ToolTip="模拟鼠标双击" />
+        <Activity Name="悬浮" Icon="mouse/hover.png" TypeOf="MouseActivity.HoverClickActivity,MouseActivity" ToolTip="模拟鼠标悬浮"/>
+        <Activity Name="单击图片" Icon="mouse/mouseclick.png" TypeOf="MouseActivity.Activity.ClickImageActivity,MouseActivity" ToolTip="模拟鼠标单击"/>
+      </Group>
+      <Group Name="键盘">
+        <Activity Name="发送热键" Icon="hotkey/hotkey.png" TypeOf="KeyboardActivity.HotKeyActivity,KeyboardActivity" ToolTip="向选定句柄发送按键事件"/>
+        <Activity Name="输入文本" Icon="hotkey/text.png" TypeOf="KeyboardActivity.TypeIntoActivity,KeyboardActivity" ToolTip="向选定窗口发送文本"/>
+        <Activity Name="输入安全文本" Icon="hotkey/text.png" TypeOf="KeyboardActivity.SecureTextActivity,KeyboardActivity" ToolTip="向选定窗口发送安全文本"/>
+      </Group>
+      <Group Name="控件">
+        <Activity Name="激活" Icon="Control/Activate.png" TypeOf="ControlActivity.Activate,ControlActivity" ToolTip="使您可以激活指定的UI元素。例如，它可用于将窗口带到前台"/>
+        <Activity Name="勾选" Icon="Control/Check.png" TypeOf="ControlActivity.Check,ControlActivity" ToolTip="使选择或清除单选按钮和复选框等其它UI元素"/>
+        <Activity Name="获取文本" Icon="Control/GetText.png" TypeOf="ControlActivity.GetText,ControlActivity" ToolTip="从指定的UI元素中提取文本值"/>
+        <Activity Name="设置文本" Icon="Control/SetText.png" TypeOf="ControlActivity.SetText,ControlActivity" ToolTip="在选定UI对象写入文本"/>
+        <Activity Name="高亮显示" Icon="Control/Highlight.png" TypeOf="ControlActivity.Highlight,ControlActivity" ToolTip="突出显示指定的UI元素"/>
+        <Activity Name="选择项目" Icon="Control/SelectItem.png" TypeOf="ControlActivity.SelectItem,ControlActivity" ToolTip="从组合框或列表框中选择项目。在屏幕上指示元素后，活动中将显示包含所有可用选项的列表。 注意：在运行工作流之前未与之交互的组合框或列表框上使用此活动可能导致活动引发错误。避免此问题的最佳做法是添加Click活动，该活动配置为在执行Select Item活动之前单击目标下拉菜单。"/>
+        <Activity Name="选择多个项目" Icon="Control/SelectMultiItems.png" TypeOf="ControlActivity.SelectMultiItems,ControlActivity" ToolTip="从组合框或列表框中选择多个项目。在屏幕上指示元素后，活动中将显示包含所有可用选项的列表。"/>
+        <Activity Name="设置焦点" Icon="Control/SetFocus.png" TypeOf="ControlActivity.SetActiveFocus,ControlActivity" ToolTip="将键盘焦点设置为指定的UI元素"/>
+      </Group>
+      <Group Name="查找">
+        <!--<Activity Name="锚点"    Icon="Find/AnchorBase.png" TypeOf="FindActivity.AnchorBase,FindActivity"              ToolTip="通过使用其他UI元素作为锚点来搜索UI元素的容器。当可靠的选择器不可用时，应该使用它"/>-->
+        <!--<Activity Name="上下文锚点" Icon="Find/ContextAnchorBase.png" TypeOf="FindActivity.CAAnchor,FindActivity" ToolTip="一个容器，通过使用目标和锚点对来搜索UI元素，以获得更高的精度。此活动相对于Anchor Base活动的优势在于它不需要锚是唯一的"/>-->
+        <Activity Name="UI元素存在性"         Icon="Find/EleExists.png" TypeOf="FindActivity.EleExists,FindActivity"           ToolTip="使您可以验证UI元素是否存在，即使它不可见"/>
+        <!--<Activity Name="UI元素范围"           Icon="Find/EleScope.png" TypeOf="FindActivity.EleScope,FindActivity"             ToolTip="一个容器，使您可以附加到现有UI元素并在其中执行多个操作"/>-->
+        <!--<Activity Name="查找UI子元素"         Icon="Find/FindChildren.png" TypeOf="FindActivity.FindChildren,FindActivity"     ToolTip="根据指定的范围和过滤条件检索子UI元素的集合"/>-->
+        <!--<Activity Name="查找UI元素"           Icon="Find/FindEle.png" TypeOf="FindActivity.FindEle,FindActivity"               ToolTip="等待指定的UI元素出现在屏幕上（位于前台）并将其作为UiElement变量返回。如果要查明元素是否已启用，请使用例如Get Attribute或Wait Attribute等活动以及该aastate属性"/>-->
+        <!--<Activity Name="查找相对元素"         Icon="Find/FindReEle.png" TypeOf="FindActivity.FindReEle,FindActivity"        ToolTip="当可靠的选择器不可用时，可以通过该功能使用相对于固定元素的位置搜索UI元素"/>-->
+        <!--<Activity Name="获取根元素"           Icon="Find/GetAncestor.png" TypeOf="FindActivity.GetAncestor,FindActivity"       ToolTip="检索获取指定UI元素的上级UI元素"/>-->
+        <!--<Activity Name="屏幕选择UI"           Icon="Find/IndicateScreen.png" TypeOf="FindActivity.IndicateScreen,FindActivity" ToolTip="允许用户在运行工作流程时在屏幕上选择UI元素或区域"/>-->
+        <Activity Name="等待元素消失"         Icon="Find/EleVanish.png" TypeOf="FindActivity.WaitEleVanish,FindActivity"           ToolTip="等待指定的UI元素从屏幕上消失"/>
+        <Activity Name="等待元素出现"         Icon="Find/EleAppear.png" TypeOf="FindActivity.WaitEleAppear,FindActivity"           ToolTip="等待指定的UI元素从屏幕上出现"/>
+      </Group>
+      <Group Name="属性">
+        <Activity Name="获取属性" Icon="Attribute/GetAttr.png" TypeOf="AttributeActivity.GetAttr,AttributeActivity" ToolTip="检索UI元素的指定属性的值"/>
+        <Activity Name="等待属性" Icon="Attribute/WaitAttr.png" TypeOf="AttributeActivity.WaitAttr,AttributeActivity" ToolTip="等待UI元素属性的值等于指定字符串"/>
+        <Activity Name="获取坐标" Icon="Attribute/GetPos.png" TypeOf="AttributeActivity.GetPos,AttributeActivity" ToolTip="检索指定UI元素的边界矩形"/>
+        <Activity Name="设置剪裁区域" Icon="Attribute/SetClipRegion.png" TypeOf="AttributeActivity.SetClipRegion,AttributeActivity" ToolTip="设置UI元素的剪切区域"/>
+        <Activity Name="截图" Icon="Attribute/TakeScreenShot.png" TypeOf="AttributeActivity.TakeScreenShot,AttributeActivity" ToolTip="获取指定UI元素的屏幕截图"/>
+      </Group>
+      <Group Name="事件">
+        <Activity Name="捕捉元素显示" Icon="Event/ele-appear.png" TypeOf="EventActivity.EleAppear,EventActivity" ToolTip="一个可以在指定的UI元素显示时执行一个或多个操作的容器"/>
+        <Activity Name="捕捉元素消失" Icon="Event/ele-vanish.png" TypeOf="EventActivity.EleVanish,EventActivity" ToolTip="一个可以在指定的UI元素消失后执行一个或多个操作的容器"/>
+      </Group>
+    </Group>
+    <Group Name="文本">
+      <!--<Group Name="鼠标">
+        <Activity Name="点击文本" Icon="ClickText/click.png" TypeOf="TextActivity.ClickTextActivity,TextActivity" ToolTip="在UI元素中检索指定的字符串，并点击它"/>
+        <Activity Name="双击文本" Icon="ClickText/click.png" TypeOf="TextActivity.DoubleClickActivity,TextActivity" ToolTip="在UI元素中检索指定的字符串，并双击它"/>
+        <Activity Name="悬浮文本" Icon="ClickText/hower.png" TypeOf="TextActivity.HoverTextActivity,TextActivity" ToolTip="在UI元素中检索指定的字符串，并悬停在它上面"/>
+      </Group>-->
+      <Group Name="屏幕抓取">
+        <Activity Name="提取结构化数据" Icon="ClickText/extract.png" TypeOf="TextActivity.ExtractDataActivity,TextActivity" ToolTip="从指定的web页面提取数据。您可以通过在属性面板的ExtractMetadata字段中提供XML字符串来指定要提取哪些信息。通过使用数据抓取向导，可以使用设置的所有属性轻松生成。"/>
+        <!--<Activity Name="查找字符串位置" Icon="ClickText/find.png" TypeOf="TextActivity.FindPositionActivity,TextActivity" ToolTip="在UI元素中搜索给定的字符串，并返回另一个UI元素，该元素将剪切区域设置为该字符串的屏幕位置。"/>-->
+        <!--<Activity Name="获取全文本" Icon="ClickText/get-text.png" TypeOf="TextActivity.GetFullTextActivity,TextActivity" ToolTip="使用全文屏幕抓取方法从指定的UI元素中提取字符串及其信息。在执行屏幕抓取时，还可以自动生成此活动以及容器。"/>-->
+        <!--<Activity Name="获取可视化文本" Icon="ClickText/get-text.png" TypeOf="TextActivity.GetVisibleTextActivity,TextActivity" ToolTip="使用本机屏幕抓取方法从指定的UI元素中提取字符串及其信息。在执行屏幕抓取时，还可以自动生成此活动以及容器。"/>-->
+      </Group>
+      <Group Name="解析">
+        <Activity Name="反序列化Json字符串" Icon="Text/DeserializeJSON.png" TypeOf="TextActivity.DeserializeJSONActivity,TextActivity" ToolTip="将Json字符串反序列化为JObject对象"/>
+      </Group>
+      <!--<Group Name="查找">
+        <Activity Name="查找文本" Icon="ClickText/exist.png" TypeOf="TextActivity.FindTextActivity,TextActivity" ToolTip="检查是否在给定的UI元素中找到文本"/>
+      </Group>-->
+    </Group>
+    <Group Name="窗口">
+      <Activity Name="关闭窗口" Icon="Window/WindowClose.png" TypeOf="WindowActivity.WindowClose,WindowActivity" ToolTip="关闭指示的窗口"/>
+      <Activity Name="获取活动窗口" Icon="Window/WindowActive.png" TypeOf="WindowActivity.WindowActive,WindowActivity" ToolTip="检索当前活动窗口，并允许您在其中执行多个操作"/>
+      <Activity Name="最大化窗口" Icon="Window/WindowMaxi.png" TypeOf="WindowActivity.WindowMaxi,WindowActivity" ToolTip="最大化指示的窗口"/>
+      <Activity Name="最小化窗口" Icon="Window/WindowMin.png" TypeOf="WindowActivity.WindowMin,WindowActivity" ToolTip="最小化指示的窗口"/>
+      <Activity Name="隐藏窗口" Icon="Window/WindowHide.png" TypeOf="WindowActivity.WindowHide,WindowActivity" ToolTip="隐藏指示的窗口，使窗口完全不可见"/>
+      <Activity Name="显示窗口" Icon="Window/WindowShow.png" TypeOf="WindowActivity.WindowShow,WindowActivity" ToolTip="显示并激活指定的窗口"/>
+      <Activity Name="恢复窗口" Icon="Window/WindowRestore.png" TypeOf="WindowActivity.WindowRestore,WindowActivity" ToolTip="将指定窗口恢复为原始大小和位置"/>
+      <Activity Name="移动窗口" Icon="Window/WindowMove.png" TypeOf="WindowActivity.WindowMove,WindowActivity" ToolTip="更改指示窗口的位置和尺寸"/>
+      <Activity Name="附加窗口" Icon="Window/WindowAttach.png" TypeOf="WindowActivity.WindowAttach,WindowActivity" ToolTip="可以附加到已打开的窗口并在其中执行多个操作的容器，使用Desktop记录器时也会自动生成此活动"/>
+      <Activity Name="查找窗口" Icon="Window/findwindow.png" TypeOf="WindowActivity.FindWindowActivity,WindowActivity" ToolTip="查找指定的窗口"/>
+    </Group>
+    <Group Name="浏览器">
+      <Activity Name="打开浏览器" Icon="Browser/OpenBrowser.png"   TypeOf="BrowserActivity.OpenBrowser,BrowserActivity" ToolTip="在指定的URL上打开浏览器并在其中执行多个活动"/>
+      <Activity Name="附加浏览器" Icon="Browser/OpenBrowser.png" TypeOf="BrowserActivity.AttachBrowser,BrowserActivity" ToolTip="附加到已打开的浏览器并在其中执行多个操作"/>
+      <Activity Name="获取新页面" Icon="Browser/OpenBrowser.png" TypeOf="BrowserActivity.NewBrowser,BrowserActivity" ToolTip="获取最新打开的浏览器页面，需要配合打开浏览器
+                或附加浏览器在活动流程中使用,以获得跳转的新标签页面"/>
+      <Activity Name="回退"       Icon="Browser/GoBack.png"        TypeOf="BrowserActivity.GoBack,BrowserActivity" ToolTip="返回指定浏览器的历史列表"/>
+      <Activity Name="前进"       Icon="Browser/GoForward.png"     TypeOf="BrowserActivity.GoForward,BrowserActivity" ToolTip="在指定浏览器的历史列表中前进"/>
+      <Activity Name="导航"       Icon="Browser/NavigateTo.png"    TypeOf="BrowserActivity.NavigateTo,BrowserActivity" ToolTip="将浏览器导航到指定的URL"/>
+      <Activity Name="刷新"       Icon="Browser/RefreshBrowser.png" TypeOf="BrowserActivity.Refresh,BrowserActivity" ToolTip="重新加载当前在指定浏览器中显示的网页"/>
+      <Activity Name="主页"       Icon="Browser/GoHome.png"        TypeOf="BrowserActivity.GoHome,BrowserActivity" ToolTip="导航到当前主页或开始页面"/>
+      <Activity Name="关闭页面"   Icon="Browser/CloseTab.png"      TypeOf="BrowserActivity.CloseTab,BrowserActivity" ToolTip="关闭浏览器页面"/>
+      <Activity Name="注入JS脚本" Icon="Browser/InsertJS.png"      TypeOf="BrowserActivity.InsertJS,BrowserActivity" ToolTip="在与UiElement对应的网页的上下文中执行JavaScript代码"/>
+      <Activity Name="设置Web属性" Icon="Browser/SetWebAttr.png"   TypeOf="BrowserActivity.SetWebAttr,BrowserActivity" ToolTip="设置Input的值"/>
+    </Group>
+    <Group Name="图像操作">
+      <Activity Name="图片转换" Icon="Image/base64.png" TypeOf="ImageOperaActivity.ImageConvertBase64Activity,ImageOperaActivity" ToolTip="图片转换为base64。"/>
+    </Group>
+  </Group>
+
+  <Group Name="网络操作">
+    <Group Name="Http请求">
+      <Activity Name="Get请求" Icon="NetWork/get-request.png"   TypeOf="NetWorkActivity.Get,NetWorkActivity" ToolTip="GET发送请求及接受响应(从指定的资源请求数据)"/>
+      <Activity Name="Post请求" Icon="NetWork/post-request.png"   TypeOf="NetWorkActivity.Post,NetWorkActivity" ToolTip="POST发送请求及接受响应(从指定的资源请求数据)"/>
+    </Group>
+    <Group Name="服务">
+      <Activity Name="Http服务" Icon="HttpServer\HttpServer.png" TypeOf="HttpServerActivity.HttpServerActivity,HttpServerActivity" ToolTip="监听Http服务"/>
+    </Group>
+  </Group>
+
+  <Group Name="应用程序集成">
+    <Group Name="Word">
+      <Group Name="过程">
+        <Activity Name="打开/创建文档"  Icon="word/create.png" TypeOf="WordPlugins.WordCreate,WordPlugins" ToolTip="打开本地Word文档或新建Word新文档"/>
+        <Activity Name="文档保存/另存为" Icon="word/save.png" TypeOf="WordPlugins.WordSave,WordPlugins" ToolTip="Word文档保存/另存为新路径"/>
+      </Group>
+      <Group Name="写入">
+        <Activity Name="写入文本"       Icon="word/text.png"  TypeOf="WordPlugins.WriteText,WordPlugins" ToolTip="在当前Word文档光标位置写入文本"/>
+        <Activity Name="换行/分页"      Icon="word/newline.png" TypeOf="WordPlugins.PageAndNewline,WordPlugins" ToolTip="在当前Word文档光标位置回车换行/新页面"/>
+        <Activity Name="写入文件"       Icon="word/writefile.png" TypeOf="WordPlugins.InsertFile,WordPlugins" ToolTip="将已存在的本地Word文档全部内容写入当前Word文档光标处"/>
+        <Activity Name="书签/超链接/图片" Icon="word/mark.png" TypeOf="WordPlugins.MarkLink,WordPlugins" ToolTip="当前Word文档光标位置插入书签/超链接/图片"/>
+        <Activity Name="退格删除"       Icon="word/backspace.png" TypeOf="WordPlugins.Backspace,WordPlugins" ToolTip="在当前Word文档光标位置退格删除N次"/>
+        <Activity Name="复制/粘贴"      Icon="word/copy.png" TypeOf="WordPlugins.CopyPaste,WordPlugins" ToolTip="复制:将选定内容复制到粘贴板，通常配合'光标移动'功能使用 粘贴:将粘贴板内容写入当前Word文档光标位置"/>
+        <Activity Name="全选"           Icon="word/wholestory.png" TypeOf="WordPlugins.WholeStory,WordPlugins" ToolTip="将Word文档全部内容设置为选取状态"/>
+        <Activity Name="获取文档内容"   Icon="word/getcontent.png" TypeOf="WordPlugins.GetContent,WordPlugins" ToolTip="获取Word文档中全部文字"/>
+      </Group>
+      <Group Name="光标">
+        <Activity Name="上下左右移动" Icon="word/move1.png" TypeOf="WordPlugins.CursorMove,WordPlugins" ToolTip="当前Word文档光标上下移动并可选择内容是否选中"/>
+        <Activity Name="移动列项"     Icon="word/move2.png" TypeOf="WordPlugins.CursorMoveMenu,WordPlugins" ToolTip="包含光标移动到文档开头/结尾/下一页功能"/>
+      </Group>
+      <Group Name="设置">
+        <Activity Name="字体与页面属性" Icon="word/property.png" TypeOf="WordPlugins.Settings,WordPlugins" ToolTip="设置当前文档选中文本的字体格式/页面边距/页面对齐方式"/>
+      </Group>
+    </Group>
+
+    <Group Name="Excel">
+      <Group Name="过程">
+        <Activity Name="打开/保存" Icon="excel/create.png" TypeOf="ExcelPlugins.ExcelCreate,ExcelPlugins" ToolTip="打开本地Excel文档或新建Excel新文档并保存/另存为新路径"/>
+      </Group>
+      <Group Name="工作表">
+        <Activity Name="打开/删除工作表" Icon="excel/opensheet.png"  TypeOf="ExcelPlugins.OpenDelSheet,ExcelPlugins" ToolTip="打开或删除当前活动Excel文档中的指定工作表"/>
+        <Activity Name="新建工作表" Icon="excel/newsheet.png" TypeOf="ExcelPlugins.NewSheet,ExcelPlugins" ToolTip="在当前Excel文档中新建工作表"/>
+        <Activity Name="工作表重命名" Icon="excel/renamesheet.png" TypeOf="ExcelPlugins.RenameSheet,ExcelPlugins" ToolTip="当前Excel文档中对已存在的工作表进行重命名"/>
+      </Group>
+      <Group Name="单元格">
+        <Activity Name="合并单元格" Icon="excel/cellmerge.png" TypeOf="ExcelPlugins.CellMerge,ExcelPlugins" ToolTip="指定单元格区域进行单元格合并操作"/>
+        <Activity Name="获取单元格内容" Icon="excel/getcell.png" TypeOf="ExcelPlugins.CellGet,ExcelPlugins" ToolTip="获取指定位置单元格的文本内容"/>
+        <Activity Name="设置单元格内容" Icon="excel/setcell.png" TypeOf="ExcelPlugins.CellSet,ExcelPlugins" ToolTip="设置指定位置单元格的文本内容"/>
+      </Group>
+      <Group Name="行/列">
+        <Activity Name="行/列操作" Icon="excel/rowcol.png" TypeOf="ExcelPlugins.RowCol,ExcelPlugins" ToolTip="包括对行或列的隐藏/新增/删除操作"/>
+      </Group>
+      <Group Name="区域">
+        <Activity Name="删除区域"     Icon="excel/rangedelete.png"  TypeOf="ExcelPlugins.DeleteRange,ExcelPlugins" ToolTip="指定单元格区域进行删除操作"/>
+        <Activity Name="粘贴/复制"    Icon="excel/copy.png"         TypeOf="ExcelPlugins.CopyPaste,ExcelPlugins" ToolTip="选定区域的数据复制到粘贴板写入到其它区域中"/>
+        <Activity Name="读取区域内容" Icon="excel/rangeread.png"    TypeOf="ExcelPlugins.ReadRange,ExcelPlugins" ToolTip="指定单元格区域复制到DataTable变量中"/>
+        <Activity Name="写入区域内容" Icon="excel/rangewrite.png"   TypeOf="ExcelPlugins.WriteRange,ExcelPlugins" ToolTip="将DataTable变量中的数据写入到指定区域"/>
+      </Group>
+      <Group Name="VBA">
+        <Activity Name="执行VBA" Icon="excel/vba.png" TypeOf="ExcelPlugins.RunVBA,ExcelPlugins"  ToolTip="指定EXCEL中存在的VBA脚本赋于参数运行并可取得返回值"/>
+      </Group>
+      <Group Name="设置">
+        <Activity Name="区域设置" Icon="excel/setting.png" TypeOf="ExcelPlugins.AreaSetting,ExcelPlugins"  ToolTip="对选定单元格区域进行文字格式/行高列宽/边框/内容对齐方式设置"/>
+      </Group>
+      <Group Name="后台操作">
+        <Activity Name="Excel后台读取区域内容" Icon="excel/rangeread.png"    TypeOf="ExcelPlugins.ExcelReadRange,ExcelPlugins" ToolTip="后台指定Excel单元格区域复制到DataTable变量中"/>
+        <Activity Name="Excel后台写入区域内容" Icon="excel/rangewrite.png"    TypeOf="ExcelPlugins.ExcelWriteRange,ExcelPlugins" ToolTip="后台将DataTable变量中的数据写入到指定Excel单元格区域"/>
+        <Activity Name="Excel后台获取单元格内容" Icon="excel/getcell.png"    TypeOf="ExcelPlugins.ExcelReadCell,ExcelPlugins" ToolTip="后台获取指定Excel中指定位置单元格的文本内容"/>
+        <Activity Name="Excel后台设置单元格内容" Icon="excel/setcell.png"    TypeOf="ExcelPlugins.ExcelWriteCell,ExcelPlugins" ToolTip="后台设置指定Excel中指定位置单元格的文本内容"/>
+        <Activity Name="Excel后台追加区域内容" Icon="excel/rangewrite.png" TypeOf="ExcelPlugins.ExcelAppendRange,ExcelPlugins" ToolTip="后台将DataTable变量中的数据追加到指定Excel"/>
+      </Group>
+    </Group>
+    <Group Name="CSV">
+      <Activity Name="CSV读取" Icon="CSV/csv-read.png" TypeOf="CSVPlugins.ReadCSV, ExcelPlugins" ToolTip="将CVS文件内容读取到DataTable变量中"/>
+      <Activity Name="CSV写入" Icon="CSV/csv-write.png" TypeOf="CSVPlugins.WriteCSV, ExcelPlugins" ToolTip="DataTable变量中内容写入到指定CVS文件中"/>
+      <Activity Name="CSV追加" Icon="CSV/csv-append.png" TypeOf="CSVPlugins.AppendCSV, ExcelPlugins" ToolTip="DataTable变量中内容追加到指定CVS文件末尾"/>
+    </Group>
+    <Group Name="Mail">
+      <Group Name="SMTP">
+        <Activity Name="发送SMTP邮件" Icon="Mail/SendMail.png" TypeOf="MailActivity.SendMail, MailActivity" ToolTip="使用SMTP协议发送电子邮件"/>
+      </Group>
+      <Group Name="POP3">
+        <Activity Name="获取POP3邮件消息" Icon="Mail/GetMail.png" TypeOf="MailActivity.GetPOP3Mail, MailActivity" ToolTip="从指定的服务器检索POP3电子邮件。"/>
+      </Group>
+      <Group Name="IMAP">
+        <Activity Name="获取IMAP邮件" Icon="Mail/GetMail.png" TypeOf="MailActivity.GetIMAPMail, MailActivity" ToolTip="从指定的服务器检索IMAP电子邮件"/>
+        <Activity Name="移动IMAP邮件" Icon="Mail/MoveMail.png" TypeOf="MailActivity.MoveIMAPMail, MailActivity" ToolTip="将IMAP电子邮件移动到指定的文件夹"/>
+      </Group>
+      <Activity Name="保存邮件" Icon="Mail/SaveMail.png" TypeOf="MailActivity.SaveMail, MailActivity" ToolTip="将电子邮件保存到指定的文件夹。如果该文件夹不存在，则创建该文件夹。如果未指定文件夹，则下载将保存在项目文件夹中。将覆盖指定文件夹中与邮件同名的文件"/>
+      <Activity Name="保存附件" Icon="Mail/SaveMailAttachments.png" TypeOf="MailActivity.SaveMailAttachments, MailActivity" ToolTip="将邮件附件保存到指定的文件夹。如果该文件夹不存在，则创建该文件夹。如果未指定文件夹，则下载将保存在项目文件夹中。将覆盖指定文件夹中与附件同名的文件"/>
+      <Activity Name="保存图片" Icon="Mail/GetImgs.png" TypeOf="MailActivity.GetMailImgs, MailActivity" ToolTip="将邮件图片保存到指定的文件夹。如果该文件夹不存在，则创建该文件夹。将覆盖指定文件夹中与附件同名的图片"/>
+
+      <Group Name="OutLook">
+        <Activity Name="获取Outlook邮件" Icon="Mail/outlook.png" TypeOf="MailActivity.Outlook.GetOutlookMailMessagesActivity, MailActivity" ToolTip="从Outlook获取电子邮件"/>
+        <Activity Name="移动Outlook邮件" Icon="Mail/move-outlook-mail.png" TypeOf="MailActivity.Outlook.MoveOutlookMessageActivity, MailActivity" ToolTip="将Outlook电子邮件移动到指定的文件夹"/>
+        <Activity Name="回复Outlook邮件" Icon="Mail/reply-outlook-mail.png" TypeOf="MailActivity.Outlook.ReplyToOutlookMailMessageActivity, MailActivity" ToolTip="从Outlook回复电子邮件"/>
+        <Activity Name="发送Outlook邮件" Icon="Mail/send-outlook-mail.png" TypeOf="MailActivity.Outlook.SendOutlookMailActivity, MailActivity" ToolTip="从Outlook发送电子邮件"/>
+        <Activity Name="保存Outlook附件" Icon="Mail/save-outlook-mail.png" TypeOf="MailActivity.Outlook.SaveOutlookAttachementsActivity, MailActivity" ToolTip="保存Outlook电子邮件的附件"/>
+        <Activity Name="删除Outlook邮件" Icon="Mail/delete-mail.png" TypeOf="MailActivity.Outlook.DeleteOutlookMailItemActivity, MailActivity" ToolTip="删除指定的Outlook电子邮件,将其放入已删除邮件目录中，若是已经在已删除邮件目录中，则彻底删除"/>
+        <Activity Name="归档Outlook邮件" Icon="Mail/archive-mail.png" TypeOf="MailActivity.Outlook.ArchiveOutlookMailsActivity, MailActivity" ToolTip="归档Outlook电子邮件"/>
+        <Activity Name="清空Outlook缓存" Icon="Mail/clear-mail-cache.png" TypeOf="MailActivity.Outlook.ClearOutlookCacheActivity, MailActivity" ToolTip="清空Outlook电子邮件的缓存信息"/>
+      </Group>
+    </Group>
+    <Group Name="数据库">
+      <Activity Name="连接"     Icon="Database/connect.png" TypeOf="DatabaseActivity.Connect, DatabaseActivity" ToolTip="使用标准连接字符串连接到数据库"/>
+      <Activity Name="关闭连接" Icon="Database/disconnect.png" TypeOf="DatabaseActivity.Disconnect, DatabaseActivity" ToolTip="关闭与数据库的连接"/>
+      <Activity Name="执行非查询" Icon="Database/noquery.png" TypeOf="DatabaseActivity.ExecNoQuery, DatabaseActivity" ToolTip="在数据库上执行非查询语句。对于UPDATE，INSERT和DELETE语句，返回值是受命令影响的行数。对于所有其他类型的语句，返回值为-1"/>
+      <Activity Name="执行查询"        Icon="Database/query.png" TypeOf="DatabaseActivity.ExecQuery, DatabaseActivity" ToolTip="对数据库执行查询并返回查询结果"/>
+      <Activity Name="插入语句"       Icon="Database/insert.png" TypeOf="DatabaseActivity.ExecInsert, DatabaseActivity" ToolTip="对数据库执行插入操作"/>
+      <Activity Name="执行交易"  Icon="Database/transaction.png" TypeOf="DatabaseActivity.Transaction, DatabaseActivity" ToolTip="连接到数据库并具有可以与数据库执行多个事务的Sequence。如果UseTransaction设置为true，则包含的操作将在单个事务中执行，如果没有任何失败，则在最后应用。
+                如果UseTransaction设置为false，则单独提交所有操作。此活动结束时，将关闭与数据库的连接。此活动返回DatabaseConnection变量"/>
+    </Group>
+    <Group Name="FTP">
+      <Activity Name="FTP会话"      Icon="FTP/ftp-session.png" TypeOf="FTPActivity.WithFtpSession, FTPActivity" ToolTip="实现FTP连接以及流程运行的父窗口"/>
+      <Activity Name="目录是否存在" Icon="FTP/exist-directory.png" TypeOf="FTPActivity.DirectoryExists, FTPActivity" ToolTip="检查FTP服务器上是否存在某个目录"/>
+      <Activity Name="文件是否存在" Icon="FTP/exist-file.png" TypeOf="FTPActivity.FileExists, FTPActivity" ToolTip="检查FTP服务器上是否存在指定文件"/>
+      <Activity Name="删除"         Icon="FTP/delete.png" TypeOf="FTPActivity.Delete, FTPActivity" ToolTip="删除指定位置的文件或文件夹"/>
+      <Activity Name="文件下载"     Icon="FTP/file-download.png" TypeOf="FTPActivity.DownloadFiles, FTPActivity" ToolTip="FTP服务器指定目录上下载文件"/>
+      <Activity Name="上传文件"     Icon="FTP/file-upload.png" TypeOf="FTPActivity.UploadFiles, FTPActivity" ToolTip="将本地文件上传到FTP服务器"/>
+      <Activity Name="枚举对象"     Icon="FTP/enum-object.png" TypeOf="FTPActivity.EnumerateObjects, FTPActivity" ToolTip="枚举对象"/>
+    </Group>
+    <!--<Group Name="Python">
+      <Activity Name="执行脚本代码" Icon="WorkflowUtils/invoke-python-code.png"  TypeOf="WorkflowUtils.InvokePythonScriptActivity,WorkflowUtils" ToolTip="同步执执行Python脚本代码，支持传递参数"/>
+      <Activity Name="执行脚本文件" Icon="WorkflowUtils/invoke-python-file.png"  TypeOf="WorkflowUtils.InvokePythonFileActivity,WorkflowUtils" ToolTip="同步执执行Python脚本文件，支持传递参数"/>
+    </Group>-->
+  </Group>
+
+  <Group Name="工作流" IsSortable="True">
+    <Group Name="流程图">
+      <Activity Name="流程决策" IsSystem="true" TypeOf="FlowDecision" ToolTip="具有两个结果的条件节点"/>
+      <Activity Name="流切换" IsSystem="true" TypeOf="FlowSwitch" ToolTip="具有多个结果的条件节点"/>
+      <Activity Name="流程图" IsSystem="true" TypeOf="Flowchart" ToolTip="使用流程图进行工作流创建"/>
+    </Group>
+    <Group Name="状态机" >
+      <Activity Name="最终状态" IsSystem="true" TypeOf="FinalState" IsFinalState="true"  ToolTip="状态机中的终止状态实例，是一个不能再次“转换”的状态"/>
+      <Activity Name="状态" IsSystem="true" TypeOf="State" ToolTip="状态机中的状态实例，当符合设定条件时将转换到另一状态"/>
+      <Activity Name="状态机" IsSystem="true" TypeOf="StateMachine" ToolTip="使用状态机进行工作流创建"/>
+    </Group>
+    <Group Name="异常处理" >
+      <Activity Name="再次抛出" IsSystem="true" TypeOf="Rethrow" ToolTip="抛出在先前的异常处理模块中捕获的异常"/>
+      <Activity Name="终止工作流" IsSystem="true" TypeOf="TerminateWorkflow" ToolTip="终止正在运行的工作流实例" />
+      <Activity Name="抛出" IsSystem="true" TypeOf="Throw" ToolTip="抛出异常"/>
+      <Activity Name="Try Catch异常处理" IsSystem="true" TypeOf="TryCatch" ToolTip="运行工作流，当发生异常时捕获异常并进行异常处理" />
+    </Group>
+    <Group Name="控制" >
+      <Activity Name="赋值" IsSystem="true" TypeOf="Assign" ToolTip="设置工作流中变量的值"/>
+      <Activity Name="取消作用域" IsSystem="true" TypeOf="CancellationScope" ToolTip="若Body中的工作流取消执行，则会执行CancellationHandler中的内容，常与并行活动配合使用"/>
+      <Activity Name="延迟" IsSystem="true" TypeOf="Delay" ToolTip="将工作流的执行延迟指定的时长"/>
+      <Activity Name="Do While循环" IsSystem="true" TypeOf="DoWhile" ToolTip="首先执行包含的活动，然后在条件为true时执行循环"/>
+      <!--<Activity Name="遍历循环" IsSystem="true" TypeOf="ForEach" ToolTip="对枚举的每个元素执行同样的一系列活动"/>-->
+      <Activity Name="遍历循环" Icon="System/ForEach.png" TypeOf="ControlActivity.ForEach,ControlActivity" ToolTip="对枚举的每个元素执行同样的一系列活动"/>
+      <Activity Name="跳出" Icon="System/Break.png" TypeOf="ControlActivity.Break" ToolTip="跳出当前循环"/>
+      <Activity Name="继续" Icon="System/Continue.png" TypeOf="ControlActivity.Continue" ToolTip="继续当前循环"/>
+      <Activity Name="IF条件" IsSystem="true" TypeOf="If" ToolTip="判断条件，若为True，则执行Then中的内容，否则执行Else中的内容"/>
+      <Activity Name="并行" IsSystem="true" TypeOf="Parallel" ToolTip="并行异步执行子活动"/>
+      <Activity Name="并行的遍历循环" IsSystem="true" TypeOf="ParallelForEach" ToolTip="对枚举的每个元素并行异步执行一系列活动"/>
+      <Activity Name="选取" IsSystem="true" TypeOf="Pick" ToolTip="基于事件的控制流容器，与选取分支一起使用"/>
+      <Activity Name="选取分支" IsSystem="true" TypeOf="PickBranch" ToolTip="选取活动中的潜在执行路径"/>
+      <Activity Name="序列" IsSystem="true" TypeOf="Sequence" ToolTip="根据前后顺序执行一组子活动"/>
+      <Activity Name="切换" IsSystem="true" TypeOf="Switch" ToolTip="提供多个分支，根据运行时所满足的条件选取对应的分支执行"/>
+      <Activity Name="While循环" IsSystem="true" TypeOf="While" ToolTip="首先进行条件判断，在条件为true时执行子活动循环"/>
+    </Group>
+    <Group Name="执行" >
+      <Activity Name="执行代码" Icon="WorkflowUtils/invoke-code.png"  TypeOf="WorkflowUtils.InvokeCodeActivity,WorkflowUtils" ToolTip="同步执行VB.Net代码，支持传递参数"/>
+      <Activity Name="执行工作流文件" Icon="WorkflowUtils/invoke-xaml-file.png"  TypeOf="WorkflowUtils.InvokeWorkflowFileActivity,WorkflowUtils" ToolTip="同步执行一个工作流文件，支持传递参数"/>
+    </Group>
+  </Group>
+  <Group Name="程序设计" >
+    <Group Name="数据采集">
+      <Activity Name="添加" IsSystem="true" TypeOf="AddToCollection" ToolTip="将项添加到指定的集合。"/>
+      <Activity  Name="清除" IsSystem="true" TypeOf="ClearCollection" ToolTip="清除指定的项集合。" />
+      <Activity  Name="存在" IsSystem="true" TypeOf="ExistsInCollection" ToolTip="指示给定集合中是否存在给定项。" />
+      <Activity  Name="移除" IsSystem="true" TypeOf="RemoveFromCollection" ToolTip="从指定集合中移除项。" />
+    </Group>
+    <Group Name="调试">
+      <Activity Name="注释" Icon="WorkflowUtils/comment.png"  TypeOf="WorkflowUtils.CommentActivity,WorkflowUtils" ToolTip="添加一个注释到工作流"/>
+      <Activity Name="注释活动" Icon="WorkflowUtils/comment.png"  TypeOf="WorkflowUtils.CommentOutActivity,WorkflowUtils" ToolTip="一个容器，放入里面的活动将不被执行"/>
+      <Activity Name="输出日志" Icon="WorkflowUtils/log-message.png"  TypeOf="WorkflowUtils.LogMessageActivity,WorkflowUtils" ToolTip="打印日志到输出窗口及日志文件中"/>
+      <Activity Name="输出活动日志" Icon="WorkflowUtils/log-message.png"  TypeOf="WorkflowUtils.LogActivityInfoActivity,WorkflowUtils" ToolTip="打印当前执行到的活动日志到输出窗口及日志文件中"/>
+      <Activity Name="写入行" IsSystem="true" TypeOf="WriteLine" ToolTip="将指定的字符串写入输出窗口"/>
+    </Group>
+    <Group Name="数据表">
+      <Activity Name="添加数据列" Icon="DataTable/add-data-column.png"  TypeOf="DataTableActivity.AddDataColumn,   DataTableActivity" ToolTip="将DataColumn添加到指定的DataTable"/>
+      <Activity Name="添加数据行" Icon="DataTable/add-data-row.png"  TypeOf="DataTableActivity.AddDataRow,      DataTableActivity" ToolTip="将DataRow添加到指定的DataTable"/>
+      <Activity Name="构建数据表" Icon="DataTable/build-data-table.png"  TypeOf="DataTableActivity.BuildDataTable,  DataTableActivity" ToolTip="根据指定的模式创建DataTable"/>
+      <Activity Name="清除数据表" Icon="DataTable/clear-data-table.png"  TypeOf="DataTableActivity.ClearDataTable,  DataTableActivity" ToolTip="清除指定DataTable中的所有数据"/>
+      <Activity Name="过滤数据表" Icon="DataTable/filter-data-table.png"  TypeOf="DataTableActivity.FilterDataTable, DataTableActivity" ToolTip="允许您DataTable通过在“ 过滤器向导”窗口中指定条件来过滤变量。活动可以根据向导中指定的逻辑条件保留或删除行或列。
+                活动正文包含“ 过滤器向导”按钮，以便您可以随时访问向导并自定义设置"/>
+      <!--<Activity Name="单行操作"   Icon="DataTable/for-each-row.png"  TypeOf="DataTableActivity.ForEachRow,      DataTableActivity" ToolTip="对指定DataTable变量中的每一行执行一次操作"/>-->
+      <Activity Name="单行操作"   Icon="DataTable/for-each-row.png"  TypeOf="ControlActivity.ForEachRow,      ControlActivity" ToolTip="对指定DataTable变量中的每一行执行一次操作"/>
+      <Activity Name="生成数据表" Icon="DataTable/generate-data-table.png"  TypeOf="DataTableActivity.GenerateDataTable,DataTableActivity" ToolTip="从非结构化数据生成DataTable变量。通过此活动，您可以根据生成的表选择列和行分隔符。"/>
+      <Activity Name="获取行数据" Icon="DataTable/get-row-item.png"  TypeOf="DataTableActivity.GetRowItem,      DataTableActivity" ToolTip="根据指定的列从DataRow变量中获取值"/>
+      <Activity Name="附加数据表" Icon="DataTable/join-data-table.png"  TypeOf="DataTableActivity.JoinDataTables,  DataTableActivity" ToolTip="根据JoinType属性中指定的Join规则，使用彼此相同的值组合来自两个表的行"/>
+      <Activity Name="查找数据表" Icon="DataTable/lookup-data-table.png"  TypeOf="DataTableActivity.LookupDataTable, DataTableActivity" ToolTip="此活动使您可以搜索指定的提供值，DataTable并返回找到它的RowIndex。
+                此活动还可以帮助您返回在单元格中找到的值，该值具有在RowIndex属性中指定的行坐标和在“ 目标列”属性类别中指定的列坐标。"/>
+      <Activity Name="合并数据表" Icon="DataTable/merge-data-table.png"  TypeOf="DataTableActivity.MergeDataTable,  DataTableActivity" ToolTip="将指定的DataTable与当前DataTable合并，
+                指示是否保留更改以及如何处理当前DataTable中缺少的模式"/>
+      <Activity Name="输出数据表" Icon="DataTable/output-data-table.png"  TypeOf="DataTableActivity.OutputDataTable, DataTableActivity" ToolTip="使用CSV格式将DataTable写入字符串"/>
+      <Activity Name="删除数据列" Icon="DataTable/remove-data-column.png"  TypeOf="DataTableActivity.RemoveDataColumn,DataTableActivity" ToolTip="从指定的DataTable中删除DataColumn"/>
+      <Activity Name="删除数据行" Icon="DataTable/remove-data-row.png"  TypeOf="DataTableActivity.RemoveDataRow,   DataTableActivity" ToolTip="从指定的DataTable中删除DataRow"/>
+      <Activity Name="删除重复行" Icon="DataTable/remove-duplicate-rows.png"  TypeOf="DataTableActivity.RemoveDuplicateRows,   DataTableActivity" ToolTip="从指定的DataTable中删除重复的行数据"/>
+      <Activity Name="排序数据表" Icon="DataTable/sort-data-table.png"  TypeOf="DataTableActivity.SortDataTable,   DataTableActivity" ToolTip="DataTable根据指定列的值按升序或降序对整数进行排序"/>
+    </Group>
+  </Group>
+  <Group Name="系统" >
+    <Group Name="文件">
+      <Activity Name="增加行" Icon="file/appline.png" TypeOf="FileActivity.AppendLineActivity,FileActivity" ToolTip="将指定的字符串追加到文件中，如果该文件不存在，则创建该文件。" />
+      <Activity Name="复制文件" Icon="file/copyfile.png" TypeOf="FileActivity.CopyFileActivity,FileActivity" ToolTip="将文件从指定位置复制到另一个位置。" />
+      <Activity Name="创建文件夹" Icon="file/createdir.png" TypeOf="FileActivity.CreateDirectoryActivity,FileActivity" ToolTip="在指定位置创建目录。" />
+      <Activity Name="创建文件" Icon="file/newfile.png" TypeOf="FileActivity.CreateFileActivity,FileActivity" ToolTip="在指定位置创建文件。" />
+      <Activity Name="删除" Icon="file/delete.png" TypeOf="FileActivity.DeleteActivity,FileActivity" ToolTip="删除指定位置的文件或文件夹。" />
+      <Activity Name="移动文件" Icon="file/movefile.png" TypeOf="FileActivity.MoveFileActivity,FileActivity" ToolTip="将文件从指定位置移动到另一个位置。" />
+      <Activity Name="路径存在" Icon="file/fileexist.png" TypeOf="FileActivity.PathExistsActivity,FileActivity" ToolTip="检查指定的路径是否存在。该路径可以表示文件路径或目录路径。" />
+      <Activity Name="读取文本文件" Icon="file/read.png" TypeOf="FileActivity.ReadTextFileActivity,FileActivity" ToolTip="从指定文件中读取所有字符。" />
+      <Activity Name="写入文本文件" Icon="file/write-text-file.png" TypeOf="FileActivity.WriteTextFileActivity,FileActivity" ToolTip="将指定的文本写入文件,已存在的文本被覆盖。" />
+      <Activity Name="文件改变事件" Icon="file/file-change-trigger.png" TypeOf="FileActivity.FileChangeTriggerActivity,FileActivity" ToolTip="监控文件或文件夹的改变事件，并触发指定的操作。" />
+    </Group>
+    <Group Name="剪贴板">
+      <Activity Name="拷贝选择的文本" Icon="Clipboard/copy-select-text.png" TypeOf="ClipboardActivity.CopySelectTextActivity,ClipboardActivity" ToolTip="使用剪贴板功能获取选定的文本。" />
+      <Activity Name="从剪贴板获取文本" Icon="Clipboard/get-text.png" TypeOf="ClipboardActivity.GetFromClipboardActivity,ClipboardActivity" ToolTip="从剪贴板中检索数据。" />
+      <Activity Name="设置剪贴板" Icon="Clipboard/set-clip-board.png" TypeOf="ClipboardActivity.SetToClipboardActivity,ClipboardActivity" ToolTip="将指定的文本/文件放在剪贴板上。" />
+    </Group>
+    <Group Name="应用程序">
+      <Activity Name="关闭应用程序" Icon="Application/close-application.png" TypeOf="ApplicationActivity.CloseApplicationActivity,ApplicationActivity" ToolTip="关闭与指定UI元素对应的应用程序。" />
+      <Activity Name="获取进程" Icon="Application/get-process.png" TypeOf="ApplicationActivity.GetProcessActivity,ApplicationActivity" ToolTip="获取所有正在运行的进程的列表。" />
+      <Activity Name="杀死进程" Icon="Application/kill-process.png" TypeOf="ApplicationActivity.KillProcessActivity,ApplicationActivity" ToolTip="终止指定的进程。" />
+      <Activity Name="打开应用程序" Icon="Application/open-application.png" TypeOf="ApplicationActivity.OpenApplicationActivity,ApplicationActivity" ToolTip="启动指定应用程序并在其中执行多个操作的容器。此外，它还可以将参数列表传递给应用程序。" />
+      <Activity Name="启动进程" Icon="Application/start-process.png" TypeOf="ApplicationActivity.StartProcessActivity,ApplicationActivity" ToolTip="启动指定的应用程序，并可以选择向其传递参数列表。" />
+    </Group>
+    <Group Name="对话框">
+      <Activity Name="标注" Icon="Dialog/callout.png" TypeOf="DialogActivity.Activity.CalloutActivity,DialogActivity" ToolTip="在指定的UI元素上显示带有标题和文本的弹出窗口，持续一定时间。" />
+      <!--<Activity Name="自定义输入" Icon="Dialog/custom-input.png" TypeOf="DialogActivity.Activity.CustomInputActivity,DialogActivity" ToolTip="显示将数据发送回工作流的HTML文件。" />-->
+      <Activity Name="输入对话框" Icon="Dialog/inputdialog.png" TypeOf="DialogActivity.Activity.InputDialogActivity,DialogActivity" ToolTip="显示一个对话框，用标签消息和输入字段提示用户。" />
+      <Activity Name="消息框" Icon="Dialog/messagebox.png" TypeOf="DialogActivity.Activity.MessageBoxActivity,DialogActivity" ToolTip="显示带有按钮选项的给定文本的消息框。" />
+      <Activity Name="选择文件" Icon="Dialog/selectfile.png" TypeOf="DialogActivity.Activity.SelectFileActivity,DialogActivity" ToolTip="打开对话框以选择文件。" />
+      <Activity Name="选择文件夹" Icon="Dialog/selectfolder.png" TypeOf="DialogActivity.Activity.SelectFolderActivity,DialogActivity" ToolTip="打开对话框以选择文件夹。" />
+    </Group>
+    <Group Name="环境">
+      <Activity Name="系统提示音" Icon="Environment/beep.png" TypeOf="EnvironmentActivity.WinBeep,EnvironmentActivity" ToolTip="蜂鸣器或系统提示音 哔哔哔或嘟嘟嘟等等" />
+      <Activity Name="获取系统路径" Icon="Environment/envfolder.png" TypeOf="EnvironmentActivity.GetEnvPath,EnvironmentActivity" ToolTip="获取指定系统特殊文件夹的路径" />
+      <Activity Name="获取系统变量" Icon="Environment/envvariable.png" TypeOf="EnvironmentActivity.GetEnvVar,EnvironmentActivity" ToolTip="获取指定环境变量的内容" />
+      <!--<Activity Name="获取密码" Icon="Environment/password.png" TypeOf="EnvironmentActivity.GetPassword,EnvironmentActivity" ToolTip="通过将密码与当前用户相关联来加密密码。只有在当前用户上下文下运行的工作流才能解密密码。" />-->
+    </Group>
+    <Group Name="命令行">
+      <Activity Name="PowerShell" Icon="PowerShell/powershell.png" TypeOf="PowerShellActivity.ShellActivity,PowerShellActivity" ToolTip="执行命令行命令或脚本" />
+    </Group>
+    <Group Name="日期时间">
+      <Activity Name="获取当前日期/时间" Icon="DateTime/date.png" TypeOf="DateTimeActivity.GetDateTimeActivity,DateTimeActivity" ToolTip="获取当前日期/时间" />
+      <Activity Name="日期时间转换" Icon="DateTime/convert.png" TypeOf="DateTimeActivity.DateConvertActivity,DateTimeActivity" ToolTip="日期时间转换" />
+    </Group>
+    <Group Name="凭证">
+      <Activity Name="获取凭证" Icon="Orchestrator/get-credential.png" TypeOf="OrchestratorActivity.GetCredential,OrchestratorActivity" ToolTip="使用提供的AssetName获取指定的凭证，并返回用户名和安全密码。" />
+      <Activity Name="设置凭证" Icon="Orchestrator/set-credential.png" TypeOf="OrchestratorActivity.SetCredential,OrchestratorActivity" ToolTip="使您可以更新指示的凭证资产的值，该值在Windows凭证列表中已经可用，无论是全局资产还是个人计算机资产。" />
+    </Group>
+  </Group>
+  <Group Name="用户事件" >
+    <Activity Name="监控事件" Icon="UserEvent/monitor.png" TypeOf="UserEventActivity.MonitorActivity,UserEventActivity" ToolTip="监控事件" />
+  </Group>
+</AvailableActivities>

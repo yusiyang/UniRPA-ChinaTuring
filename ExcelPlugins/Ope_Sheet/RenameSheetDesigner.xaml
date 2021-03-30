@@ -1,0 +1,75 @@
+﻿<sap:ActivityDesigner 
+    x:Class="ExcelPlugins.RenameSheetDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation"
+    xmlns:assist="clr-namespace:Plugins.Shared.Library.Attached;assembly=Plugins.Shared.Library"
+    xmlns:local="clr-namespace:ExcelPlugins"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" 
+    Loaded="IcoPath_Loaded"
+    xmlns:pslc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library"
+    >
+
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Plugins.Shared.Library;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </sap:ActivityDesigner.Resources>
+
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing x:Name="icoPath">
+                    <ImageDrawing.Rect>
+                        <Rect Location="0,0" Size="16,16"></Rect>
+                    </ImageDrawing.Rect>
+                </ImageDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+
+    <pslc:CollapsableActivity>
+        <StackPanel Style="{StaticResource FormStackPanel}">
+            <WrapPanel>
+                <Label Content="工作表次序"></Label>
+                <!--<sapv:ExpressionTextBox
+                    ExpressionType="sys:Int32"
+                    HintText="要操作的单元格所在工作表的索引号。从1开始计算。请输入一个整数。"
+                    OwnerActivity="{Binding Path=ModelItem}"
+                    Expression="{Binding Path=ModelItem.SheetIndex, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                    ></sapv:ExpressionTextBox>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo SheetIndex,Type={x:Type local:RenameSheet}}">
+                </sapv:ExpressionTextBox>
+            </WrapPanel>
+            <WrapPanel Margin="0 5 0 0">
+                <Label Content="工作表旧名称" FontSize="10"></Label>
+                <!--<sapv:ExpressionTextBox
+                    ExpressionType="sys:String"
+                    HintText="要操作的单元格所在工作表的旧名称。为空代表当前活动的工作表。必须将文本放入引号中。"
+                    OwnerActivity="{Binding Path=ModelItem}"
+                    Expression="{Binding Path=ModelItem.OldSheetName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                    ></sapv:ExpressionTextBox>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo OldSheetName,Type={x:Type local:RenameSheet}}">
+                </sapv:ExpressionTextBox>
+            </WrapPanel>
+            <WrapPanel Margin="0 5 0 0">
+                <Label Content="工作表新名称" FontSize="10"></Label>
+                <!--<sapv:ExpressionTextBox
+                    ExpressionType="sys:String"
+                    HintText="要操作的单元格所在工作表的新名称。为空代表当前活动的工作表。必须将文本放入引号中。"
+                    OwnerActivity="{Binding Path=ModelItem}"
+                    Expression="{Binding Path=ModelItem.SheetName, Mode=TwoWay, Converter={StaticResource ArgumentToExpressionConverter}, ConverterParameter=In }"
+                    ></sapv:ExpressionTextBox>-->
+                <sapv:ExpressionTextBox 
+                    assist:ExpressionTextBoxAssist.BindProperty="{assist:PropertyInfo SheetName,Type={x:Type local:RenameSheet}}">
+                </sapv:ExpressionTextBox>
+            </WrapPanel>
+        </StackPanel>
+    </pslc:CollapsableActivity>
+</sap:ActivityDesigner>

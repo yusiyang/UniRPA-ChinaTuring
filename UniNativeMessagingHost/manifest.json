@@ -1,0 +1,9 @@
+{
+	"name": "com.uni.native_message_host",
+	"description": "Chrome sent message to native app.",
+	"path": "D:\\UniRPA\\UniNativeMessagingHost\\bin\\Debug\\UniNativeMessagingHost.exe",
+	"type": "stdio",
+	"allowed_origins": [
+		"chrome-extension://bgmjoaoafbejlcbkfnknfncdlllifbnc/"
+	]
+}

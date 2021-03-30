@@ -1,0 +1,197 @@
+﻿<Window x:Class="UniStudio.Windows.DocParseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UniStudio.Windows"
+        xmlns:wizard="http://schemas.actiprosoftware.com/winfx/xaml/wizard"
+        xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        DataContext="{Binding DocParse, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="文档解析" Height="400" Width="560">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding LoadedCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Window.Resources>
+        <Style x:Key="AttachmentListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+        </Style>
+        <DataTemplate x:Key="AttachmentListBoxItemDataTemplate">
+            <Grid Background="Transparent">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock IsHitTestVisible="False" Text="{Binding Name}" VerticalAlignment="Center" Padding="5 5 0 1" />
+                    <TextBlock IsHitTestVisible="False" Text="{Binding Path}" VerticalAlignment="Center" Padding="5 1 0 5" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="SelectorListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <DataTemplate x:Key="SelectorListBoxItemDataTemplate">
+            <Grid Background="Transparent">
+                <StackPanel Orientation="Horizontal" Height="40" >
+                    <Grid Margin="5 0 5 0" Height="25">
+                        <Button Padding="5 4 5 4" Command="{Binding StartSelectElementCommand}">👆 选取元素</Button>
+                    </Grid>
+                    <Grid Margin="5 0 5 0">
+                        <StackPanel VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Padding="0 0 0 1" Text="【" />
+                                <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Padding="0 0 0 1" Text="{Binding Param}" />
+                                <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Padding="0 0 0 1" Text="】" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" ToolTip="{Binding SelectorStatusToolTip}">
+                                <Image Width="16" Source="{Binding SelectorStatusImgSource}" />
+                                <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Padding="0 0 0 1" Text="{Binding Selector}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <Style TargetType="wizard:WizardButtonContainer">
+            <Setter Property="Background" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerMediumBackgroundNormalBrushKey}}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static themes:AssetResourceKeys.ContainerBorderNormalBrushKey}}" />
+            <Setter Property="BorderThickness" Value="0,1,0,0" />
+            <Setter Property="Padding" Value="7" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="wizard:WizardButtonContainer">
+                        <Border Background="{TemplateBinding Background}"
+						        BorderBrush="{TemplateBinding BorderBrush}"
+						        BorderThickness="{TemplateBinding BorderThickness}"
+						        Padding="{TemplateBinding Padding}"
+						        SnapsToDevicePixels="True">
+                            <DockPanel>
+                                <Button x:Name="PART_HelpButton" DockPanel.Dock="Left" MinWidth="75" Command="wizard:WizardCommands.Help"
+							            Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=HelpButtonText}" 
+							            Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.HelpButtonVisibility)}" />
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button x:Name="PART_CancelButton" Margin="0,0,7,0" MinWidth="75" Command="wizard:WizardCommands.Cancel" 
+								            Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=CancelButtonText}" 
+								            Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.CancelButtonVisibility)}" />
+                                    <Button x:Name="PART_BackButton" MinWidth="75" Command="{Binding BackButtonOnClickCommand}" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).BackButtonEnabled}"
+								            Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=BackButtonText}" 
+								            Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.BackButtonVisibility)}" />
+                                    <Button x:Name="PART_NextButton" MinWidth="75" Command="{Binding NextButtonOnClickCommand}" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).NextButtonEnabled}"
+								            Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=NextButtonText}" 
+								            Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.NextButtonVisibility)}" />
+                                    <Button x:Name="PART_FinishButton" Margin="7,0,0,0" MinWidth="75" Command="{Binding FinishButtonOnClickCommand}" IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).FinishButtonEnabled}"
+								            Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=FinishButtonText}" 
+								            Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=wizard:Wizard}, Path=(wizard:Wizard.SelectedPage).(wizard:WizardPage.FinishButtonVisibility)}" />
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <wizard:Wizard x:Name="_wizard" WindowTitleBehavior="PageTitle" WindowTitleBaseText="文档解析"
+                   HelpButtonVisible="False" CancelButtonText="取消" BackButtonText="&lt;返回" NextButtonText="下一步" FinishButtonText="完成"
+                   >
+
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <cmd:EventToCommand Command="{Binding WizardLoadedCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="MouseLeftButtonDown">
+                <cmd:EventToCommand Command="{Binding MouseLeftButtonDownCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="SelectedPageChanging">
+                <cmd:EventToCommand Command="{Binding SelectedPageChangingCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="SelectedPageChanged">
+                <cmd:EventToCommand Command="{Binding SelectedPageChangedCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+
+        <wizard:WizardPage x:Name="_page0" PageType="Blank"
+                           BackButtonEnabled="False" FinishButtonEnabled="False"
+                           >
+            <Grid>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="5 10 5 5">选择流程描述文档（Word）</TextBlock>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Margin="5" IsReadOnly="True" Text="{Binding FlowDescribeDocFullPath}" />
+                        <Button Grid.Column="1" Margin="5" Content="选择" Width="50" Command="{Binding SelectDocCommand}" />
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="5 10 5 5">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">附件（流程运行过程中所需的其他资源文件）</TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button IsEnabled="{Binding IsAddAttachmentEnabled}" Command="{Binding AddAttachmentCommand}" ToolTip="添加附件" ToolTipService.InitialShowDelay="500" Style="{StaticResource ToolBarButtonStyle}" Width="20" Height="20">+</Button>
+                            <Button IsEnabled="{Binding IsRemoveAttachmentEnabled}" Command="{Binding RemoveAttachmentCommand}" ToolTip="移除附件" ToolTipService.InitialShowDelay="500" Style="{StaticResource ToolBarButtonStyle}" Width="20" Height="20" Margin="5,0,0,0">-</Button>
+                        </StackPanel>
+                    </Grid>
+                    <ListBox Grid.Row="3" BorderThickness="1" BorderBrush="#ABABAB" ItemsSource="{Binding AttachmentItems}"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            SelectionMode="Single" Margin="5" ScrollViewer.CanContentScroll="False"
+                            ItemContainerStyle="{StaticResource AttachmentListBoxItemStyle}"
+                            ItemTemplate="{StaticResource AttachmentListBoxItemDataTemplate}"
+                            >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Loaded">
+                                <cmd:EventToCommand Command="{Binding ListBoxLoadedCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListBox>
+                </Grid>
+
+                <Grid Visibility="{Binding IsBusyLoading, Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}">
+                    <Grid Background="#c8c8c8" Opacity="0.4"></Grid>
+                    <!--加载的Loading转圈显示效果-->
+                    <Image Width="40" Height="40" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/Image/Ribbon/loading.gif"/>
+                </Grid>
+            </Grid>
+        </wizard:WizardPage>
+
+        <wizard:WizardPage x:Name="_page1" PageType="Blank"
+                           NextButtonEnabled="False"
+                           >
+            <Grid>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="5 10 5 5">辅助录制以下参数对应的元素</TextBlock>
+                    <ListBox Grid.Row="1" BorderThickness="1" BorderBrush="#ABABAB" ItemsSource="{Binding SelectorItems}"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            SelectionMode="Single" Margin="5" ScrollViewer.CanContentScroll="False"
+                            ItemContainerStyle="{StaticResource SelectorListBoxItemStyle}"
+                            ItemTemplate="{StaticResource SelectorListBoxItemDataTemplate}"
+                            >
+                    </ListBox>
+                </Grid>
+
+                <Grid Visibility="{Binding IsBusyLoading, Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}">
+                    <Grid Background="#c8c8c8" Opacity="0.4"></Grid>
+                    <!--加载的Loading转圈显示效果-->
+                    <Image Width="40" Height="40" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/Image/Ribbon/loading.gif"/>
+                </Grid>
+            </Grid>
+        </wizard:WizardPage>
+
+    </wizard:Wizard>
+</Window>

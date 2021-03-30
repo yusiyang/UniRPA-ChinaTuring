@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="UniExplorer.UserControls.MainContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             xmlns:local="clr-namespace:UniExplorer"
+             xmlns:uc="clr-namespace:UniExplorer.UserControls"
+             DataContext="{Binding Main, Source={StaticResource Locator}}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="30" Margin="5 5 0 0">
+            <StackPanel.Resources>
+                <Style x:Key="MyButton" TargetType="Button">
+                    <Setter Property="OverridesDefaultStyle" Value="True" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.8" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Button Command="{Binding ValidateElementCommand}" Background="{Binding ValidateElementBackground}" Style="{StaticResource MyButton}" BorderThickness="0" Padding="0 2 0 2">
+                <StackPanel Orientation="Horizontal">
+                    <Image gif:ImageBehavior.AnimatedSource="{Binding ValidateElementStatusImage}" Margin="4" />
+                    <Label Content="验证" ToolTip="{Binding ValidateElementStatusToolTip}" VerticalAlignment="Center" Foreground="White" />
+                </StackPanel>
+            </Button>
+            <Border Width="1" Height="15" Background="#c0c0c0" Margin="5 0 5 0" />
+            <Button Command="{Binding StartPickElementCommand}" Background="White" BorderThickness="0" Padding="0 2 0 2">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="pack://application:,,,/Resource/Image/Windows/mouse-click.png" Margin="4" />
+                    <Label Content="选取元素" ToolTip="进行元素选取" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding HighlightElementCommand}" IsEnabled="{Binding HighlightElementIsEnabled}" Background="White" BorderThickness="0" Padding="0 2 0 2">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="pack://application:,,,/Resource/Image/Windows/highlight.png" Margin="4" />
+                    <Label Content="高亮显示" ToolTip="高亮突出目标元素" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <uc:MainDockContent/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <StackPanel Visibility="{Binding OutputDataControlIsVisibily}" Width="Auto" Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button Content="取消" Command="{Binding CancelCommand}" Margin="10 5" Padding="20 2" />
+                <Button Content="保存" Command="{Binding SaveCommand}" Margin="0 5" Padding="20 2" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.RowSpan="3" Visibility="{Binding IsBuildLoading,Mode=OneWay, Converter={StaticResource BoolVisibilityConverter}}">
+            <Grid Background="#c8c8c8" Opacity="0.4"></Grid>
+            <!--加载的Loading转圈显示效果-->
+            <Image Width="40" Height="40" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resource/Image/Dock/loading.gif"/>
+        </Grid>
+    </Grid>
+</UserControl>

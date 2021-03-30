@@ -1,0 +1,10 @@
+﻿{
+  "schemaVersion": "1.0.0",
+  "studioVersion": "1.0.7.0",
+  "projectType": "Workflow",
+  "projectVersion": "1.0.0",
+  "name": "机器人企业框架",
+  "description": "机器人企业框架",
+  "main": "Main.xaml",
+  "dependencies": {}
+}

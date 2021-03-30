@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBE84E81-0393-4866-8A41-21E62CEC1226}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UniWorkforce</RootNamespace>
+    <AssemblyName>UniWorkforce</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resource\Ico\UniWorkforce.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>UniWorkforce.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiproSoftware.Ribbon.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Ribbon.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Themes.Office.Wpf, Version=19.1.682.0, Culture=neutral, PublicKeyToken=36ff2196ab5654b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Actipro Software\WPF-Controls\v19.1.0682\Assemblies\ActiproSoftware.Themes.Office.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="CSharp-easy-RSA-PEM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\CSharp-easy-RSA-PEM.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Core.2.27.0\lib\net45\Grpc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Grpc.Core.Api, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d754f35622e28bad, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grpc.Core.Api.2.27.0\lib\net45\Grpc.Core.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.5\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
+    <Reference Include="HighlightableTextBlock, Version=1.0.1.1, Culture=neutral, PublicKeyToken=b1ed94db70ba498d, processorArchitecture=MSIL">
+      <HintPath>..\packages\HighlightableTextBlock.1.0.1.1\lib\net452\HighlightableTextBlock.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ReflectionMagic, Version=4.1.0.0, Culture=neutral, PublicKeyToken=c4c75393d7e08e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReflectionMagic.4.1.0\lib\net45\ReflectionMagic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Core.Presentation" />
+    <Reference Include="System.Activities.DurableInstancing" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Plugins.Shared.Library\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Config\ControllerSettings.cs" />
+    <Compile Include="Config\UniWorkforce.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>UniWorkforce.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Context.cs" />
+    <Compile Include="Events\ConnectedStateChangedEventArgs.cs" />
+    <Compile Include="Events\ConnectedStateChangedEventHandler.cs" />
+    <Compile Include="Exceptions\AuthorizationExpiredException.cs" />
+    <Compile Include="Exceptions\RobotNotExistException.cs" />
+    <Compile Include="Executor\Enums\StoppedType.cs" />
+    <Compile Include="Executor\ExecutorService.cs" />
+    <Compile Include="Executor\ViewOperate.cs" />
+    <Compile Include="Librarys\LisenceHelper.cs" />
+    <Compile Include="Models\LoginRequestModel.cs" />
+    <Compile Include="Models\LoginResponseModel.cs" />
+    <Compile Include="Models\MessageModels\ConnectedToControllerMessage.cs" />
+    <Compile Include="Models\MessageModels\DisconnectToControllerMessage.cs" />
+    <Compile Include="Models\MessageModels\LoggedInMessage.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="TaskContext.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Request.cs" />
+    <Compile Include="Services\RobotSDK.cs" />
+    <Compile Include="Services\RobotSDKGrpc.cs" />
+    <Compile Include="Services\RobotService.cs" />
+    <Compile Include="Services\WorkforceController.cs" />
+    <Compile Include="UserControls\SearchTextBoxControl.xaml.cs">
+      <DependentUpon>SearchTextBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\PublishMonitorProcessViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\PackageItem.cs" />
+    <Compile Include="ViewModel\ConnectToControllerViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\StartupViewModel.cs" />
+    <Compile Include="ViewModel\UserPreferencesViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ConnectToControllerWindow.xaml.cs">
+      <DependentUpon>ConnectToControllerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PublishMonitorProcessWindow.xaml.cs">
+      <DependentUpon>PublishMonitorProcessWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RegisterWindow.xaml.cs">
+      <DependentUpon>RegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\StartupWindow.xaml.cs">
+      <DependentUpon>StartupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserPreferencesWindow.xaml.cs">
+      <DependentUpon>UserPreferencesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Librarys\ButtonExt.cs" />
+    <Compile Include="Librarys\Common.cs" />
+    <Compile Include="Librarys\Extensions.cs" />
+    <Compile Include="Librarys\Logger.cs" />
+    <Compile Include="Librarys\UIExtend.cs" />
+    <None Include="Processes\监控流程\Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Page Include="Styles\Global.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\MessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SearchTextBoxControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ConnectToControllerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\PublishMonitorProcessWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\RegisterWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\StartupWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UserPreferencesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Config\UniWorkforce.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UniWorkforce.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Processes\监控流程\project.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resource\key\verify.public.rsa.pem" />
+    <None Include="Services\RobotSDK.proto" />
+    <None Include="UniWorkforce.Log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Ico\UniWorkforce.ico" />
+    <Resource Include="Resource\Image\Main\refresh.png" />
+    <Resource Include="Resource\Image\Main\register.png" />
+    <Resource Include="Resource\Image\Main\search-clear.png" />
+    <Resource Include="Resource\Image\Main\search-magnifier.png" />
+    <Resource Include="Resource\Image\Main\settings.png" />
+    <Resource Include="Resource\Image\Main\start.png" />
+    <Resource Include="Resource\Image\Main\stop.png" />
+    <Resource Include="Resource\Image\Main\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationActivity\ApplicationActivity.csproj">
+      <Project>{a5788df9-2fa5-42a5-b6f0-23fc4d48924b}</Project>
+      <Name>ApplicationActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AttributeActivity\AttributeActivity.csproj">
+      <Project>{2d418cc0-d5c5-4456-b30e-d81a7269a5fb}</Project>
+      <Name>AttributeActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrowserActivity\BrowserActivity.csproj">
+      <Project>{ed764ac4-f155-4b24-9d59-9d62cffa96c0}</Project>
+      <Name>BrowserActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClipboardActivity\ClipboardActivity.csproj">
+      <Project>{c9ed96e1-5c5f-4cf1-a4e6-32cd7bd0624a}</Project>
+      <Name>ClipboardActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ControlActivity\ControlActivity.csproj">
+      <Project>{d591d790-1907-4172-8efa-176c35d7d5a5}</Project>
+      <Name>ControlActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseActivity\DatabaseActivity.csproj">
+      <Project>{d4b53554-8b6a-4cf9-b8c1-39c9f5508ae0}</Project>
+      <Name>DatabaseActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataTableActivity\DataTableActivity.csproj">
+      <Project>{fa30644e-e172-4f78-9c36-0b7632015d9e}</Project>
+      <Name>DataTableActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DateTimeActivity\DateTimeActivity.csproj">
+      <Project>{aeefed42-a5b5-43bd-8f72-41d91b122ed9}</Project>
+      <Name>DateTimeActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DialogActivity\DialogActivity.csproj">
+      <Project>{22c0ddd5-a661-414f-8aac-703d1bcd33c1}</Project>
+      <Name>DialogActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnvironmentActivity\EnvironmentActivity.csproj">
+      <Project>{35ac4d25-e390-4ef8-88e9-5f0f86a8912b}</Project>
+      <Name>EnvironmentActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventActivity\EventActivity.csproj">
+      <Project>{ef5b14db-62c0-4fb3-841b-bd51be079ca6}</Project>
+      <Name>EventActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcelPlugins\ExcelPlugins.csproj">
+      <Project>{9274f86f-419a-4196-ba65-6b3221f13796}</Project>
+      <Name>ExcelPlugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileActivity\FileActivity.csproj">
+      <Project>{2aec885d-3a7a-447d-b2a2-8ea44527d451}</Project>
+      <Name>FileActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FindActivity\FindActivity.csproj">
+      <Project>{34e6e02b-74c3-4e48-926a-0f491216304e}</Project>
+      <Name>FindActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FTPActivity\FTPActivity.csproj">
+      <Project>{dedb7d39-f824-4eb9-8a65-4c3a2971565b}</Project>
+      <Name>FTPActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpServerActivity\HttpServerActivity.csproj">
+      <Project>{f893ef56-86ad-4fa0-9442-f951158bef72}</Project>
+      <Name>HttpServerActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageOperaActivity\ImageOperaActivity.csproj">
+      <Project>{8ae20e43-bb2f-4fd6-a708-46a467845e59}</Project>
+      <Name>ImageOperaActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeyboardActivity\KeyboardActivity.csproj">
+      <Project>{80a1d3c1-4030-4638-8ebc-33f78c70c906}</Project>
+      <Name>KeyboardActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MailActivity\MailActivity.csproj">
+      <Project>{9d48af76-189f-4e3f-a3ee-df59d922037b}</Project>
+      <Name>MailActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MouseActivity\MouseActivity.csproj">
+      <Project>{4d0c8911-fd98-4439-af5e-275cabf29590}</Project>
+      <Name>MouseActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NetWorkActivity\NetWorkActivity.csproj">
+      <Project>{3031a09f-585c-4b85-876b-049ea5272414}</Project>
+      <Name>NetWorkActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrchestratorActivity\OrchestratorActivity.csproj">
+      <Project>{d236cbfe-f605-4eb0-9b8d-98b125f080a4}</Project>
+      <Name>OrchestratorActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Shared.Library\Plugins.Shared.Library.csproj">
+      <Project>{6879c801-1124-477a-97d8-0961e6d710b2}</Project>
+      <Name>Plugins.Shared.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PowerShellActivity\PowerShellActivity.csproj">
+      <Project>{333de130-9e57-4b9e-b327-56dd30609ddb}</Project>
+      <Name>PowerShellActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextActivity\TextActivity.csproj">
+      <Project>{75205f2d-1ad9-4700-9eaf-4113262c79ee}</Project>
+      <Name>TextActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor.Core\UniExecutor.Core.csproj">
+      <Project>{0304c62c-2598-4ff9-b674-4f5e21543ba4}</Project>
+      <Name>UniExecutor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor.Proxy\UniExecutor.Proxy.csproj">
+      <Project>{bde75c50-d83e-431b-a0ae-ad02b5579221}</Project>
+      <Name>UniExecutor.Proxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor.Service.Interface\UniExecutor.Service.Interface.csproj">
+      <Project>{c260a511-cf99-4819-8e0e-e3236866c9bf}</Project>
+      <Name>UniExecutor.Service.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniExecutor\UniExecutor.csproj">
+      <Project>{9a550133-a01e-466e-84d7-e7de5bef8d4f}</Project>
+      <Name>UniExecutor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniNamedPipe\UniNamedPipe.csproj">
+      <Project>{9be457f1-327b-4ea3-b1bf-d6d78cf2cf15}</Project>
+      <Name>UniNamedPipe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserEventActivity\UserEventActivity.csproj">
+      <Project>{f8c1e345-4973-447d-b5be-4a2d7c25a742}</Project>
+      <Name>UserEventActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowActivity\WindowActivity.csproj">
+      <Project>{7c388101-d26d-44c6-8243-064ad75e706c}</Project>
+      <Name>WindowActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WordPlugins\WordPlugins.csproj">
+      <Project>{9fa9e0ad-d67e-4114-9890-5292987e2273}</Project>
+      <Name>WordPlugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkflowUtils\WorkflowUtils.csproj">
+      <Project>{7cf00a6e-e072-42b5-85b2-ad2421934da6}</Project>
+      <Name>WorkflowUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Ico\uni-workforce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Main\logs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\ControllerSettings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Resource Include="Resource\Image\Main\connect.png" />
+    <Resource Include="Resource\Image\Main\disconnect.png" />
+    <Resource Include="Resource\Image\Main\login.png" />
+    <Resource Include="Resource\Image\Main\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\PublishMonitorProcess\publish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\PublishMonitorProcess\wrong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Main\publish.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Grpc.Core.2.27.0\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.27.0\build\net45\Grpc.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Grpc.Core.2.27.0\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.2.27.0\build\net45\Grpc.Core.targets'))" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties processes_4监控流程_4project_1json__JsonSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

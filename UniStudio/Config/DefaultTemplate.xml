@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultTemplate>
+  <!-- 程序添加新的系统预制默认模板后，在此处追加相应条目 -->
+  <!-- TemplateDirectoryPath 字段值，需要使用程序运行相对路径，强制添加“.\”前缀 -->
+  <Template TemplateName="机器人企业框架" TemplateDescription="创建遵循大规模部署的最佳实践的事务性业务流程。" DefaultProjectName="机器人企业框架" DefaultProjectDescription="机器人企业框架" TemplateDirectoryPath=".\Templates\机器人企业框架" />
+</DefaultTemplate>

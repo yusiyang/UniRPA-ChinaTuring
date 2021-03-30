@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Activity x:TypeArguments="x:Object" x:Class="赋值" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"><x:Members>
+<x:Property Name="TestValue" Type="InArgument(x:Object)" /><x:Property Name="TestTo" Type="InArgument(x:Object)" /></x:Members>
+
+<Sequence>
+<Assign x:TypeArguments="x:Object" Value="[TestValue + TestValue]">
+<Assign.To>
+    <OutArgument x:TypeArguments="x:Object"><ArgumentReference x:TypeArguments="x:Object" ArgumentName="Result" /></OutArgument></Assign.To>
+</Assign>
+</Sequence>
+
+</Activity>

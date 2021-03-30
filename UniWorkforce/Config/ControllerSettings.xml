@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <LoginUrl>http://172.16.20.168:8000/Login/login</LoginUrl>
+  <ControllerUrl>172.16.20.168</ControllerUrl>
+  <ControllerPort>9007</ControllerPort>
+  <RobotUniqueNo></RobotUniqueNo>
+  <SessionId></SessionId>
+</Settings>

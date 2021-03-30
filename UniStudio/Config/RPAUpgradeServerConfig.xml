@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--该配置文件放在服务端-->
+<RPAUpgradeServerConfig>
+  <AutoUpgradePackpage Version="1.0.2.0" Md5="e0590d4719b2d7080cc3d2b2652ee225" Url="http://rpa.openserver.cn/download/RPAStudioAutoUpgrade-v1.0.2.0.exe" />
+  <!--更新日志-->
+  <UpdateLog>
+    <Item>UI自动化优化</Item>
+    <Item>Excel活动优化</Item>
+    <Item>处理其它已知问题</Item>
+  </UpdateLog>
+</RPAUpgradeServerConfig>

@@ -1,0 +1,151 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:a="clr-namespace:ApplicationActivity;assembly=ApplicationActivity"
+ xmlns:c="clr-namespace:ControlActivity;assembly=ControlActivity"
+ xmlns:d="clr-namespace:DataTableActivity;assembly=DataTableActivity"
+ xmlns:e="clr-namespace:ExcelPlugins;assembly=ExcelPlugins"
+ xmlns:f="clr-namespace:FileActivity;assembly=FileActivity"
+ xmlns:k="clr-namespace:KeyboardActivity;assembly=KeyboardActivity"
+ xmlns:m="clr-namespace:MouseActivity;assembly=MouseActivity"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>MSHTML</x:String>
+      <x:String>Plugins.Shared.Library.Librarys</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>Plugins.Shared.Library</AssemblyReference>
+      <AssemblyReference>BrowserActivity</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="序列" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    [PlaceholderForActivities]
+    <sads:DebugSymbol.Symbol>d0hDOlxVc2Vyc1xNaWFvIEdyZWVuXERvY3VtZW50c1xVbmlTdHVkaW9cUHJvamVjdHNc56m655m95rWB56iLMVxNYWluLnhhbWxuOwOHBQ4CAQFHBUejAgMBigFIBUjVLwMBgQFJBX8aAgF+gAEFtgEaAgF7twEF7wEYAgF68AEFpgIaAgF3pwIF3wIYAgF24AIF8QIVAgFu8gIFgwUUAgEIhAUFhAXRLQIBBYUFBYUFmgICAQJHwgFH5wEDAYsBSI8vSJQvAwGJAUisAUiyAQMBiAFI2AJI8QcDAYcBSK0CSLICAwGGAUjJAkjOAgMBhQFIjQFIkgEDAYQBSLovSL0vAwGDAUiuL0ixLwMBggFJ0QJJxwMDAYABSYgsSZEsAgF/gAHRAoABywMCAX2AAZwsgAGqLAIBfPABygLwAbUDAgF58AHKK/AB0CsCAXjgAu0B4AKCAgIBdeYCC+4CFgIBb/ICO/ICRAIBbPICT/ICVQIBavgCC4AFFgIBCYQFgAKEBf4CAgEHhAXoAYQF9gECAQaFBYQBhQWiAQIBBIUFggKFBZcCAgED5wIN7QIbAgFw/QINhAMWAgFmhQMNuwMiAgFivAMN8gMiAgFf8wMNqwQgAgFerAQNrASwLAIBWq0EDa0EvCwCAVauBA2uBLwsAgFSrwQNrwS9LAIBTrAEDbAEtSwCAUqxBA2xBLcsAgFGsgQNsgS0LAIBQrMEDbMErywCAT60BA3GBB0CAQvHBA3/BCACAQrqAhPqAkICAXTnAuYB5wLpAQIBc+cCgQHnAocBAgFxggM4ggNOAgFp/wI5/wI/AgFnhQPYAoUDzgMCAWWFA44shQOWLAIBY7wD2QK8A9EDAgFhvAOaLLwDnywCAWCsBI8srASYLAIBXKwE8gGsBIUDAgFbrQSZLK0EpCwCAVitBPIBrQSHAwIBV64EmSyuBKQsAgFUrgTyAa4EhwMCAVOvBI8srwSlLAIBUK8E8gGvBIUDAgFPsASPLLAEnSwCAUywBPIBsASFAwIBS7EEmSyxBJ8sAgFIsQTyAbEEhwMCAUeyBJAssgScLAIBRLIE8wGyBIYDAgFDswSQLLMElywCAUCzBPMBswSGAwIBP7QE9QG0BIoCAgE9ugQTwwQeAgEMuwQVuwSSAgIBN7wEFbwEkgICATG9BBW9BJ0CAgErvgQVvgSVAgIBJb8EFb8EjQICAR/ABBXABJACAgEZwQQVwQSTAgIBE8IEFcIEjgICAQ27BIIBuwSmAQIBO7sEjAK7BI8CAgE6uwSzAbsEvgECATi8BIIBvASmAQIBNbwEjAK8BI8CAgE0vASzAbwEvgECATK9BIIBvQSmAQIBL70ElwK9BJoCAgEuvQSzAb0EyQECASy+BIIBvgSmAQIBKb4EjwK+BJICAgEovgSzAb4EwQECASa/BIIBvwSmAQIBI78EhwK/BIoCAgEivwSzAb8EuQECASDABIIBwASmAQIBHcAEigLABI0CAgEcwASzAcAEvAECARrBBIIBwQSmAQIBF8EEjQLBBJACAgEWwQSzAcEEvwECARTCBIIBwgSmAQIBEcIEiALCBIsCAgEQwgSzAcIEugECAQ4=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="StartProcessActivity_1" sap:VirtualizedContainerService.HintSize="496,116" />
+      <sap2010:ViewStateData Id="ClickActivity_3" sap:VirtualizedContainerService.HintSize="496,116" />
+      <sap2010:ViewStateData Id="TypeIntoActivity_1" sap:VirtualizedContainerService.HintSize="496,151" />
+      <sap2010:ViewStateData Id="TypeIntoActivity_2" sap:VirtualizedContainerService.HintSize="496,151" />
+      <sap2010:ViewStateData Id="HotKeyActivity_3" sap:VirtualizedContainerService.HintSize="496,161" />
+      <sap2010:ViewStateData Id="TypeIntoActivity_3" sap:VirtualizedContainerService.HintSize="496,151" />
+      <sap2010:ViewStateData Id="HotKeyActivity_4" sap:VirtualizedContainerService.HintSize="496,161" />
+      <sap2010:ViewStateData Id="ReadRange_2" sap:VirtualizedContainerService.HintSize="422,124">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="444,248">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelCreate_2" sap:VirtualizedContainerService.HintSize="496,349" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="460,66" />
+      <sap2010:ViewStateData Id="TypeIntoActivity_4" sap:VirtualizedContainerService.HintSize="460,151" />
+      <sap2010:ViewStateData Id="TypeIntoActivity_5" sap:VirtualizedContainerService.HintSize="460,151" />
+      <sap2010:ViewStateData Id="HotKeyActivity_1" sap:VirtualizedContainerService.HintSize="460,161" />
+      <sap2010:ViewStateData Id="GetText_4" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="GetText_5" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="GetText_6" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="GetText_7" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="GetText_8" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="GetText_9" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="GetText_10" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="GetText_11" sap:VirtualizedContainerService.HintSize="460,116" />
+      <sap2010:ViewStateData Id="CellSet_1" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="CellSet_2" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="CellSet_3" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="CellSet_4" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="CellSet_5" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="CellSet_6" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="CellSet_7" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="CellSet_8" sap:VirtualizedContainerService.HintSize="422,124" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="444,1396">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelCreate_3" sap:VirtualizedContainerService.HintSize="460,1497">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="HotKeyActivity_2" sap:VirtualizedContainerService.HintSize="460,161" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="482,3759">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="496,3850">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CloseApplicationActivity_1" sap:VirtualizedContainerService.HintSize="496,116" />
+      <sap2010:ViewStateData Id="CopyFileActivity_1" sap:VirtualizedContainerService.HintSize="496,22" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="518,5868">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="558,5948" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

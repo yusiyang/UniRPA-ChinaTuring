@@ -1,0 +1,89 @@
+﻿<ribbon:RibbonWindow x:Class="UniWorkforce.Windows.UserPreferencesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UniWorkforce.Windows"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+        xmlns:ribbon="http://schemas.actiprosoftware.com/winfx/xaml/ribbon"
+        xmlns:themes="http://schemas.actiprosoftware.com/winfx/xaml/themes"
+        mc:Ignorable="d"
+        DataContext="{Binding UserPreferences, Source={StaticResource Locator}}"
+        ApplicationName="用户设置" Height="300" Width="400" Icon="/Resource/Ico/UniWorkforce.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <ribbon:RibbonWindow.Resources>
+
+        <!-- Window 边框 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowBorderActiveBrushKey}" Color="#007a82" />
+
+        <!-- Ribbon 顶栏 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarBackgroundActiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarBackgroundInactiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarForegroundActiveBrushKey}" Color="White" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarForegroundInactiveBrushKey}" Color="#d5d5d5" />
+
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarInnerBorderActiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarInnerBorderInactiveBrushKey}" Color="#007a82" />
+
+        <!-- 最大最小化按钮 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.WindowTitleBarButtonForegroundActiveHoverBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarButtonBackgroundHoverBrushKey}" Color="#00a3ae" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolBarButtonBorderHoverBrushKey}" Color="#00a3ae" />
+
+        <!-- 窗口选中时标题栏背景 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.DockingWindowContainerTitleBarBackgroundActiveBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.TabbedMdiContainerTabItemBackgroundActiveFocusedBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.TabbedMdiContainerTabItemBorderActiveFocusedBrushKey}" Color="#007a82" />
+
+        <!-- 工具窗口容器选中时前景色 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.ToolWindowContainerTabItemForegroundSelectedBrushKey}" Color="#007a82" />
+
+        <!-- 自动隐藏标签项鼠标浮动颜色 -->
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.AutoHideTabItemBorderHoverBrushKey}" Color="#007a82" />
+        <SolidColorBrush x:Key="{x:Static themes:AssetResourceKeys.AutoHideTabItemForegroundHoverBrushKey}" Color="#007a82" />
+
+    </ribbon:RibbonWindow.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding LoadedCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <cmd:EventToCommand Command="{Binding MouseLeftButtonDownCommand}" ></cmd:EventToCommand>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closing">
+            <cmd:EventToCommand Command="{Binding ClosingCommand}" PassEventArgsToCommand="True"></cmd:EventToCommand>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <GroupBox Header="系统设置" Margin="10" >
+                <StackPanel Margin="10">
+                    <CheckBox IsChecked="{Binding IsAutoRun}">开机时自动启动</CheckBox>
+                    <CheckBox IsChecked="{Binding IsAutoOpenMainWindow}" Margin="0,10,0,0">启动后自动打开主窗口</CheckBox>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid HorizontalAlignment="Left" Margin="10,0,0,0">
+                <Button Width="100" Height="25" Command="{Binding ResetSettingsCommand}" Style="{StaticResource ToolBarButtonStyle}">重置设置</Button>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Width="80" Height="25" Command="{Binding OkCommand}" Style="{StaticResource ToolBarButtonStyle}">确定</Button>
+                    <Button Width="80" Height="25" Margin="10,0,10,0" Command="{Binding CancelCommand}" Style="{StaticResource ToolBarButtonStyle}">取消</Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</ribbon:RibbonWindow>

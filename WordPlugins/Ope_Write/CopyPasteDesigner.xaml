@@ -1,0 +1,29 @@
+﻿<sap:ActivityDesigner 
+    x:Class="WordPlugins.CopyPasteDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" Loaded="IcoPath_Loaded"
+    xmlns:pslc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library"
+    >
+
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing x:Name="icoPath">
+                    <ImageDrawing.Rect>
+                        <Rect Location="0,0" Size="16,16"></Rect>
+                    </ImageDrawing.Rect>
+                </ImageDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+    <pslc:CollapsableActivity >
+        <StackPanel>
+            <WrapPanel Width="130">
+                <RadioButton  IsChecked="{Binding ModelItem.Copy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="65" Content="复制"/>
+                <RadioButton  IsChecked="{Binding ModelItem.Paste, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="65" Content="粘贴"/>
+            </WrapPanel>
+        </StackPanel>
+    </pslc:CollapsableActivity>
+</sap:ActivityDesigner>

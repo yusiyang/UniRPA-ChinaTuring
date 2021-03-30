@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="UniExplorer.UserControls.SelectorItemContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UniExplorer.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding MainDock, Source={StaticResource Locator}}">
+    <Grid>
+        <ListBox x:Name="_selectorItemsListBox" ItemsSource="{Binding SelectorItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 SelectedItem="{Binding SelectedSelectorItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" VerticalContentAlignment="Center"/>
+                        <Label Content="{Binding ItemContent, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" GotFocus="TextBox_GotFocus" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

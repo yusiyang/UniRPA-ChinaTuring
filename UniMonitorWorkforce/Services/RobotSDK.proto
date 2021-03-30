@@ -1,0 +1,252 @@
+﻿
+syntax  =  "proto3";
+
+option csharp_namespace  =  "UniWorkforce.Services";
+
+package RobotSDK;
+
+//20191217：接口定义完成如下：
+//设计器登录校验
+//验证流程是否存在，存在：返回给他最新的版本号，不存在，返回不存在
+//发布流程和数据
+//校验机器码
+//接收日志信息
+//接收心跳
+
+
+//后续接口完成计划：
+//1、license的业务确定：完成机器人、设计器的离线和在线激活通信
+//2、流程模块业务确定：完成机器人的任务分发通信
+//3、流程中Q业务确定：完成上传和下发Q数据
+
+enum ResultCode{
+    
+    // 成功
+    SuccessCode = 0;
+    // 未授权
+    UnAuthorizedCode = 1;
+    //错误
+    ErrorCode = 2;
+    //等待
+    LoginOutTimeCode = 3;
+    //未找到机器人
+    UnFindRobot=4;
+    // 未指定
+    UnspecifyCode = 5;
+    //服务器繁忙
+    ServerBusy = 6;
+    //登录过期
+    Expired=7;
+}
+
+//设计器登录校验
+message LoginRequest{
+    string Code = 1; //公司code
+    string LoginName = 2;//登录名
+    string Password = 3;//密码
+}
+
+message LoginResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+}
+
+//验证流程是否存在
+message CheckProcessRequest{
+    string ProcessName = 1;//流程名称
+    string SessionId  = 2;//登录SessionId
+}
+
+message CheckProcessResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+    CheckProcessModel Result = 3;
+}
+
+message CheckProcessModel{
+    bool IsExist = 1;//是否已经存在、
+    string Version = 2;//如果已经存在，输入版本号，不存在为0
+    string RobotTypeID=3;//厂商的ID
+    string RobotType=4;//厂商名称
+}
+
+//发布流程和数据
+message PublishRequest{
+    string SessionId = 1;//登录SessionId
+    string ProcessName = 2;//流程名称
+    string ProcessDescription = 3;//流程描述
+    bytes FileStream = 4;//二进制文件
+    string Version = 5;//版本号
+    string PublishTime = 6;//发布时间
+    string RobotTypeID=7;
+}
+
+message PublishResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+}
+
+
+//校验机器唯一码
+message CheckRobotRequest{
+    string RobotUniqueNo = 1;//唯一码
+	string LicenseKey=2;//机器人license
+}
+
+message CheckRobotResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+    CheckRobotModel Result = 3;
+}
+
+message CheckRobotModel{
+    bool IsRight = 1;//true代表唯一码正确，false唯一码错误
+    string RobotId=2;//机器人ID
+}
+
+//接收日志信息
+message JobLogRequest{
+    repeated JobLogParams Logs = 1;
+}
+
+message JobLogParams{
+    string Description = 1;//日志内容
+    string TaskNo = 2;//任务编号
+    string ProcessName = 3;//流程名称
+    string ActivityType = 4;//活动类型
+    string CreatedTime = 5;//执行时间
+    string Parameters = 6;//执行参数：如果有多个参数，请用||隔开，
+    string TaskID = 7;//JobId
+    string RobotID=8;//机器人ID
+    string UniqueNo=9;//机器人唯一码
+    LogType Type=10;//日志类型
+    string ActivityName=11;//活动名称
+}
+
+enum LogType{
+    UnspecifiedLog=0;//未指定
+    TraceLog = 1;// 追踪日志
+    InfoLog=2;// 信息日志
+    WarnLog=3;//提示
+    ErrorLog = 4;//错误日志
+    FatalLog=5;//致命
+}
+
+message JobLogResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+}
+
+
+//心跳
+message HeartBeatRequest{
+    RobotState RobotState = 1;//机器人状态
+    string RobotUniqueNo = 2;//机器人唯一码
+    string RobotTime = 3;//机器人时间
+    string RobotIP = 4;//机器人IP
+    string TaskID=5;//任务ID
+}
+
+enum RobotState{
+    
+    // 正在运行
+    Run = 0;
+    // 未连接
+    Disconnected = 1;
+    //错误
+    Error = 2;
+    //等待
+    Pend = 3;
+    // 未指定
+    Unspecify = 9;
+}
+
+message HeartBeatResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+    string Action=3;//是否需要停止任务
+}
+
+
+message  TaskRequest{
+    string RobotUniqueNo=1;//机器人唯一码
+}
+
+message TaskResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+    PackageModel Result = 3; 
+}
+
+message PackageModel{
+    string PackageID=1;
+    string PackageName=2;
+    bytes file=3;
+    string TaskID=4;//任务ID
+    string Version=5;//版本号
+    string TaskNo=6;//任务编号
+}
+
+message TaskStatusRequest{
+    TaskStatusEnum TaskStatus=1;
+    string TaskID=2;//任务ID
+    string RobotUniqueNo=3;//机器人唯一码
+}
+
+enum TaskStatusEnum{
+    
+    // 等待中
+    Pending = 0;
+    // 运行中
+    Running = 1;
+    // 运行故障
+    Fault = 2;
+    // 运行完成
+    Finished = 3;
+    // 运行停止
+    Stopped = 4;
+    // 未指定
+    Unspecified = 9;
+}
+
+message TaskStatusResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message = 2;//错误信息
+}
+
+message GetRobotTypeRequest{
+    string SessionId  = 1;//登录SessionId
+}
+
+message GetRobotTypeResponse{
+    ResultCode Code = 1;//是否成功，成功固定返回0
+    string Message=2;//错误信息
+    repeated RobotTypeModel Result = 3;
+}
+
+message RobotTypeModel{
+    string ID=1;//厂商ID
+    string RobotType=2;//厂商名称
+}
+
+service RobotSDK {
+  //设计器登录校验
+  rpc DesignerLogin (LoginRequest) returns (LoginResponse);
+  //验证流程是否存在
+  rpc CheckProcess (CheckProcessRequest) returns (CheckProcessResponse);
+  //发布流程和数据
+  rpc PublishProcess (PublishRequest) returns (PublishResponse);
+  //校验机器唯一码
+  rpc CheckRobot (CheckRobotRequest) returns (CheckRobotResponse);
+  //接收日志信息
+  rpc SendJobLog (JobLogRequest) returns (JobLogResponse);
+  //接收心跳
+  rpc HeartBeat (HeartBeatRequest) returns (HeartBeatResponse);
+  //任务完成通知服务端
+  rpc SendTaskStatus (TaskStatusRequest) returns (TaskStatusResponse);
+  //获取厂商列表
+  rpc GetRobotTypeList (GetRobotTypeRequest) returns (GetRobotTypeResponse);
+  //任务推送
+  rpc GetTask (stream TaskRequest) returns (stream TaskResponse);
+  
+}

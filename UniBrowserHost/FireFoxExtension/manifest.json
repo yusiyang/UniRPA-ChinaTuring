@@ -1,0 +1,37 @@
+{
+	"manifest_version": 2,
+	"name":"UniRpa Web Automation",
+	"version":"1.0.0",
+	"description":"UniRpa component for browser interaction",
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	"background": 
+	{ 
+		"scripts": [ "Loader.js" ] 
+	},
+	"permissions":     [ "nativeMessaging", "tabs", "webNavigation", "webRequest", "<all_urls>" ],
+	"content_security_policy" : "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"content_scripts": [
+		{
+			"matches": [ "http://*/*", "https://*/*", "file://*/*" ],
+			"js": [ "ContentLoader.js" ],
+			"run_at" : "document_start",
+			"all_frames" : true
+		}
+	],
+
+	 "applications": {
+	 	"gecko": {
+	 		"id": "extension4ff@unirpa.com"
+	 	}
+	 },
+
+	"browser_specific_settings": {
+		"gecko": {
+			"strict_min_version": "52.0"
+		}
+	}
+}

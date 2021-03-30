@@ -1,0 +1,67 @@
+﻿<sap:ActivityDesigner x:Class="ApplicationActivity.OpenApplicationDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:p="clr-namespace:ApplicationActivity.Properties"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:pslc="clr-namespace:Plugins.Shared.Library.Controls;assembly=Plugins.Shared.Library"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" 
+    xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation" Loaded="ActivityDesigner_Loaded_1" >
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Plugins.Shared.Library;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </sap:ActivityDesigner.Resources>
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing ImageSource="{Binding Path=ModelItem.icoPath}">
+                    <ImageDrawing.Rect>
+                        <Rect Location="0,0" Size="16,16"></Rect>
+                    </ImageDrawing.Rect>
+                </ImageDrawing>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+    <pslc:CollapsableActivity >
+        <StackPanel>
+            <Grid Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Name="grid1">
+                    <TextBlock Name="navigateTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Hyperlink Name="Hyperlink" Click="HyperlinkClick" NavigateUri="www.baidu.com">在屏幕上选取元素</Hyperlink>
+                    </TextBlock>
+                </Grid>
+                <StackPanel Name="grid" Visibility="{Binding Path=ModelItem.visibility}" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource ButtonNoHover}" MouseDoubleClick="Button_MouseDoubleClick" Width="230" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Image Name="navigateImage" Source="{Binding Path=ModelItem.SourceImgPath,Mode=OneWay, Converter={StaticResource ProjectPathConverters},ConverterParameter=.screenshots}" Stretch="UniformToFill"  Visibility="Visible" RenderOptions.BitmapScalingMode="HighQuality" UseLayoutRounding="True"/>
+                    </Button>
+                    <Button Name="navigateButton" Click="NavigateButtonClick" Initialized="NavigateButtonInitialized" Visibility="Visible" Width="25" Height="21" Margin="5 5 0 0" VerticalAlignment="Top" Style="{StaticResource BtnElementSelector}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/Plugins.Shared.Library;Component/Resource/Image/Activities/mouse/menu.png" Stretch="Fill"/>
+                        </Button.Background>
+                        <Button.ContextMenu>
+                            <ContextMenu Name="contextMenu">
+                                <MenuItem Header="重新选取" Click="meauItemClickOne">
+                                    <MenuItem.Icon>
+                                        <Image Source="pack://application:,,,/Plugins.Shared.Library;Component/Resource/Image/Activities/mouse/mouseclick.png" Stretch="Fill"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="在 UI 探测器中打开" Click="meauItemClickTwo">
+                                    <MenuItem.Icon>
+                                        <Image Source="pack://application:,,,/Plugins.Shared.Library;Component/Resource/Image/Activities/mouse/ui-explorer.png" Stretch="Fill"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <sap:WorkflowItemPresenter x:Uid="sap:WorkflowItemPresenter_2" x:Name="BodyHandlerContainer" HintText="{x:Static p:Resources.DropActivityHere}"
+                                       Item="{Binding ModelItem.Body.Handler, Mode=TwoWay}" Margin="0 5 0 0"/>
+        </StackPanel>
+    </pslc:CollapsableActivity>
+</sap:ActivityDesigner>

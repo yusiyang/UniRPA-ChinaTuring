@@ -1,0 +1,110 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="TakeScreenshot "
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:a="clr-namespace:AttributeActivity;assembly=AttributeActivity"
+ xmlns:f="clr-namespace:FileActivity;assembly=FileActivity"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing"
+ xmlns:si="clr-namespace:System.IO;assembly=mscorlib"
+ xmlns:w="clr-namespace:WorkflowUtils;assembly=WorkflowUtils"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Folder" Type="InArgument(x:String)" />
+    <x:Property Name="io_FilePath" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <sap2010:WorkflowViewState.IdRef>Sequence7_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="用法：将 in_Folder 设置为要保存屏幕截图的文件夹名称。&#xA;或者，在 io_FilePath 中提供完整路径，包括文件名。&#xA;&#xA;说明：此工作流将捕获屏幕截图并记录其名称和位置。然后将其保存。&#xA;如果 io_FilePath 为空，它将尝试将图片保存在 in_Folder 中。&#xA;&#xA;它使用 .png 扩展名。" DisplayName="屏幕截图序列" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:Bitmap" Name="screenshot" />
+      <Variable x:TypeArguments="si:FileInfo" Name="screenshotFileInfo" />
+    </Sequence.Variables>
+    <If Condition="[String.IsNullOrEmpty(io_filePath)]" DisplayName="如果没有文件路径" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Assign DisplayName="制作文件路径" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[io_FilePath]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[Path.Combine(in_Folder, "ExceptionScreenshot_"+Now.ToString("yyMMdd.hhmmss")+".png")]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <Assign DisplayName="使用路径生成 FileInfo 对象" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="si:FileInfo">[screenshotFileInfo]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="si:FileInfo">[new fileinfo(io_FilePath)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[Directory.Exists(screenshotFileInfo.DirectoryName)]" DisplayName="如果目录不存在，创建它" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Else>
+        <f:CreateDirectoryActivity DelayAfter="{x:Null}" DelayBefore="{x:Null}" ContinueOnError="False" DisplayName="创建文件夹" sap2010:WorkflowViewState.IdRef="CreateDirectoryActivity_1" Path="[screenshotFileInfo.DirectoryName]" />
+      </If.Else>
+    </If>
+    <a:TakeScreenShot DelayAfter="{x:Null}" DelayBefore="{x:Null}" Element="{x:Null}" Selector="{x:Null}" SelectorOrigin="{x:Null}" SourceImgPath="{x:Null}" Timeout="{x:Null}" ContinueOnError="True" DisplayName="截图" sap2010:WorkflowViewState.IdRef="TakeScreenShot_5" ScreenshotFilePath="[io_FilePath]" visibility="Hidden" />
+    <w:LogMessageActivity DelayAfter="{x:Null}" DelayBefore="{x:Null}" ContinueOnError="False" DisplayName="输出日志" sap2010:WorkflowViewState.IdRef="LogMessageActivity_1" Level="Information" Message="[&quot;截图保存在：&quot; + io_FilePath]" />
+    <sads:DebugSymbol.Symbol>d1BDOlxVc2Vyc1xNaWFvIEdyZWVuXERlc2t0b3Bc5py65Zmo5Lq65LyB5Lia5qGG5p62XEZyYW1ld29ya1xUYWtlU2NyZWVuc2hvdCAueGFtbBE4A1kOAgEBPQVICgIBEUkFUA4CAQ1RBVUKAgEIVgVWxQICAQVXBVftAQIBAj0TPTgCARI/CUYSAgEUTjNOTgIBEEs0S0gCAQ5RE1FJAgEJUwlT5QECAQpWnwJWrgICAQZXxgFX6gECAQNENESKAQIBF0E1QUICARVTvgFT4gECAQs=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,214" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="464,61" />
+      <sap2010:ViewStateData Id="CreateDirectoryActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="464,213" />
+      <sap2010:ViewStateData Id="TakeScreenShot_5" sap:VirtualizedContainerService.HintSize="464,116" />
+      <sap2010:ViewStateData Id="LogMessageActivity_1" sap:VirtualizedContainerService.HintSize="464,98" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="486,1113">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence7_1" sap:VirtualizedContainerService.HintSize="526,1193" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

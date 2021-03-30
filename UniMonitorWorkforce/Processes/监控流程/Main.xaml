@@ -1,0 +1,122 @@
+<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:h="clr-namespace:HttpServerActivity;assembly=HttpServerActivity"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:p="clr-namespace:PowerShellActivity;assembly=PowerShellActivity"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:u="clr-namespace:UserEventActivity;assembly=UserEventActivity"
+ xmlns:w="clr-namespace:WorkflowUtils;assembly=WorkflowUtils"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="序列" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <p:ShellActivity x:TypeArguments="x:Object" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Input="{x:Null}" Output="{x:Null}" CommandText="..\..\..\..\app-20.4.0-beta0250\UiRobot.exe -file D:\BlankProcess2.1.0.6.nupkg" ContinueOnError="False" DisplayName="PowerShell" sap2010:WorkflowViewState.IdRef="ShellActivity`1_1" IsAsync="True" IsScript="True" />
+    <TryCatch DisplayName="Try Catch异常处理" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <u:MonitorActivity DelayAfter="{x:Null}" DelayBefore="{x:Null}" ContinueOnError="False" DisplayName="监控事件" sap2010:WorkflowViewState.IdRef="MonitorActivity_2" RepeatForever="True">
+          <u:MonitorActivity.Handler>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="args" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="EventHandler" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <w:LogMessageActivity DelayAfter="{x:Null}" DelayBefore="{x:Null}" ContinueOnError="False" DisplayName="输出日志" sap2010:WorkflowViewState.IdRef="LogMessageActivity_2" Level="Information" Message="[args.ToString()]" />
+                <If Condition="[args.ToString().Contains(&quot;Uipath流程运行结束&quot;)]" DisplayName="IF条件" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If.Then>
+                    <Throw DisplayName="抛出" Exception="[new Exception(&quot;&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </u:MonitorActivity.Handler>
+          <u:MonitorActivity.Triggers>
+            <h:HttpServerActivity DelayAfter="{x:Null}" DelayBefore="{x:Null}" ContinueOnError="False" DisplayName="Http服务" sap2010:WorkflowViewState.IdRef="HttpServerActivity_2" />
+          </u:MonitorActivity.Triggers>
+        </u:MonitorActivity>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <sads:DebugSymbol.Symbol>dzJDOlxVc2Vyc1xNaWFvIEdyZWVuXERlc2t0b3Bc55uR5o6n5rWB56iLXE1haW4ueGFtbA4sA1AOAgEBLQUt5AICAQ8uBU4QAgECLY0BLd0BAgEQMAlDHQIBAzC2ATC8AQIBDkENQbYBAgENNg89GgIBBDcRN+gBAgEKOBE8FgIBBTfSATflAQIBCzgfOFUCAQY6FTqDAQIBCDo3OlYCAQk=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ShellActivity`1_1" sap:VirtualizedContainerService.HintSize="518,66">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessageActivity_2" sap:VirtualizedContainerService.HintSize="464,98" />
+      <sap2010:ViewStateData Id="Throw_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,213" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="486,475">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="HttpServerActivity_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="MonitorActivity_2" sap:VirtualizedContainerService.HintSize="500,547" />
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="504,23">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="518,784" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="540,1014">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="580,1094" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
