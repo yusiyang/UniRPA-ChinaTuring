@@ -121,7 +121,7 @@
                     <Image Source="pack://application:,,,/Resource/Ico/uni-studio.png" />
                 </Viewbox>
                 <StackPanel Margin="0 30 0 0" TextElement.Foreground="{Binding ItemDescriptionForeground}">
-                    <TextBlock Height="20" HorizontalAlignment="Center" Text="Uni Studio" />
+                    <TextBlock Height="20" HorizontalAlignment="Center" Text="Turing Studio" />
                     <TextBlock Height="20" HorizontalAlignment="Center" Text="{Binding StudioVersion}" />
                     <!--<TextBlock Height="20" HorizontalAlignment="Center" Text="许可证提供程序：Internal" />
                     <TextBlock Height="20" HorizontalAlignment="Center" Text="激活 ID：UIP-4fba072119" />

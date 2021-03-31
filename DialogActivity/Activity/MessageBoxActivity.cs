@@ -141,7 +141,7 @@ namespace DialogActivity.Activity
                 string _Captions = Captions.Get(context);
                 string _Text = Text.Get(context);
 
-                if (string.IsNullOrEmpty(_Captions)) _Captions = "Uni Studio";
+                if (string.IsNullOrEmpty(_Captions)) _Captions = "Turing Studio";
 
                 if (Buttons > 1) Buttons++;
 

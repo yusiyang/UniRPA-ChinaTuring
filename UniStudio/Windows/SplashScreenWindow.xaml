@@ -22,7 +22,7 @@
     <Grid Background="#007a82">
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel>
-                <TextBlock FontSize="100" Foreground="White" FontWeight="Bold" >Uni Studio</TextBlock>
+                <TextBlock FontSize="80" Foreground="White" FontWeight="Bold" >Turing Studio</TextBlock>
                 <TextBlock FontSize="20" Foreground="White" FontStyle="Italic" >Power Everyone with Automation</TextBlock>
             </StackPanel>
         </Grid>

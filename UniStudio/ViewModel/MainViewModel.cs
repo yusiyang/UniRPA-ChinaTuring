@@ -1316,7 +1316,7 @@ namespace UniStudio.ViewModel
         /// </summary>
         public const string TitlePropertyName = "Title";
 
-        private readonly string prefixTitle = "Uni Studio";
+        private readonly string prefixTitle = "Turing Studio";
         private string _titleProperty = "";
 
         /// <summary>
