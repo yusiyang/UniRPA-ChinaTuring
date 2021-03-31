@@ -365,9 +365,9 @@ namespace UniStudio.ViewModel
                     UniMessageBox.Show(m_view, "授权文件非法！", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                UniMessageBox.Show(m_view, "授权文件操作失败，请检查！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                UniMessageBox.Show(m_view, "授权文件操作失败，请检查！"+e.Message, "提示", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

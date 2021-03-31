@@ -14,7 +14,7 @@
         mc:Ignorable="d"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         MinWidth="300" MinHeight="450"
-        ApplicationName="Uni Workforce" 
+        ApplicationName="Turning Workforce" 
         Height="600" Width="450"
         Icon="/Resource/Ico/UniWorkforce.ico" 
         ShowInTaskbar="False"
