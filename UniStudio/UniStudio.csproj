@@ -1345,11 +1345,15 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /s /y "$(SolutionDir)"UniBrowserHost\$(OutDir)*.* "$(TargetDir)"BrowserExtensions\NativeHost\
+
 XCopy /E /Y "$(ProjectDir)"Snippets\*.* "$(TargetDir)"Snippets\
+
 XCopy /E /Y "$(ProjectDir)"Templates\*.* "$(TargetDir)"Templates\
+
 xcopy /s /y "$(TargetDir)"BrowserExtensions\NativeHost\ChromeExtension\*.* "$(TargetDir)"BrowserExtensions\ChromeExtension\
+
 xcopy /s /y "$(TargetDir)"BrowserExtensions\NativeHost\FirefoxExtension\*.* "$(TargetDir)"BrowserExtensions\FirefoxExtension\
-xcopy /s /y "$(SolutionDir)"Plugins.Shared.Library\WorkflowGenerator\*.* "$(TargetDir)"
+
 </PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
