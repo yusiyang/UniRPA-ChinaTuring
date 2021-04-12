@@ -260,12 +260,19 @@ namespace UniStudio.ViewModel
                 return;
             }
 
-            var settings = JsonMapper.ToObject(File.ReadAllText(settingPath));
-            if (settings["extensions"]["settings"].ContainsKey(crxId))
+            try
             {
-                settings["extensions"]["settings"][crxId].Clear();
+                var settings = JsonMapper.ToObject(File.ReadAllText(settingPath));
+                if (settings["extensions"]["settings"].ContainsKey(crxId))
+                {
+                    settings["extensions"]["settings"][crxId].Clear();
+                }
+                File.WriteAllText(settingPath, settings.ToJson());
             }
-            File.WriteAllText(settingPath, settings.ToJson());
+            catch
+            {
+
+            }
 
             var mainFest = JsonMapper.ToObject(File.ReadAllText(hostPath + "\\manifest.json"));
             mainFest["path"] = hostPath + "\\UniBrowserHost.exe";
