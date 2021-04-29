@@ -116,6 +116,7 @@ namespace WindowActivity
                 if(currWindow != null)
                 {
                     Win32Api.ShowWindow(currWindow.getWindowHwnd(), Win32Api.SW_SHOWNORMAL);
+                    Win32Api.SetForegroundWindow(currWindow.getWindowHwnd());
                 }
                 else
                 {
@@ -126,6 +127,7 @@ namespace WindowActivity
                     {
                         Window getBrowser = property.GetValue(context.DataContext) as Window;
                         Win32Api.ShowWindow(getBrowser.getWindowHwnd(), Win32Api.SW_SHOWNORMAL);
+                        Win32Api.SetForegroundWindow(currWindow.getWindowHwnd());
                     }
                 }
             }

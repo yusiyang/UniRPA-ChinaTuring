@@ -85,6 +85,10 @@ namespace WindowActivity
         [Description("查找到的窗口句柄。")]
         public OutArgument<IntPtr> Result { get; set; }
 
+        [Category("输出")]
+        [DisplayName("窗口变量")]
+        [Description("查找到的窗口变量。")]
+        public OutArgument<Window> Window { get; set; }
         #endregion
 
 
@@ -134,9 +138,13 @@ namespace WindowActivity
                 string _Title = Title.Get(context);
                 string _ClassName = ClassName.Get(context);
                 IntPtr _result = IntPtr.Zero;
-
+                var currWindow = new Window();
                 _result = Win32Api.FindWindow(_ClassName, _Title);
+                currWindow.setWindowHwnd((int)_result);
+                currWindow.setWindowText("" + _Title);
+                currWindow.setWindowClass("" + _ClassName);
                 Result.Set(context, _result);
+                Window.Set(context,currWindow);
             }
             catch (Exception e)
             {
