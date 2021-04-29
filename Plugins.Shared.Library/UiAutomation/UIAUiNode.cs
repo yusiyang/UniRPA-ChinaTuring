@@ -13,6 +13,8 @@ using Plugins.Shared.Library.WindowsAPI;
 using FlaUI.Core.Overlay;
 using FlaUI.Core.Identifiers;
 using WinApi.User32;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Plugins.Shared.Library.UiAutomation
 {
@@ -264,7 +266,16 @@ namespace Plugins.Shared.Library.UiAutomation
                     if (!contextNode.AccessibleContextHandle.IsNull)
                     {
                         var rootPanelNode = contextNode.FetchChildNode(0);
-                        list.Add(new JavaUiNode(rootPanelNode));
+                        //MessageBox.Show(rootPanelNode.GetChildren().ToList().Count.ToString());
+                        if (rootPanelNode.GetChildren().ToList().Count > 0)
+                        {
+                            list.Add(new JavaUiNode(rootPanelNode));
+                        }
+                        else
+                        {
+                            rootPanelNode = contextNode.FetchChildNode(1);
+                            list.Add(new JavaUiNode(rootPanelNode));
+                        }
                     }
                 }
                 return list;
