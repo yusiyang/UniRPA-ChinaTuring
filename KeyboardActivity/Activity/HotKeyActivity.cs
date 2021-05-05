@@ -248,57 +248,88 @@ namespace KeyboardActivity
             {
                 int timeout = Common.GetValueOrDefault(context, this.Timeout, 30000);
                 var selStr = Selector.Get(context);
-                UiElement element = Common.GetValueOrDefault(context, this.Element, null);
-                if (element == null && selStr != null)
-                {
-                    element = UiElement.FromSelector(selStr, timeout);
-                }
 
-                int pointX = offsetX.Get(context);
-                int pointY = offsetY.Get(context);
-                if (element != null)
+                if (string.IsNullOrWhiteSpace(selStr))
                 {
-                    element.SetForeground();
-                }
-                else if (!string.IsNullOrEmpty(selStr))
-                {
-                    if (ContinueOnError)
+                    DealBaseKeyBordPress();
+                    if (Common.DealVirtualKeyPress(SelectedKey.ToUpper()))
                     {
-                        return;
+                        Common.DealVirtualKeyRelease(SelectedKey.ToUpper());
+                        DealBaseKeyBordRelease();
+
+                        Thread.Sleep(delayAfter);
                     }
                     else
                     {
-                        throw new NotImplementedException("查找不到元素");
+                        DealBaseKeyBordRelease();
+                        SharedObject.Instance.Output(SharedObject.OutputType.Error, "有一个错误产生", "找不到键值");
+                        if (ContinueOnError)
+                        {
+                            Thread.Sleep(delayAfter);
+                            return;
+                        }
+                        else
+                        {
+                            Thread.Sleep(delayAfter);
+                            throw new NotImplementedException("找不到键值");
+                        }
                     }
                 }
-                DealBaseKeyBordPress();
-                if (IsRunClick)
-                {
-                    UiElementClickParams uiElementClickParams = new UiElementClickParams();
-                    Offset offset = new Offset(pointX, pointY);
-                    uiElementClickParams.offset = offset;
-                    element.MouseClick(uiElementClickParams);
-                }
-                if (Common.DealVirtualKeyPress(SelectedKey.ToUpper()))
-                {
-                    Common.DealVirtualKeyRelease(SelectedKey.ToUpper());
-                    DealBaseKeyBordRelease();
 
-                    Thread.Sleep(delayAfter);
-                }
                 else
                 {
-                    DealBaseKeyBordRelease();
-                    SharedObject.Instance.Output(SharedObject.OutputType.Error, "有一个错误产生", "找不到键值");
-                    if (ContinueOnError)
+                    UiElement element = Common.GetValueOrDefault(context, this.Element, null);
+                    if (element == null && selStr != null)
                     {
+                        element = UiElement.FromSelector(selStr, timeout);
+                    }
+
+                    int pointX = offsetX.Get(context);
+                    int pointY = offsetY.Get(context);
+                    if (element != null)
+                    {
+                        element.SetForeground();
+                    }
+                    else if (!string.IsNullOrEmpty(selStr))
+                    {
+                        if (ContinueOnError)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            throw new NotImplementedException("查找不到元素");
+                        }
+                    }
+                    DealBaseKeyBordPress();
+                    if (IsRunClick)
+                    {
+                        UiElementClickParams uiElementClickParams = new UiElementClickParams();
+                        Offset offset = new Offset(pointX, pointY);
+                        uiElementClickParams.offset = offset;
+                        element.MouseClick(uiElementClickParams);
+                    }
+                    if (Common.DealVirtualKeyPress(SelectedKey.ToUpper()))
+                    {
+                        Common.DealVirtualKeyRelease(SelectedKey.ToUpper());
+                        DealBaseKeyBordRelease();
+
                         Thread.Sleep(delayAfter);
-                        return;
                     }
                     else
                     {
-                        Thread.Sleep(delayAfter);
-                        throw new NotImplementedException("找不到键值");
+                        DealBaseKeyBordRelease();
+                        SharedObject.Instance.Output(SharedObject.OutputType.Error, "有一个错误产生", "找不到键值");
+                        if (ContinueOnError)
+                        {
+                            Thread.Sleep(delayAfter);
+                            return;
+                        }
+                        else
+                        {
+                            Thread.Sleep(delayAfter);
+                            throw new NotImplementedException("找不到键值");
+                        }
                     }
                 }
             }

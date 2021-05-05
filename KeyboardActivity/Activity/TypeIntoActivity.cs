@@ -241,47 +241,13 @@ namespace KeyboardActivity
             {
                 int timeout = Common.GetValueOrDefault(context, this.Timeout, 30000);
                 var selStr = Selector.Get(context);
-                UiElement element = Common.GetValueOrDefault(context, this.Element, null);
-                if (element == null && selStr != null)
-                {
-                    element = UiElement.FromSelector(selStr, timeout);
-                }
-                if (Activate)
-                {
-                    element.SetForeground();
-                }
 
-                var pointX = element.GetClickablePoint().X;
-                var pointY = element.GetClickablePoint().Y;
-                string expValue = Text.Get(context);
-
-                List<string> strList = new List<string>();
-                ParseStringToList(expValue, strList);
-                if (IsRunClick)
+                if (String.IsNullOrWhiteSpace(selStr))
                 {
-                    UiElementClickParams uiElementClickParams = new UiElementClickParams();
-                    element.MouseClick(uiElementClickParams);
-                }
+                    string expValue = Text.Get(context);
 
-                IntPtr windowHandle = IntPtr.Zero;
-                windowHandle = element.MainWindowHandle;
-                
-                using (var imeScope = IMEScope.BeginEdit(windowHandle, IMEHelper.HKL_ENGLISH_US))
-                {
-                    element.Focus();
-                    //清空输入内容
-                    if (EmptyText)
-                    {
-                        try
-                        {
-                            element.SimulateTypeText("");
-                        }
-                        catch
-                        {
-                            UiKeyboard.New().Press(VirtualKey.CONTROL).With(VirtualKey.KEY_A).Continue(VirtualKey.DELETE).End();
-                        }
-                        Thread.Sleep(500);
-                    }
+                    List<string> strList = new List<string>();
+                    ParseStringToList(expValue, strList);
 
                     foreach (string str in strList)
                     {
@@ -315,21 +281,108 @@ namespace KeyboardActivity
                         else if (!string.IsNullOrWhiteSpace(strValue))
                         {
 
-                            if (!SimulateInput)
+                            foreach (var item in strValue)
                             {
-                                foreach (var item in strValue)
-                                {
-                                    Thread.Sleep(delayBetweenInputs);
-                                    SendKeys.SendWait(item.ToString());
-                                }
+                                Thread.Sleep(delayBetweenInputs);
+                                SendKeys.SendWait(item.ToString());
                             }
-                            else
-                            {
-                                element.SimulateTypeText(strValue);
-                            }
+
                         }
                     }
+                }
 
+                else
+                {
+                    UiElement element = Common.GetValueOrDefault(context, this.Element, null);
+                    if (element == null && selStr != null)
+                    {
+                        element = UiElement.FromSelector(selStr, timeout);
+                    }
+                    if (Activate)
+                    {
+                        element.SetForeground();
+                    }
+
+                    var pointX = element.GetClickablePoint().X;
+                    var pointY = element.GetClickablePoint().Y;
+                    string expValue = Text.Get(context);
+
+                    List<string> strList = new List<string>();
+                    ParseStringToList(expValue, strList);
+                    if (IsRunClick)
+                    {
+                        UiElementClickParams uiElementClickParams = new UiElementClickParams();
+                        element.MouseClick(uiElementClickParams);
+                    }
+
+                    IntPtr windowHandle = IntPtr.Zero;
+                    windowHandle = element.MainWindowHandle;
+
+                    using (var imeScope = IMEScope.BeginEdit(windowHandle, IMEHelper.HKL_ENGLISH_US))
+                    {
+                        element.Focus();
+                        //清空输入内容
+                        if (EmptyText)
+                        {
+                            try
+                            {
+                                element.SimulateTypeText("");
+                            }
+                            catch
+                            {
+                                UiKeyboard.New().Press(VirtualKey.CONTROL).With(VirtualKey.KEY_A).Continue(VirtualKey.DELETE).End();
+                            }
+                            Thread.Sleep(500);
+                        }
+
+                        foreach (string str in strList)
+                        {
+                            string strValue = str;
+                            if (strValue.Contains("[(") && strValue.Contains(")]"))
+                            {
+                                strValue = strValue.Replace("[(", "");
+                                strValue = strValue.Replace(")]", "");
+                                if (SimulateInput)
+                                {
+                                    Thread.Sleep(delayBetweenInputs);
+                                }
+
+                                if (Common.DealVirtualKeyPress(strValue.ToUpper()))
+                                {
+                                    Common.DealVirtualKeyRelease(strValue.ToUpper());
+                                }
+                                else
+                                {
+                                    SharedObject.Instance.Output(SharedObject.OutputType.Error, "有一个错误产生", "找不到键值");
+                                    if (ContinueOnError)
+                                    {
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        throw new NotImplementedException("找不到键值");
+                                    }
+                                }
+                            }
+                            else if (!string.IsNullOrWhiteSpace(strValue))
+                            {
+
+                                if (!SimulateInput)
+                                {
+                                    foreach (var item in strValue)
+                                    {
+                                        Thread.Sleep(delayBetweenInputs);
+                                        SendKeys.SendWait(item.ToString());
+                                    }
+                                }
+                                else
+                                {
+                                    element.SimulateTypeText(strValue);
+                                }
+                            }
+                        }
+
+                    }
                 }
 
                 Thread.Sleep(delayAfter);
