@@ -265,17 +265,20 @@ namespace Plugins.Shared.Library.UiAutomation
                     var contextNode = JavaUtils.GetContextNode(WindowHandle);
                     if (!contextNode.AccessibleContextHandle.IsNull)
                     {
-                        var rootPanelNode = contextNode.FetchChildNode(0);
-                        //MessageBox.Show(rootPanelNode.GetChildren().ToList().Count.ToString());
-                        if (rootPanelNode.GetChildren().ToList().Count > 0)
+                        foreach(var child in contextNode.GetChildren())
                         {
-                            list.Add(new JavaUiNode(rootPanelNode));
+                            list.Add(new JavaUiNode(child));
                         }
-                        else
-                        {
-                            rootPanelNode = contextNode.FetchChildNode(1);
-                            list.Add(new JavaUiNode(rootPanelNode));
-                        }
+                        //var rootPanelNode = contextNode.FetchChildNode(0);
+                        //if (rootPanelNode.GetChildren().ToList().Count > 0)
+                        //{
+                        //    list.Add(new JavaUiNode(rootPanelNode));
+                        //}
+                        //else
+                        //{
+                        //    rootPanelNode = contextNode.FetchChildNode(1);
+                        //    list.Add(new JavaUiNode(rootPanelNode));
+                        //}
                     }
                 }
                 return list;
