@@ -44,6 +44,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FlaUI.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenCvSharp4.4.2.0.20191223\lib\net40\OpenCvSharp.dll</HintPath>

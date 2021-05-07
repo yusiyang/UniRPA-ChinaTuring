@@ -263,14 +263,37 @@ namespace MouseActivity.Activity
 
         private System.Drawing.Point GetClickPoint(UiElement processUiElement, CodeActivityContext context)
         {
-            var processScreenShot = processUiElement.CaptureScreenshot();
-            var screenShot = Image.FromFile(SharedObject.Instance.ProjectPath+@"\.screenshots\"+SourceImgPath);
+            var screenShot = Image.FromFile(SharedObject.Instance.ProjectPath + @"\.screenshots\" + SourceImgPath);
+            var result = new Rectangle();
+            var cts = new CancellationTokenSource();
+            var autoSet = new AutoResetEvent(false);
+            var timeout = Common.GetValueOrDefault(context, this.Timeout, 30000);
+            new Task(() =>
+            {
+                while (!cts.IsCancellationRequested)
+                {
+                    if (result == Rectangle.Empty)
+                    {
+                        var processScreenShot = UIAUiNode.UIAAutomation.GetDesktop().Capture();
+                        ImageSearchEngine.Initialize(processScreenShot, screenShot);
+                        result = ImageSearchEngine.Search();
+                        Thread.Sleep(50);
+                        continue;
+                    }
+                    autoSet.Set();
+                    break;
+                }
+            }, cts.Token).Start();
+            autoSet.WaitOne(timeout);
+            cts.Cancel();
 
-            var imageSearchEngine = new ImageSearchEngine(processScreenShot, screenShot);
-            var result = imageSearchEngine.Search();
+            if (result == default || result.IsEmpty)
+            {
+                throw new Exception("查找不到图片");
+            }
 
             var centerPoint = result.Center();
-            var processRectangle = processUiElement.BoundingRectangle;
+            var processRectangle = UiElement.Desktop.BoundingRectangle;
             centerPoint.X += processRectangle.X;
             centerPoint.Y += processRectangle.Y;
 

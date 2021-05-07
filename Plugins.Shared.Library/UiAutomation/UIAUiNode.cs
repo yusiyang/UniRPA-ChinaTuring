@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace Plugins.Shared.Library.UiAutomation
 {
-    class UIAUiNode : UiNode
+    public class UIAUiNode : UiNode
     {
         private static ITreeWalker _treeWalker;
 
