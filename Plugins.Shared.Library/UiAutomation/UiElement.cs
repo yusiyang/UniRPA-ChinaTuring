@@ -1495,7 +1495,14 @@ namespace Plugins.Shared.Library.UiAutomation
         /// </summary>
         public void Focus()
         {
-            uiNode.Focus();
+            try
+            {
+                uiNode.Focus();
+            }
+            catch
+            {
+
+            }
         }
 
         #endregion
