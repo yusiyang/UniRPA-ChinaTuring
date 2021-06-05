@@ -258,7 +258,7 @@ namespace ExcelPlugins
                     for (int iCol = colStart; iCol <= colEnd; iCol++)
                     {
                         range = (Microsoft.Office.Interop.Excel.Range)sheet.Cells[iRow, iCol];
-                        dr[drColIndex++] = (range.Value2 == null) ? "" : range.Text.ToString();
+                        dr[drColIndex++] = (range.Value2 == null) ? "" : range.Value.ToString();
                     }
                     dt.Rows.Add(dr);
                 }
