@@ -13,7 +13,7 @@ using Plugins.Shared.Library.UiAutomation.Browser;
 
 namespace Plugins.Shared.Library.UiAutomation
 {
-    class HtmlUiNode : UiNode,IJavaScriptExecutor
+    class HtmlUiNode : UiNode, IJavaScriptExecutor
     {
         public List<NodeHierarchy> NodeHierarchyInfo => GetHtmlAncestryInfo();
 
@@ -283,7 +283,7 @@ namespace Plugins.Shared.Library.UiAutomation
             {
                 return _browser.Active && IsHtmlElemValid();
             }
-            var browserVisible=false;
+            var browserVisible = false;
             Librarys.TimeoutHelper timeHelper = new Librarys.TimeoutHelper
             {
                 Do = () =>
@@ -556,7 +556,7 @@ namespace Plugins.Shared.Library.UiAutomation
 
         public object ExecuteScript(string script, params object[] args)
         {
-            return _browser.ExecuteScript(script, args,this);
+            return _browser.ExecuteScript(script, args, this);
         }
     }
 }
